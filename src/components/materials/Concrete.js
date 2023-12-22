@@ -13,17 +13,17 @@ const Concrete = ({ option }) => {
     (state) => state.calculatedValues[option]?.concrete || {}
   );
 
-  const [localInputs, setLocalInputs] = useState({
+  const initialInputs = {
     concHoriz: 0,
     concVert: 0,
     concFound: 0,
     concRebar: 0,
     concCustom: 0,
-  });
+  };
 
+  const [localInputs, setLocalInputs] = useState(initialInputs);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Handle input change
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     const newValue = Number(value);
@@ -47,26 +47,33 @@ const Concrete = ({ option }) => {
     handleSaveInputs(option, "concrete", localInputs, results.outputs);
   };
 
-  // Update local state when Redux state changes
+  // Load saved data or initialize with default values
   useEffect(() => {
-    setLocalInputs(concreteInputs);
-  }, [concreteInputs]);
-
-  // Load saved data and update states
-  useEffect(() => {
-    const loadSavedData = () => {
+    const loadSavedDataAndCalculate = () => {
       const savedData = JSON.parse(localStorage.getItem(option));
       if (savedData && savedData.concrete) {
         const savedInputs = savedData.concrete.inputs;
-        setLocalInputs(savedInputs); // Update local state
-        for (const key in savedInputs) {
-          dispatch(updateConcreteInputs({ [key]: savedInputs[key] })); // Update Redux state
-        }
+        setLocalInputs(savedInputs); // Update local state with saved data
+        dispatch(updateConcreteInputs(savedInputs)); // Update Redux state with saved data
+
+        // Perform calculation with the loaded inputs
+        const results = calculateValues(savedInputs);
+        dispatch(
+          setCalculatedValues({
+            option: option,
+            material: "concrete",
+            values: results.outputs,
+          })
+        );
+      } else {
+        // If no saved data, initialize with default values
+        setLocalInputs(initialInputs);
+        dispatch(updateConcreteInputs(initialInputs));
       }
     };
 
-    loadSavedData();
-  }, [option, dispatch]);
+    loadSavedDataAndCalculate();
+  }, [option, dispatch, initialInputs]);
 
   // Close modal
   const handleCloseModal = () => {

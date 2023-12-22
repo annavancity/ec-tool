@@ -1,61 +1,88 @@
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateWoodInputs } from "../../features/materialInputsSlice";
 import calculateValues from "../../utils/calculateValues";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
+import { setCalculatedValues } from "../../features/calculatedValuesSlice";
 
 const Wood = ({ option }) => {
-  const [woodCLT, setWoodCLT] = useState(0);
-  const [woodDltNlt, setWoodDltNlt] = useState(0);
-  const [woodMPP, setWoodMPP] = useState("");
-  const [woodPlywood, setWoodPlywood] = useState(0);
-  const [woodGlulam, setWoodGlulam] = useState(0);
-  const [woodPslLslLvl, setWoodPslLslLvl] = useState(0);
-  const [woodTJI, setWoodTJI] = useState(0);
-  const [woodLumber, setWoodLumber] = useState(0);
-  const [woodCustom, setWoodCustom] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [calculatedValues, setCalculatedValues] = useState({});
+  const dispatch = useDispatch();
+  const woodInputs = useSelector((state) => state.materialInputs.wood);
+  const woodCalculatedValues = useSelector(
+    (state) => state.calculatedValues[option]?.wood || {}
+  );
 
-  const handleInputChange = (event, setInputValue) => {
-    setInputValue(event.target.value);
+  const initialInputs = {
+    woodCLT: 0,
+    woodDltNlt: 0,
+    woodMPP: 0,
+    woodPlywood: 0,
+    woodGlulam: 0,
+    woodPslLslLvl: 0,
+    woodTJI: 0,
+    woodLumber: 0,
+    woodCustom: 0,
   };
 
+  const [localInputs, setLocalInputs] = useState(initialInputs);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    const newValue = Number(value);
+    setLocalInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: newValue,
+    }));
+    dispatch(updateWoodInputs({ [name]: newValue }));
+  };
+
+  // Calculate and save
+  const calculateAndSave = () => {
+    const results = calculateValues(localInputs);
+    dispatch(
+      setCalculatedValues({
+        option: option,
+        material: "wood",
+        values: results.outputs,
+      })
+    );
+    handleSaveInputs(option, "wood", localInputs, results.outputs);
+  };
+
+  // Load saved data or initialize with default values
+  useEffect(() => {
+    const loadSavedDataAndCalculate = () => {
+      const savedData = JSON.parse(localStorage.getItem(option));
+      if (savedData && savedData.wood) {
+        const savedInputs = savedData.wood.inputs;
+        setLocalInputs(savedInputs); // Update local state with saved data
+        dispatch(updateWoodInputs(savedInputs)); // Update Redux state with saved data
+
+        // Perform calculation with the loaded inputs
+        const results = calculateValues(savedInputs);
+        dispatch(
+          setCalculatedValues({
+            option: option,
+            material: "wood",
+            values: results.outputs,
+          })
+        );
+      } else {
+        // If no saved data, initialize with default values
+        setLocalInputs(initialInputs);
+        dispatch(updateWoodInputs(initialInputs));
+      }
+    };
+
+    loadSavedDataAndCalculate();
+  }, [option, dispatch, initialInputs]);
+
+  // Close modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
-  const calculateAndSave = () => {
-    const inputs = {
-      woodCLT,
-      woodDltNlt,
-      woodMPP,
-      woodPlywood,
-      woodGlulam,
-      woodPslLslLvl,
-      woodTJI,
-      woodLumber,
-      woodCustom,
-    };
-
-    const results = calculateValues(inputs);
-    setCalculatedValues(results.outputs);
-
-    handleSaveInputs(option, "wood", inputs, results.outputs);
-  };
-
-  useEffect(() => {
-    calculateAndSave();
-  }, [
-    woodCLT,
-    woodDltNlt,
-    woodMPP,
-    woodPlywood,
-    woodGlulam,
-    woodPslLslLvl,
-    woodTJI,
-    woodLumber,
-    woodCustom,
-  ]);
 
   return (
     <div className="wood-section">
@@ -65,16 +92,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodCLT}
-          onChange={(event) => handleInputChange(event, setWoodCLT)}
+          value={localInputs.woodCLT}
+          name="woodCLT"
+          onChange={handleInputChange}
           placeholder="wood-CLT value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodCLTGWPCalculated}
+          {woodCalculatedValues.woodCLTGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodCLTPercentageCalculated}
+          {woodCalculatedValues.woodCLTPercentageCalculated}
         </p>
       </div>
 
@@ -84,16 +112,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodDltNlt}
-          onChange={(event) => handleInputChange(event, setWoodDltNlt)}
+          value={localInputs.woodDltNlt}
+          name="woodDltNlt"
+          onChange={handleInputChange}
           placeholder="wood-DLT/NLT value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodDltNltGWPCalculated}
+          {woodCalculatedValues.woodDltNltGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodDltNltPercentageCalculated}
+          {woodCalculatedValues.woodDltNltPercentageCalculated}
         </p>
       </div>
 
@@ -103,16 +132,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodMPP}
-          onChange={(event) => handleInputChange(event, setWoodMPP)}
+          value={localInputs.woodMPP}
+          name="woodMPP"
+          onChange={handleInputChange}
           placeholder="wood-MPP value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodMPPGWPCalculated}
+          {woodCalculatedValues.woodMPPGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodMPPPercentageCalculated}
+          {woodCalculatedValues.woodMPPPercentageCalculated}
         </p>
       </div>
 
@@ -122,16 +152,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodPlywood}
-          onChange={(event) => handleInputChange(event, setWoodPlywood)}
+          value={localInputs.woodPlywood}
+          name="woodPlywood"
+          onChange={handleInputChange}
           placeholder="wood-plywood value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodPlywoodGWPCalculated}
+          {woodCalculatedValues.woodPlywoodGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodPlywoodPercentageCalculated}
+          {woodCalculatedValues.woodPlywoodPercentageCalculated}
         </p>
       </div>
 
@@ -141,16 +172,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodGlulam}
-          onChange={(event) => handleInputChange(event, setWoodGlulam)}
+          value={localInputs.woodGlulam}
+          name="woodGlulam"
+          onChange={handleInputChange}
           placeholder="wood-glulam value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodGlulamGWPCalculated}
+          {woodCalculatedValues.woodGlulamGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodGlulamPercentageCalculated}
+          {woodCalculatedValues.woodGlulamPercentageCalculated}
         </p>
       </div>
 
@@ -160,16 +192,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodPslLslLvl}
-          onChange={(event) => handleInputChange(event, setWoodPslLslLvl)}
+          value={localInputs.woodPslLslLvl}
+          name="woodPslLslLvl"
+          onChange={handleInputChange}
           placeholder="wood-PSL/LSL/LVL value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodPslLslLvlGWPCalculated}
+          {woodCalculatedValues.woodPslLslLvlGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodPslLslLvlPercentageCalculated}
+          {woodCalculatedValues.woodPslLslLvlPercentageCalculated}
         </p>
       </div>
 
@@ -179,16 +212,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodTJI}
-          onChange={(event) => handleInputChange(event, setWoodTJI)}
+          value={localInputs.woodTJI}
+          name="woodTJI"
+          onChange={handleInputChange}
           placeholder="wood-TJI value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodTJIGWPCalculated}
+          {woodCalculatedValues.woodTJIGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodTJIPercentageCalculated}
+          {woodCalculatedValues.woodTJIPercentageCalculated}
         </p>
       </div>
 
@@ -198,16 +232,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodLumber}
-          onChange={(event) => handleInputChange(event, setWoodLumber)}
+          value={localInputs.woodLumber}
+          name="woodLumber"
+          onChange={handleInputChange}
           placeholder="wood-lumber value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodLumberGWPCalculated}
+          {woodCalculatedValues.woodLumberGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodLumberPercentageCalculated}
+          {woodCalculatedValues.woodLumberPercentageCalculated}
         </p>
       </div>
 
@@ -217,16 +252,17 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={woodCustom}
-          onChange={(event) => handleInputChange(event, setWoodCustom)}
+          value={localInputs.woodCustom}
+          name="woodCustom"
+          onChange={handleInputChange}
           placeholder="wood-custom value"
         />
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
-          {calculatedValues.woodCustomGWPCalculated}
+          {woodCalculatedValues.woodCustomGWPCalculated}
         </p>
         <p className="menu-text-large value-row-percentage">
-          {calculatedValues.woodCustomPercentageCalculated}
+          {woodCalculatedValues.woodCustomPercentageCalculated}
         </p>
       </div>
 

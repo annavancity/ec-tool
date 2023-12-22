@@ -9,19 +9,20 @@ import { setCalculatedValues } from "../../features/calculatedValuesSlice";
 const Steel = ({ option }) => {
   const dispatch = useDispatch();
   const steelInputs = useSelector((state) => state.materialInputs.steel);
-  const steelCalculatedValues = useSelector((state) => {
-    return state.calculatedValues[option]?.steel || {};
-  });
+  const steelCalculatedValues = useSelector(
+    (state) => state.calculatedValues[option]?.steel || {}
+  );
 
-  const [localInputs, setLocalInputs] = useState({
+  const initialInputs = {
     steelHotRolled: 0,
     steelHSS: 0,
     steelOWSJ: 0,
     steelPlate: 0,
     steelDeck: 0,
     steelCustom: 0,
-  });
+  };
 
+  const [localInputs, setLocalInputs] = useState(initialInputs);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (event) => {
@@ -44,28 +45,36 @@ const Steel = ({ option }) => {
         values: results.outputs,
       })
     );
-    handleSaveInputs(option, "concrete", localInputs, results.outputs);
+    handleSaveInputs(option, "steel", localInputs, results.outputs);
   };
 
-  // Update local state when Redux state changes
+  // Load saved data or initialize with default values
   useEffect(() => {
-    setLocalInputs(steelInputs);
-  }, [steelInputs]);
-
-  // Load saved data
-  useEffect(() => {
-    const loadSavedData = () => {
+    const loadSavedDataAndCalculate = () => {
       const savedData = JSON.parse(localStorage.getItem(option));
       if (savedData && savedData.steel) {
         const savedInputs = savedData.steel.inputs;
-        for (const key in savedInputs) {
-          dispatch(updateSteelInputs({ [key]: savedInputs[key] }));
-        }
+        setLocalInputs(savedInputs); // Update local state with saved data
+        dispatch(updateSteelInputs(savedInputs)); // Update Redux state with saved data
+
+        // Perform calculation with the loaded inputs
+        const results = calculateValues(savedInputs);
+        dispatch(
+          setCalculatedValues({
+            option: option,
+            material: "steel",
+            values: results.outputs,
+          })
+        );
+      } else {
+        // If no saved data, initialize with default values
+        setLocalInputs(initialInputs);
+        dispatch(updateSteelInputs(initialInputs));
       }
     };
 
-    loadSavedData();
-  }, [option, dispatch]);
+    loadSavedDataAndCalculate();
+  }, [option, dispatch, initialInputs]);
 
   // Close modal
   const handleCloseModal = () => {
