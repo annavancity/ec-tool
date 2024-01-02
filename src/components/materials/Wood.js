@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateWoodInputs } from "../../features/materialInputsSlice";
 import calculateValues from "../../utils/calculateValues";
@@ -13,17 +13,20 @@ const Wood = ({ option }) => {
     (state) => state.calculatedValues[option]?.wood || {}
   );
 
-  const initialInputs = {
-    woodCLT: 0,
-    woodDltNlt: 0,
-    woodMPP: 0,
-    woodPlywood: 0,
-    woodGlulam: 0,
-    woodPslLslLvl: 0,
-    woodTJI: 0,
-    woodLumber: 0,
-    woodCustom: 0,
-  };
+  const initialInputs = useMemo(
+    () => ({
+      woodCLT: 0,
+      woodDltNlt: 0,
+      woodMPP: 0,
+      woodPlywood: 0,
+      woodGlulam: 0,
+      woodPslLslLvl: 0,
+      woodTJI: 0,
+      woodLumber: 0,
+      woodCustom: 0,
+    }),
+    []
+  );
 
   const [localInputs, setLocalInputs] = useState(initialInputs);
   const [isModalOpen, setIsModalOpen] = useState(false);

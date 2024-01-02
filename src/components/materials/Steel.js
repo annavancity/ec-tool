@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateSteelInputs } from "../../features/materialInputsSlice";
 import calculateValues from "../../utils/calculateValues";
@@ -13,14 +13,17 @@ const Steel = ({ option }) => {
     (state) => state.calculatedValues[option]?.steel || {}
   );
 
-  const initialInputs = {
-    steelHotRolled: 0,
-    steelHSS: 0,
-    steelOWSJ: 0,
-    steelPlate: 0,
-    steelDeck: 0,
-    steelCustom: 0,
-  };
+  const initialInputs = useMemo(
+    () => ({
+      steelHotRolled: 0,
+      steelHSS: 0,
+      steelOWSJ: 0,
+      steelPlate: 0,
+      steelDeck: 0,
+      steelCustom: 0,
+    }),
+    []
+  );
 
   const [localInputs, setLocalInputs] = useState(initialInputs);
   const [isModalOpen, setIsModalOpen] = useState(false);

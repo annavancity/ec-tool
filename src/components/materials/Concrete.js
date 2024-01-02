@@ -1,5 +1,4 @@
-//test - updated file from git
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateConcreteInputs } from "../../features/materialInputsSlice";
 import calculateValues from "../../utils/calculateValues";
@@ -14,13 +13,16 @@ const Concrete = ({ option }) => {
     (state) => state.calculatedValues[option]?.concrete || {}
   );
 
-  const initialInputs = {
-    concHoriz: 0,
-    concVert: 0,
-    concFound: 0,
-    concRebar: 0,
-    concCustom: 0,
-  };
+  const initialInputs = useMemo(
+    () => ({
+      concHoriz: 0,
+      concVert: 0,
+      concFound: 0,
+      concRebar: 0,
+      concCustom: 0,
+    }),
+    []
+  );
 
   const [localInputs, setLocalInputs] = useState(initialInputs);
   const [isModalOpen, setIsModalOpen] = useState(false);
