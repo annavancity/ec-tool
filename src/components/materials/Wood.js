@@ -1,86 +1,47 @@
 import { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateWoodInputs } from "../../features/materialInputsSlice";
-import calculateValues from "../../utils/calculateValues";
+import {
+  updateWoodInputs,
+  markWoodAsSaved,
+} from "../../features/materialInputsSlice";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
-import { setCalculatedValues } from "../../features/calculatedValuesSlice";
 
 const Wood = ({ option }) => {
   const dispatch = useDispatch();
-  const woodInputs = useSelector((state) => state.materialInputs.wood);
+  const materialInputs = useSelector((state) => state.materialInputs);
+  const woodInputs = materialInputs.wood.inputs;
   const woodCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.wood || {}
   );
 
-  const initialInputs = useMemo(
-    () => ({
-      woodCLT: 0,
-      woodDltNlt: 0,
-      woodMPP: 0,
-      woodPlywood: 0,
-      woodGlulam: 0,
-      woodPslLslLvl: 0,
-      woodTJI: 0,
-      woodLumber: 0,
-      woodCustom: 0,
-    }),
-    []
-  );
-
-  const [localInputs, setLocalInputs] = useState(initialInputs);
+  const [localInputs, setLocalInputs] = useState({ ...woodInputs });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    const newValue = Number(value);
-    setLocalInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: newValue,
-    }));
-    dispatch(updateWoodInputs({ [name]: newValue }));
+    setLocalInputs({
+      ...localInputs,
+      [name]: Number(value),
+    });
   };
 
-  // Calculate and save
-  const calculateAndSave = () => {
-    const results = calculateValues(localInputs);
-    dispatch(
-      setCalculatedValues({
-        option: option,
-        material: "wood",
-        values: results.outputs,
-      })
-    );
-    handleSaveInputs(option, "wood", localInputs, results.outputs);
+  // Save inputs
+  const saveInputs = () => {
+    const woodData = { inputs: localInputs };
+    dispatch(updateWoodInputs(woodData)); // Update Redux state with new inputs
+    handleSaveInputs(option, "wood", woodData); // Save to local storage
+    dispatch(markWoodAsSaved()); // Mark as saved in Redux state
   };
 
-  // Load saved data or initialize with default values
+  // Load from local storage
   useEffect(() => {
-    const loadSavedDataAndCalculate = () => {
-      const savedData = JSON.parse(localStorage.getItem(option));
-      if (savedData && savedData.wood) {
-        const savedInputs = savedData.wood.inputs;
-        setLocalInputs(savedInputs); // Update local state with saved data
-        dispatch(updateWoodInputs(savedInputs)); // Update Redux state with saved data
-
-        // Perform calculation with the loaded inputs
-        const results = calculateValues(savedInputs);
-        dispatch(
-          setCalculatedValues({
-            option: option,
-            material: "wood",
-            values: results.outputs,
-          })
-        );
-      } else {
-        // If no saved data, initialize with default values
-        setLocalInputs(initialInputs);
-        dispatch(updateWoodInputs(initialInputs));
-      }
-    };
-
-    loadSavedDataAndCalculate();
-  }, [option, dispatch, initialInputs]);
+    const savedData = JSON.parse(localStorage.getItem(option));
+    if (savedData && savedData.wood) {
+      setLocalInputs(savedData.wood.inputs);
+      dispatch(updateWoodInputs(savedData.wood.inputs));
+    }
+  }, [option, dispatch]);
 
   // Close modal
   const handleCloseModal = () => {
@@ -270,8 +231,8 @@ const Wood = ({ option }) => {
       </div>
 
       <div>
-        <button className="btn" onClick={calculateAndSave}>
-          Calculate
+        <button className="btn" onClick={saveInputs}>
+          Save inputs
         </button>
         <Modal isOpen={isModalOpen} handleClose={handleCloseModal} />
       </div>

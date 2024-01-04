@@ -1,83 +1,68 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateSteelInputs } from "../../features/materialInputsSlice";
-import calculateValues from "../../utils/calculateValues";
+import {
+  updateSteelInputs,
+  markSteelAsSaved,
+} from "../../features/materialInputsSlice";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
-import { setCalculatedValues } from "../../features/calculatedValuesSlice";
 
 const Steel = ({ option }) => {
   const dispatch = useDispatch();
-  const steelInputs = useSelector((state) => state.materialInputs.steel);
+  const materialInputs = useSelector((state) => state.materialInputs);
+  const steelInputs = materialInputs.steel.inputs;
   const steelCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.steel || {}
   );
 
-  const initialInputs = useMemo(
-    () => ({
-      steelHotRolled: 0,
-      steelHSS: 0,
-      steelOWSJ: 0,
-      steelPlate: 0,
-      steelDeck: 0,
-      steelCustom: 0,
-    }),
-    []
-  );
-
-  const [localInputs, setLocalInputs] = useState(initialInputs);
+  const [localInputs, setLocalInputs] = useState({ ...steelInputs });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    const newValue = Number(value);
-    setLocalInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: newValue,
-    }));
-    dispatch(updateSteelInputs({ [name]: newValue }));
+    setLocalInputs({
+      ...localInputs,
+      [name]: Number(value),
+    });
   };
 
-  // Calculate and save
-  const calculateAndSave = () => {
-    const results = calculateValues(localInputs);
-    dispatch(
-      setCalculatedValues({
-        option: option,
-        material: "steel",
-        values: results.outputs,
-      })
-    );
-    handleSaveInputs(option, "steel", localInputs, results.outputs);
+  //   // Save inputs
+  //   const saveInputs = () => {
+  //     dispatch(updateSteelInputs(localInputs)); // Update Redux state
+  //     handleSaveInputs(option, "steel", localInputs);
+  //     dispatch(markSteelAsSaved()); // Dispatch action to indicate inputs are saved
+  //   };
+
+  //   useEffect(() => {
+  //     if (materialInputs.steel) {
+  //       setLocalInputs(materialInputs.steel);
+  //     }
+  //   }, [materialInputs.steel]);
+
+  //   useEffect(() => {
+  //     const savedData = JSON.parse(localStorage.getItem(option));
+  //     if (savedData && savedData.steel) {
+  //       setLocalInputs(savedData.steel.inputs);
+  //       dispatch(updateSteelInputs(savedData.steel.inputs));
+  //     }
+  //   }, [option, dispatch]);
+
+  // Save inputs
+  const saveInputs = () => {
+    const steelData = { inputs: localInputs };
+    dispatch(updateSteelInputs(steelData)); // Update Redux state with new inputs
+    handleSaveInputs(option, "steel", steelData); // Save to local storage
+    dispatch(markSteelAsSaved()); // Mark as saved in Redux state
   };
 
-  // Load saved data or initialize with default values
+  // Load from local storage
   useEffect(() => {
-    const loadSavedDataAndCalculate = () => {
-      const savedData = JSON.parse(localStorage.getItem(option));
-      if (savedData && savedData.steel) {
-        const savedInputs = savedData.steel.inputs;
-        setLocalInputs(savedInputs); // Update local state with saved data
-        dispatch(updateSteelInputs(savedInputs)); // Update Redux state with saved data
-
-        // Perform calculation with the loaded inputs
-        const results = calculateValues(savedInputs);
-        dispatch(
-          setCalculatedValues({
-            option: option,
-            material: "steel",
-            values: results.outputs,
-          })
-        );
-      } else {
-        // If no saved data, initialize with default values
-        setLocalInputs(initialInputs);
-        dispatch(updateSteelInputs(initialInputs));
-      }
-    };
-
-    loadSavedDataAndCalculate();
-  }, [option, dispatch, initialInputs]);
+    const savedData = JSON.parse(localStorage.getItem(option));
+    if (savedData && savedData.steel) {
+      setLocalInputs(savedData.steel.inputs);
+      dispatch(updateSteelInputs(savedData.steel.inputs));
+    }
+  }, [option, dispatch]);
 
   // Close modal
   const handleCloseModal = () => {
@@ -201,8 +186,8 @@ const Steel = ({ option }) => {
       </div>
 
       <div>
-        <button className="btn" onClick={calculateAndSave}>
-          Calculate
+        <button className="btn" onClick={saveInputs}>
+          Save inputs
         </button>
         <Modal isOpen={isModalOpen} handleClose={handleCloseModal} />
       </div>

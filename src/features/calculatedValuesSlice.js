@@ -5,16 +5,19 @@ const initialState = {
     concrete: {},
     steel: {},
     wood: {},
+    totals: {},
   },
   OptionTwo: {
     concrete: {},
     steel: {},
     wood: {},
+    totals: {},
   },
   OptionThree: {
     concrete: {},
     steel: {},
     wood: {},
+    totals: {},
   },
 };
 
@@ -23,8 +26,8 @@ export const calculatedValuesSlice = createSlice({
   initialState,
   reducers: {
     setCalculatedValues: (state, action) => {
-      const { option, material, values } = action.payload;
-      state[option][material] = values;
+      const { option, values } = action.payload;
+      state[option] = values;
     },
   },
 });

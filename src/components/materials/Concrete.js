@@ -1,82 +1,47 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateConcreteInputs } from "../../features/materialInputsSlice";
-import calculateValues from "../../utils/calculateValues";
+import {
+  updateConcreteInputs,
+  markConcreteAsSaved,
+} from "../../features/materialInputsSlice";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
-import { setCalculatedValues } from "../../features/calculatedValuesSlice";
 
 const Concrete = ({ option }) => {
   const dispatch = useDispatch();
-  const concreteInputs = useSelector((state) => state.materialInputs.concrete);
+  const materialInputs = useSelector((state) => state.materialInputs);
+  const concreteInputs = materialInputs.concrete.inputs;
   const concreteCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.concrete || {}
   );
 
-  const initialInputs = useMemo(
-    () => ({
-      concHoriz: 0,
-      concVert: 0,
-      concFound: 0,
-      concRebar: 0,
-      concCustom: 0,
-    }),
-    []
-  );
-
-  const [localInputs, setLocalInputs] = useState(initialInputs);
+  const [localInputs, setLocalInputs] = useState({ ...concreteInputs });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    const newValue = Number(value);
-    setLocalInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: newValue,
-    }));
-    dispatch(updateConcreteInputs({ [name]: newValue }));
+    setLocalInputs({
+      ...localInputs,
+      [name]: Number(value),
+    });
   };
 
-  // Calculate and save
-  const calculateAndSave = () => {
-    const results = calculateValues(localInputs);
-    dispatch(
-      setCalculatedValues({
-        option: option,
-        material: "concrete",
-        values: results.outputs,
-      })
-    );
-    handleSaveInputs(option, "concrete", localInputs, results.outputs);
+  // Save inputs
+  const saveInputs = () => {
+    const concreteData = { inputs: localInputs };
+    dispatch(updateConcreteInputs(concreteData)); // Update Redux state with new inputs
+    handleSaveInputs(option, "concrete", concreteData); // Save to local storage
+    dispatch(markConcreteAsSaved()); // Mark as saved in Redux state
   };
 
-  // Load saved data or initialize with default values
+  // Load from local storage
   useEffect(() => {
-    const loadSavedDataAndCalculate = () => {
-      const savedData = JSON.parse(localStorage.getItem(option));
-      if (savedData && savedData.concrete) {
-        const savedInputs = savedData.concrete.inputs;
-        setLocalInputs(savedInputs); // Update local state with saved data
-        dispatch(updateConcreteInputs(savedInputs)); // Update Redux state with saved data
-
-        // Perform calculation with the loaded inputs
-        const results = calculateValues(savedInputs);
-        dispatch(
-          setCalculatedValues({
-            option: option,
-            material: "concrete",
-            values: results.outputs,
-          })
-        );
-      } else {
-        // If no saved data, initialize with default values
-        setLocalInputs(initialInputs);
-        dispatch(updateConcreteInputs(initialInputs));
-      }
-    };
-
-    loadSavedDataAndCalculate();
-  }, [option, dispatch, initialInputs]);
+    const savedData = JSON.parse(localStorage.getItem(option));
+    if (savedData && savedData.concrete) {
+      setLocalInputs(savedData.concrete.inputs);
+      dispatch(updateConcreteInputs(savedData.concrete.inputs));
+    }
+  }, [option, dispatch]);
 
   // Close modal
   const handleCloseModal = () => {
@@ -181,8 +146,8 @@ const Concrete = ({ option }) => {
         </p>
       </div>
       <div>
-        <button className="btn" onClick={calculateAndSave}>
-          Calculate
+        <button className="btn" onClick={saveInputs}>
+          Save inputs
         </button>
         <Modal isOpen={isModalOpen} handleClose={handleCloseModal} />
       </div>

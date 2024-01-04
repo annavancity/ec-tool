@@ -1,4 +1,4 @@
-const handleSaveInputs = (option, materialType, inputs, calculatedValues) => {
+const handleSaveInputs = (option, materialType, inputs) => {
   // option should be 'OptionOne', 'OptionTwo', or 'OptionThree'
   // materialType should be 'concrete', 'wood', or 'steel'
 
@@ -6,10 +6,7 @@ const handleSaveInputs = (option, materialType, inputs, calculatedValues) => {
   const existingOptionData = JSON.parse(localStorage.getItem(option)) || {};
 
   // Update the specific material's data in the existing option data
-  existingOptionData[materialType] = {
-    inputs,
-    outputs: calculatedValues,
-  };
+  existingOptionData[materialType] = inputs;
 
   // Save the updated option data back to localStorage
   localStorage.setItem(option, JSON.stringify(existingOptionData));
