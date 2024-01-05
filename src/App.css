@@ -45,6 +45,11 @@ body {
 }
 
 /* --------------------------------OPTIONS----------------------------*/
+/* Active option highlighted */
+.btn.active {
+  border: 1px solid #f9f82c;
+  color: #f9f82c;
+}
 
 .select-material {
   display: flex;
@@ -53,12 +58,14 @@ body {
   height: 150px;
 }
 
-.concrete-image,
-.steel-image,
-.wood-image {
+.material-button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.material-button.active {
+  background-color: #f9f82c;
 }
 
 .material-image {
@@ -100,6 +107,12 @@ body {
   color: #f7f7f7;
   font-weight: 300;
   margin-right: 10px;
+}
+
+.description-text {
+  font-size: 18px;
+  color: #f9f82c;
+  font-weight: 300;
 }
 
 .value-name {

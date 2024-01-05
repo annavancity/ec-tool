@@ -16,8 +16,11 @@ import {
   markOptionAsCalculated,
 } from "../features/calculatedValuesSlice";
 import PieChart from "../components/PieChart";
+import ModalDescription from "./ModalDescription";
 
 const OptionGenericLogic = ({ option }) => {
+  const [description, setDescription] = useState("");
+  const [isModalDescriptionOpen, setIsModalDescriptionOpen] = useState(false);
   const [showResults, setShowResults] = useState(false); // state for showing totals and piechart after calculate button clicked
   const dispatch = useDispatch();
   const [selectedComponent, setSelectedComponent] = useState("concrete");
@@ -25,6 +28,23 @@ const OptionGenericLogic = ({ option }) => {
   const calculatedValues = useSelector(
     (state) => state.calculatedValues[option]
   );
+
+  // Load the description from local storage
+  useEffect(() => {
+    const savedDescription = localStorage.getItem(`${option}Description`);
+    if (savedDescription) {
+      setDescription(savedDescription);
+    }
+  }, [option]);
+
+  const openModalDescription = () => setIsModalDescriptionOpen(true);
+
+  const closeModalDescription = () => setIsModalDescriptionOpen(false);
+
+  const handleSaveDescription = (newDescription) => {
+    setDescription(newDescription);
+    localStorage.setItem(`${option}Description`, newDescription);
+  };
 
   useEffect(() => {
     // Load saved inputs from local storage and update Redux store
@@ -66,24 +86,42 @@ const OptionGenericLogic = ({ option }) => {
 
   return (
     <div>
+      <div>
+        {description && <h3 className="description-text">{description}</h3>}
+        <ModalDescription
+          isOpen={isModalDescriptionOpen}
+          handleClose={closeModalDescription}
+          handleSubmit={handleSaveDescription}
+          defaultDescription={description}
+        />
+        <button className="btn" onClick={openModalDescription}>
+          Set / Modify Description
+        </button>
+      </div>
       <div className="container">
         <div className="select-material">
           <button
-            className="concrete-image"
+            className={`material-button ${
+              selectedComponent === "concrete" ? "active" : ""
+            }`}
             onClick={() => setSelectedComponent("concrete")}
           >
             <img className="material-image" src={concrete} alt="concrete" />
             <h4 className="icon-text">Concrete</h4>
           </button>
           <button
-            className="wood-image"
+            className={`material-button ${
+              selectedComponent === "wood" ? "active" : ""
+            }`}
             onClick={() => setSelectedComponent("wood")}
           >
             <img className="material-image" src={wood} alt="wood" />
             <h4 className="icon-text">Wood</h4>
           </button>
           <button
-            className="steel-image"
+            className={`material-button ${
+              selectedComponent === "steel" ? "active" : ""
+            }`}
             onClick={() => setSelectedComponent("steel")}
           >
             <img className="material-image" src={steel} alt="steel" />
