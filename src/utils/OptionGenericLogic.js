@@ -11,7 +11,10 @@ import {
   markMaterialAsSaved,
 } from "../features/materialInputsSlice";
 import calculateValues from "../utils/calculateValues";
-import { setCalculatedValues } from "../features/calculatedValuesSlice";
+import {
+  setCalculatedValues,
+  markOptionAsCalculated,
+} from "../features/calculatedValuesSlice";
 import PieChart from "../components/PieChart";
 
 const OptionGenericLogic = ({ option }) => {
@@ -54,6 +57,7 @@ const OptionGenericLogic = ({ option }) => {
     if (areAllMaterialsSaved()) {
       const calculatedResults = calculateValues(materialInputs);
       dispatch(setCalculatedValues({ option, values: calculatedResults }));
+      dispatch(markOptionAsCalculated({ option })); // Mark the option as calculated
       setShowResults(true);
     } else {
       alert("Please save all material inputs before calculating.");
