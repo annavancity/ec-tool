@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Comparison from "./components/Comparison";
 import OptionOne from "./components/OptionOne";
