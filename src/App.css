@@ -153,3 +153,20 @@ input {
   font-size: 20px;
   cursor: pointer;
 }
+
+/* --------------------------------OPTION RESULTS----------------------------*/
+.optionResults {
+  display: flex;
+}
+.total-values {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: flex-start;
+}
+.total-value-name {
+  width: 80px;
+}
+.chart-container {
+  height: 300px;
+}

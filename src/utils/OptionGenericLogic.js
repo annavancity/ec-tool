@@ -12,8 +12,10 @@ import {
 } from "../features/materialInputsSlice";
 import calculateValues from "../utils/calculateValues";
 import { setCalculatedValues } from "../features/calculatedValuesSlice";
+import PieChart from "../components/PieChart";
 
 const OptionGenericLogic = ({ option }) => {
+  const [showResults, setShowResults] = useState(false); // state for showing totals and piechart after calculate button clicked
   const dispatch = useDispatch();
   const [selectedComponent, setSelectedComponent] = useState("concrete");
   const materialInputs = useSelector((state) => state.materialInputs[option]);
@@ -52,6 +54,7 @@ const OptionGenericLogic = ({ option }) => {
     if (areAllMaterialsSaved()) {
       const calculatedResults = calculateValues(materialInputs);
       dispatch(setCalculatedValues({ option, values: calculatedResults }));
+      setShowResults(true);
     } else {
       alert("Please save all material inputs before calculating.");
     }
@@ -96,44 +99,58 @@ const OptionGenericLogic = ({ option }) => {
           </button>
         </div>
 
-        <div className="optionResults">
-          <div className="value-row">
-            <p className="menu-text-large">Concrete</p>
-            <p className="menu-text-large">
-              {calculatedValues.concrete?.concGWPTotal}
-            </p>
-            <p className="menu-text-large">
-              {calculatedValues.concrete?.concPercentageTotal}
-            </p>
+        {showResults && (
+          <div className="optionResults">
+            <div className="total-values">
+              <div className="value-row">
+                <p className="menu-text-large total-value-name">Concrete</p>
+                <p className="menu-text-large total-value-name">
+                  {calculatedValues.concrete?.concGWPTotal}
+                </p>
+                <p className="menu-text-large">
+                  {calculatedValues.concrete?.concPercentageTotal}
+                </p>
+              </div>
+              <div className="value-row">
+                <p className="menu-text-large total-value-name">Steel</p>
+                <p className="menu-text-large total-value-name">
+                  {calculatedValues.steel?.steelGWPTotal}
+                </p>
+                <p className="menu-text-large">
+                  {calculatedValues.steel?.steelPercentageTotal}
+                </p>
+              </div>
+              <div className="value-row">
+                <p className="menu-text-large total-value-name">Wood</p>
+                <p className="menu-text-large total-value-name">
+                  {calculatedValues.wood?.woodGWPTotal}
+                </p>
+                <p className="menu-text-large">
+                  {calculatedValues.wood?.woodPercentageTotal}
+                </p>
+              </div>
+              <div className="value-row">
+                <p className="menu-text-large total-value-name">Total</p>
+                <p className="menu-text-large total-value-name">
+                  {calculatedValues.totals?.GWPTotal}
+                </p>
+                {/* <p className="menu-text-large">
+        {calculatedValues.totals?.PercentageTotal}
+      </p> */}
+              </div>
+            </div>
+
+            <div className="chart-container">
+              <PieChart
+                concretePercentage={
+                  calculatedValues.concrete?.concGWPTotal || 0
+                }
+                steelPercentage={calculatedValues.steel?.steelGWPTotal || 0}
+                woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
+              />
+            </div>
           </div>
-          <div className="value-row">
-            <p className="menu-text-large">Steel</p>
-            <p className="menu-text-large">
-              {calculatedValues.steel?.steelGWPTotal}
-            </p>
-            <p className="menu-text-large">
-              {calculatedValues.steel?.steelPercentageTotal}
-            </p>
-          </div>
-          <div className="value-row">
-            <p className="menu-text-large">Wood</p>
-            <p className="menu-text-large">
-              {calculatedValues.wood?.woodGWPTotal}
-            </p>
-            <p className="menu-text-large">
-              {calculatedValues.wood?.woodPercentageTotal}
-            </p>
-          </div>
-          <div className="value-row">
-            <p className="menu-text-large">Total</p>
-            <p className="menu-text-large">
-              {calculatedValues.totals?.GWPTotal}
-            </p>
-            <p className="menu-text-large">
-              {calculatedValues.totals?.PercentageTotal}
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
