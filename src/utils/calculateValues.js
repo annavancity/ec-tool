@@ -42,26 +42,132 @@ const calculateValues = (optionData) => {
     woodCustom,
   } = optionData.wood.inputs;
 
+  const concHorizGWPCalculated = concHorizGwp * concHoriz;
+
+  const concVertGWPCalculated = concVertGwp * concVert;
+
+  const concFoundGWPCalculated = concVertGwp * concFound;
+
+  const concRebarGWPCalculated = steelRebarGwp * concRebar;
+
+  const concCustomGWPCalculated = 0;
+
+  const steelHotRolledGWPCalculated = steelHotRolledGwp * steelHotRolled;
+
+  const steelHSSGWPCalculated = steelHSSGwp * steelHSS;
+
+  const steelOWSJGWPCalculated = steelOWSJGwp * steelOWSJ;
+
+  const steelPlateGWPCalculated = steelPlateGwp * steelPlate;
+
+  const steelDeckGWPCalculated = steelDeckGwp * steelDeck;
+
+  const steelCustomGWPCalculated = 0;
+
+  const woodCLTGWPCalculated = woodCLTGwp * woodCLT;
+
+  const woodDltNltGWPCalculated = woodDltGwp * woodDltNlt;
+
+  const woodMPPGWPCalculated = woodMPPGwp * woodMPP;
+
+  const woodPlywoodGWPCalculated = woodSoftwoodPlywoodGwp * woodPlywood;
+
+  const woodGlulamGWPCalculated = woodGlulamGwp * woodGlulam;
+
+  const woodPslLslLvlGWPCalculated = woodPslLslLvlGwp * woodPslLslLvl;
+
+  const woodTJIGWPCalculated = woodTJIGwp * woodTJI;
+
+  const woodLumberGWPCalculated = woodSoftwoodLumberGwp * woodLumber;
+
+  const woodCustomGWPCalculated = 0;
+
   const concGWPTotal =
-    concHoriz + concVert + concFound + concRebar + concCustom;
+    concHorizGWPCalculated +
+    concVertGWPCalculated +
+    concFoundGWPCalculated +
+    concRebarGWPCalculated +
+    concCustomGWPCalculated;
   const steelGWPTotal =
-    steelHotRolled +
-    steelHSS +
-    steelOWSJ +
-    steelPlate +
-    steelDeck +
-    steelCustom;
+    steelHotRolledGWPCalculated +
+    steelHSSGWPCalculated +
+    steelOWSJGWPCalculated +
+    steelPlateGWPCalculated +
+    steelDeckGWPCalculated +
+    steelCustomGWPCalculated;
   const woodGWPTotal =
-    woodCLT +
-    woodDltNlt +
-    woodMPP +
-    woodPlywood +
-    woodGlulam +
-    woodPslLslLvl +
-    woodTJI +
-    woodLumber +
-    woodCustom;
+    woodCLTGWPCalculated +
+    woodDltNltGWPCalculated +
+    woodMPPGWPCalculated +
+    woodPlywoodGWPCalculated +
+    woodGlulamGWPCalculated +
+    woodPslLslLvlGWPCalculated +
+    woodTJIGWPCalculated +
+    woodLumberGWPCalculated +
+    woodCustomGWPCalculated;
+
   const GWPTotal = concGWPTotal + steelGWPTotal + woodGWPTotal;
+
+  const concHorizPercentageCalculated =
+    GWPTotal !== 0 ? Math.floor((concHorizGWPCalculated / GWPTotal) * 100) : 0;
+  const concVertPercentageCalculated = Math.round(
+    (concVertGWPCalculated / GWPTotal) * 100
+  );
+  const concFoundPercentageCalculated = Math.floor(
+    (concFoundGWPCalculated / GWPTotal) * 100
+  );
+  const concRebarPercentageCalculated = Math.round(
+    (concRebarGWPCalculated / GWPTotal) * 100
+  );
+  const concCustomPercentageCalculated = Math.round(
+    (concCustomGWPCalculated / GWPTotal) * 100
+  );
+  const steelHotRolledPercentageCalculated = Math.round(
+    (steelHotRolledGWPCalculated / GWPTotal) * 100
+  );
+  const steelHSSPercentageCalculated = Math.round(
+    (steelHSSGWPCalculated / GWPTotal) * 100
+  );
+  const steelOWSJPercentageCalculated = Math.round(
+    (steelOWSJGWPCalculated / GWPTotal) * 100
+  );
+  const steelPlatePercentageCalculated = Math.round(
+    (steelPlateGWPCalculated / GWPTotal) * 100
+  );
+  const steelDeckPercentageCalculated = Math.round(
+    (steelDeckGWPCalculated / GWPTotal) * 100
+  );
+  const steelCustomPercentageCalculated = Math.round(
+    (steelCustomGWPCalculated / GWPTotal) * 100
+  );
+  const woodCLTPercentageCalculated = Math.round(
+    (woodCLTGWPCalculated / GWPTotal) * 100
+  );
+  const woodDltNltPercentageCalculated = Math.round(
+    (woodDltNltGWPCalculated / GWPTotal) * 100
+  );
+  const woodMPPPercentageCalculated = Math.round(
+    (woodMPPGWPCalculated / GWPTotal) * 100
+  );
+  const woodPlywoodPercentageCalculated = Math.round(
+    (woodPlywoodGWPCalculated / GWPTotal) * 100
+  );
+  const woodGlulamPercentageCalculated = Math.round(
+    (woodGlulamGWPCalculated / GWPTotal) * 100
+  );
+  const woodPslLslLvlPercentageCalculated = Math.round(
+    (woodPslLslLvlGWPCalculated / GWPTotal) * 100
+  );
+  const woodTJIPercentageCalculated = Math.round(
+    (woodTJIGWPCalculated / GWPTotal) * 100
+  );
+  const woodLumberPercentageCalculated = Math.round(
+    (woodLumberGWPCalculated / GWPTotal) * 100
+  );
+  const woodCustomPercentageCalculated = Math.round(
+    (woodCustomGWPCalculated / GWPTotal) * 100
+  );
+
   const concPercentageTotal =
     GWPTotal !== 0 ? Math.round((concGWPTotal / GWPTotal) * 100) : 0;
   const steelPercentageTotal =
@@ -70,85 +176,6 @@ const calculateValues = (optionData) => {
     GWPTotal !== 0 ? Math.round((woodGWPTotal / GWPTotal) * 100) : 0;
   const PercentageTotal =
     concPercentageTotal + steelPercentageTotal + woodPercentageTotal;
-  const concHorizGWPCalculated = concHorizGwp * concHoriz;
-  const concHorizPercentageCalculated =
-    GWPTotal !== 0 ? Math.floor((concHorizGWPCalculated / GWPTotal) * 100) : 0;
-  const concVertGWPCalculated = concVertGwp * concVert;
-  const concVertPercentageCalculated = Math.round(
-    (concVertGWPCalculated / GWPTotal) * 100
-  );
-  const concFoundGWPCalculated = concVertGwp * concFound;
-  const concFoundPercentageCalculated = Math.floor(
-    (concFoundGWPCalculated / GWPTotal) * 100
-  );
-  const concRebarGWPCalculated = steelRebarGwp * concRebar;
-  const concRebarPercentageCalculated = Math.round(
-    (concRebarGWPCalculated / GWPTotal) * 100
-  );
-  const concCustomGWPCalculated = 0;
-  const concCustomPercentageCalculated = Math.round(
-    (concCustomGWPCalculated / GWPTotal) * 100
-  );
-  const steelHotRolledGWPCalculated = steelHotRolledGwp * steelHotRolled;
-  const steelHotRolledPercentageCalculated = Math.round(
-    (steelHotRolledGWPCalculated / GWPTotal) * 100
-  );
-  const steelHSSGWPCalculated = steelHSSGwp * steelHSS;
-  const steelHSSPercentageCalculated = Math.round(
-    (steelHSSGWPCalculated / GWPTotal) * 100
-  );
-  const steelOWSJGWPCalculated = steelOWSJGwp * steelOWSJ;
-  const steelOWSJPercentageCalculated = Math.round(
-    (steelOWSJGWPCalculated / GWPTotal) * 100
-  );
-  const steelPlateGWPCalculated = steelPlateGwp * steelPlate;
-  const steelPlatePercentageCalculated = Math.round(
-    (steelPlateGWPCalculated / GWPTotal) * 100
-  );
-  const steelDeckGWPCalculated = steelDeckGwp * steelDeck;
-  const steelDeckPercentageCalculated = Math.round(
-    (steelDeckGWPCalculated / GWPTotal) * 100
-  );
-  const steelCustomGWPCalculated = 0;
-  const steelCustomPercentageCalculated = Math.round(
-    (steelCustomGWPCalculated / GWPTotal) * 100
-  );
-  const woodCLTGWPCalculated = woodCLTGwp * woodCLT;
-  const woodCLTPercentageCalculated = Math.round(
-    (woodCLTGWPCalculated / GWPTotal) * 100
-  );
-  const woodDltNltGWPCalculated = woodDltGwp * woodDltNlt;
-  const woodDltNltPercentageCalculated = Math.round(
-    (woodDltNltGWPCalculated / GWPTotal) * 100
-  );
-  const woodMPPGWPCalculated = woodMPPGwp * woodMPP;
-  const woodMPPPercentageCalculated = Math.round(
-    (woodMPPGWPCalculated / GWPTotal) * 100
-  );
-  const woodPlywoodGWPCalculated = woodSoftwoodPlywoodGwp * woodPlywood;
-  const woodPlywoodPercentageCalculated = Math.round(
-    (woodPlywoodGWPCalculated / GWPTotal) * 100
-  );
-  const woodGlulamGWPCalculated = woodGlulamGwp * woodGlulam;
-  const woodGlulamPercentageCalculated = Math.round(
-    (woodGlulamGWPCalculated / GWPTotal) * 100
-  );
-  const woodPslLslLvlGWPCalculated = woodPslLslLvlGwp * woodPslLslLvl;
-  const woodPslLslLvlPercentageCalculated = Math.round(
-    (woodPslLslLvlGWPCalculated / GWPTotal) * 100
-  );
-  const woodTJIGWPCalculated = woodTJIGwp * woodTJI;
-  const woodTJIPercentageCalculated = Math.round(
-    (woodTJIGWPCalculated / GWPTotal) * 100
-  );
-  const woodLumberGWPCalculated = woodSoftwoodLumberGwp * woodLumber;
-  const woodLumberPercentageCalculated = Math.round(
-    (woodLumberGWPCalculated / GWPTotal) * 100
-  );
-  const woodCustomGWPCalculated = 0;
-  const woodCustomPercentageCalculated = Math.round(
-    (woodCustomGWPCalculated / GWPTotal) * 100
-  );
   const calculatedValues = {
     concrete: {
       concGWPTotal,
