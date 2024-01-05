@@ -1,3 +1,23 @@
+// import {
+//   steelHotRolledGwp,
+//   steelHSSGwp,
+//   steelPlateGwp,
+//   steelRebarGwp,
+//   steelOWSJGwp,
+//   steelDeckGwp,
+//   steelStudsGwp,
+//   concHorizGwp,
+//   concVertGwp,
+//   woodGlulamGwp,
+//   woodCLTGwp,
+//   woodPslLslLvlGwp,
+//   woodSoftwoodLumberGwp,
+//   woodSoftwoodPlywoodGwp,
+//   woodTJIGwp,
+//   woodMPPGwp,
+//   woodDltGwp,
+// } from "../data/dataEPD";
+
 import {
   steelHotRolledGwp,
   steelHSSGwp,
@@ -5,7 +25,6 @@ import {
   steelRebarGwp,
   steelOWSJGwp,
   steelDeckGwp,
-  steelStudsGwp,
   concHorizGwp,
   concVertGwp,
   woodGlulamGwp,
@@ -50,7 +69,7 @@ const calculateValues = (optionData) => {
 
   const concRebarGWPCalculated = steelRebarGwp * concRebar;
 
-  const concCustomGWPCalculated = 0;
+  const concCustomGWPCalculated = concCustom * 0; // to update
 
   const steelHotRolledGWPCalculated = steelHotRolledGwp * steelHotRolled;
 
@@ -62,7 +81,7 @@ const calculateValues = (optionData) => {
 
   const steelDeckGWPCalculated = steelDeckGwp * steelDeck;
 
-  const steelCustomGWPCalculated = 0;
+  const steelCustomGWPCalculated = steelCustom * 0; // to update
 
   const woodCLTGWPCalculated = woodCLTGwp * woodCLT;
 
@@ -80,7 +99,7 @@ const calculateValues = (optionData) => {
 
   const woodLumberGWPCalculated = woodSoftwoodLumberGwp * woodLumber;
 
-  const woodCustomGWPCalculated = 0;
+  const woodCustomGWPCalculated = woodCustom * 0; // to update
 
   const concGWPTotal =
     concHorizGWPCalculated +
