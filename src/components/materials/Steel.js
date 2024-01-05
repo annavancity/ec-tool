@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  updateSteelInputs,
-  markSteelAsSaved,
+  updateMaterialInputs,
+  markMaterialAsSaved,
 } from "../../features/materialInputsSlice";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
 
 const Steel = ({ option }) => {
   const dispatch = useDispatch();
-  const materialInputs = useSelector((state) => state.materialInputs);
+  const materialInputs = useSelector((state) => state.materialInputs[option]);
   const steelInputs = materialInputs.steel.inputs;
   const steelCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.steel || {}
@@ -26,33 +26,18 @@ const Steel = ({ option }) => {
     });
   };
 
-  //   // Save inputs
-  //   const saveInputs = () => {
-  //     dispatch(updateSteelInputs(localInputs)); // Update Redux state
-  //     handleSaveInputs(option, "steel", localInputs);
-  //     dispatch(markSteelAsSaved()); // Dispatch action to indicate inputs are saved
-  //   };
-
-  //   useEffect(() => {
-  //     if (materialInputs.steel) {
-  //       setLocalInputs(materialInputs.steel);
-  //     }
-  //   }, [materialInputs.steel]);
-
-  //   useEffect(() => {
-  //     const savedData = JSON.parse(localStorage.getItem(option));
-  //     if (savedData && savedData.steel) {
-  //       setLocalInputs(savedData.steel.inputs);
-  //       dispatch(updateSteelInputs(savedData.steel.inputs));
-  //     }
-  //   }, [option, dispatch]);
-
   // Save inputs
   const saveInputs = () => {
     const steelData = { inputs: localInputs };
-    dispatch(updateSteelInputs(steelData)); // Update Redux state with new inputs
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "steel",
+        inputs: steelData.inputs,
+      })
+    ); // Update Redux state with new inputs
     handleSaveInputs(option, "steel", steelData); // Save to local storage
-    dispatch(markSteelAsSaved()); // Mark as saved in Redux state
+    dispatch(markMaterialAsSaved({ option, materialType: "steel" })); // Mark as saved in Redux state
   };
 
   // Load from local storage
@@ -60,7 +45,13 @@ const Steel = ({ option }) => {
     const savedData = JSON.parse(localStorage.getItem(option));
     if (savedData && savedData.steel) {
       setLocalInputs(savedData.steel.inputs);
-      dispatch(updateSteelInputs(savedData.steel.inputs));
+      dispatch(
+        updateMaterialInputs({
+          option,
+          materialType: "steel",
+          inputs: savedData.steel.inputs,
+        })
+      );
     }
   }, [option, dispatch]);
 

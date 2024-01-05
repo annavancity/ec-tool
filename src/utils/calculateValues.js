@@ -18,11 +18,10 @@ import {
   woodDltGwp,
 } from "../data/dataEPD";
 
-const calculateValues = (materialInputs) => {
+const calculateValues = (optionData) => {
   // Destructuring inputs for each material
-  const { concrete, steel, wood } = materialInputs;
   const { concHoriz, concVert, concFound, concRebar, concCustom } =
-    concrete.inputs;
+    optionData.concrete.inputs;
   const {
     steelHotRolled,
     steelHSS,
@@ -30,7 +29,7 @@ const calculateValues = (materialInputs) => {
     steelPlate,
     steelDeck,
     steelCustom,
-  } = steel.inputs;
+  } = optionData.steel.inputs;
   const {
     woodCLT,
     woodDltNlt,
@@ -41,11 +40,7 @@ const calculateValues = (materialInputs) => {
     woodTJI,
     woodLumber,
     woodCustom,
-  } = wood.inputs;
-
-  console.log("Concrete inputs:", concrete);
-  console.log("Steel inputs:", steel);
-  console.log("Wood inputs:", wood);
+  } = optionData.wood.inputs;
 
   const concGWPTotal =
     concHoriz + concVert + concFound + concRebar + concCustom;

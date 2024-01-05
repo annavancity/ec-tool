@@ -1,15 +1,15 @@
 import { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  updateWoodInputs,
-  markWoodAsSaved,
+  updateMaterialInputs,
+  markMaterialAsSaved,
 } from "../../features/materialInputsSlice";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
 
 const Wood = ({ option }) => {
   const dispatch = useDispatch();
-  const materialInputs = useSelector((state) => state.materialInputs);
+  const materialInputs = useSelector((state) => state.materialInputs[option]);
   const woodInputs = materialInputs.wood.inputs;
   const woodCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.wood || {}
@@ -29,9 +29,15 @@ const Wood = ({ option }) => {
   // Save inputs
   const saveInputs = () => {
     const woodData = { inputs: localInputs };
-    dispatch(updateWoodInputs(woodData)); // Update Redux state with new inputs
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "wood",
+        inputs: woodData.inputs,
+      })
+    ); // Update Redux state with new inputs
     handleSaveInputs(option, "wood", woodData); // Save to local storage
-    dispatch(markWoodAsSaved()); // Mark as saved in Redux state
+    dispatch(markMaterialAsSaved({ option, materialType: "wood" })); // Mark as saved in Redux state
   };
 
   // Load from local storage
@@ -39,7 +45,13 @@ const Wood = ({ option }) => {
     const savedData = JSON.parse(localStorage.getItem(option));
     if (savedData && savedData.wood) {
       setLocalInputs(savedData.wood.inputs);
-      dispatch(updateWoodInputs(savedData.wood.inputs));
+      dispatch(
+        updateMaterialInputs({
+          option,
+          materialType: "wood",
+          inputs: savedData.wood.inputs,
+        })
+      );
     }
   }, [option, dispatch]);
 

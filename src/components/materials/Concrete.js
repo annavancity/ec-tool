@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  updateConcreteInputs,
-  markConcreteAsSaved,
+  updateMaterialInputs,
+  markMaterialAsSaved,
 } from "../../features/materialInputsSlice";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
 
 const Concrete = ({ option }) => {
   const dispatch = useDispatch();
-  const materialInputs = useSelector((state) => state.materialInputs);
+  const materialInputs = useSelector((state) => state.materialInputs[option]);
   const concreteInputs = materialInputs.concrete.inputs;
   const concreteCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.concrete || {}
@@ -29,9 +29,15 @@ const Concrete = ({ option }) => {
   // Save inputs
   const saveInputs = () => {
     const concreteData = { inputs: localInputs };
-    dispatch(updateConcreteInputs(concreteData)); // Update Redux state with new inputs
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "concrete",
+        inputs: concreteData.inputs,
+      })
+    ); // Update Redux state with new inputs
     handleSaveInputs(option, "concrete", concreteData); // Save to local storage
-    dispatch(markConcreteAsSaved()); // Mark as saved in Redux state
+    dispatch(markMaterialAsSaved({ option, materialType: "concrete" })); // Mark as saved in Redux state
   };
 
   // Load from local storage
@@ -39,7 +45,13 @@ const Concrete = ({ option }) => {
     const savedData = JSON.parse(localStorage.getItem(option));
     if (savedData && savedData.concrete) {
       setLocalInputs(savedData.concrete.inputs);
-      dispatch(updateConcreteInputs(savedData.concrete.inputs));
+      dispatch(
+        updateMaterialInputs({
+          option,
+          materialType: "concrete",
+          inputs: savedData.concrete.inputs,
+        })
+      );
     }
   }, [option, dispatch]);
 

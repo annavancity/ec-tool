@@ -6,40 +6,113 @@ import wood from "../images/wood.jpg";
 import Concrete from "../components/materials/Concrete";
 import Wood from "../components/materials/Wood";
 import Steel from "../components/materials/Steel";
+import {
+  updateMaterialInputs,
+  markMaterialAsSaved,
+} from "../features/materialInputsSlice";
 import calculateValues from "../utils/calculateValues";
 import { setCalculatedValues } from "../features/calculatedValuesSlice";
 
 const OptionGenericLogic = ({ option }) => {
   const dispatch = useDispatch();
   const [selectedComponent, setSelectedComponent] = useState("concrete");
-  const materialInputs = useSelector((state) => state.materialInputs);
+  const materialInputs = useSelector((state) => state.materialInputs[option]);
   const calculatedValues = useSelector(
     (state) => state.calculatedValues[option]
   );
-  // Track if inputs for each material are saved
-  const [isConcreteSaved, setIsConcreteSaved] = useState(false);
-  const [isSteelSaved, setIsSteelSaved] = useState(false);
-  const [isWoodSaved, setIsWoodSaved] = useState(false);
 
   useEffect(() => {
-    setIsConcreteSaved(materialInputs.concrete.isSaved);
-    setIsSteelSaved(materialInputs.steel.isSaved);
-    setIsWoodSaved(materialInputs.wood.isSaved);
-  }, [
-    materialInputs.concrete.isSaved,
-    materialInputs.steel.isSaved,
-    materialInputs.wood.isSaved,
-  ]);
+    // Load saved inputs from local storage and update Redux store
+    const savedData = JSON.parse(localStorage.getItem(option));
+    if (savedData) {
+      ["concrete", "steel", "wood"].forEach((material) => {
+        if (savedData[material]) {
+          dispatch(
+            updateMaterialInputs({
+              option,
+              materialType: material,
+              inputs: savedData[material].inputs,
+            })
+          );
+          dispatch(markMaterialAsSaved({ option, materialType: material }));
+        }
+      });
+    }
+  }, [dispatch, option]);
+
+  const areAllMaterialsSaved = () => {
+    return (
+      materialInputs.concrete.isSaved &&
+      materialInputs.steel.isSaved &&
+      materialInputs.wood.isSaved
+    );
+  };
 
   const calculateResults = () => {
-    if (isConcreteSaved && isSteelSaved && isWoodSaved) {
-      const updatedMaterialInputs = { ...materialInputs };
-      const calculatedResults = calculateValues(updatedMaterialInputs);
+    if (areAllMaterialsSaved()) {
+      const calculatedResults = calculateValues(materialInputs);
       dispatch(setCalculatedValues({ option, values: calculatedResults }));
     } else {
       alert("Please save all material inputs before calculating.");
     }
   };
+  // const dispatch = useDispatch();
+  // const [selectedComponent, setSelectedComponent] = useState("concrete");
+  // const materialInputs = useSelector((state) => state.materialInputs);
+  // const calculatedValues = useSelector(
+  //   (state) => state.calculatedValues[option]
+  // );
+  // // Track if inputs for each material are saved
+  // const [isConcreteSaved, setIsConcreteSaved] = useState(false);
+  // const [isSteelSaved, setIsSteelSaved] = useState(false);
+  // const [isWoodSaved, setIsWoodSaved] = useState(false);
+
+  // useEffect(() => {
+  //   //  materialInputs is structured with OptionOne, OptionTwo, OptionThree
+  //   const optionInputs = materialInputs[option];
+  //   if (optionInputs) {
+  //     setIsConcreteSaved(optionInputs.concrete?.isSaved || false);
+  //     setIsSteelSaved(optionInputs.steel?.isSaved || false);
+  //     setIsWoodSaved(optionInputs.wood?.isSaved || false);
+  //   }
+  // }, [materialInputs, option]);
+
+  // const calculateResults = () => {
+  //   const optionInputs = materialInputs[option];
+  //   if (
+  //     optionInputs &&
+  //     optionInputs.concrete.isSaved &&
+  //     optionInputs.steel.isSaved &&
+  //     optionInputs.wood.isSaved
+  //   ) {
+  //     const calculatedResults = calculateValues(optionInputs);
+  //     dispatch(setCalculatedValues({ option, values: calculatedResults }));
+  //   } else {
+  //     alert("Please save all material inputs before calculating.");
+  //   }
+  // };
+
+  //  THIS CODE ALSO WORKS
+  // Check if all materials are saved for the specific option
+  //   const areAllMaterialsSaved = () => {
+  //     const optionInputs = materialInputs[option];
+  //     return (
+  //       optionInputs &&
+  //       optionInputs.concrete.isSaved &&
+  //       optionInputs.steel.isSaved &&
+  //       optionInputs.wood.isSaved
+  //     );
+  //   };
+
+  //   const calculateResults = () => {
+  //     if (areAllMaterialsSaved()) {
+  //       const optionInputs = materialInputs[option];
+  //       const calculatedResults = calculateValues(optionInputs);
+  //       dispatch(setCalculatedValues({ option, values: calculatedResults }));
+  //     } else {
+  //       alert("Please save all material inputs before calculating.");
+  //     }
+  //   };
 
   return (
     <div>
