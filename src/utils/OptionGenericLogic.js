@@ -56,63 +56,6 @@ const OptionGenericLogic = ({ option }) => {
       alert("Please save all material inputs before calculating.");
     }
   };
-  // const dispatch = useDispatch();
-  // const [selectedComponent, setSelectedComponent] = useState("concrete");
-  // const materialInputs = useSelector((state) => state.materialInputs);
-  // const calculatedValues = useSelector(
-  //   (state) => state.calculatedValues[option]
-  // );
-  // // Track if inputs for each material are saved
-  // const [isConcreteSaved, setIsConcreteSaved] = useState(false);
-  // const [isSteelSaved, setIsSteelSaved] = useState(false);
-  // const [isWoodSaved, setIsWoodSaved] = useState(false);
-
-  // useEffect(() => {
-  //   //  materialInputs is structured with OptionOne, OptionTwo, OptionThree
-  //   const optionInputs = materialInputs[option];
-  //   if (optionInputs) {
-  //     setIsConcreteSaved(optionInputs.concrete?.isSaved || false);
-  //     setIsSteelSaved(optionInputs.steel?.isSaved || false);
-  //     setIsWoodSaved(optionInputs.wood?.isSaved || false);
-  //   }
-  // }, [materialInputs, option]);
-
-  // const calculateResults = () => {
-  //   const optionInputs = materialInputs[option];
-  //   if (
-  //     optionInputs &&
-  //     optionInputs.concrete.isSaved &&
-  //     optionInputs.steel.isSaved &&
-  //     optionInputs.wood.isSaved
-  //   ) {
-  //     const calculatedResults = calculateValues(optionInputs);
-  //     dispatch(setCalculatedValues({ option, values: calculatedResults }));
-  //   } else {
-  //     alert("Please save all material inputs before calculating.");
-  //   }
-  // };
-
-  //  THIS CODE ALSO WORKS
-  // Check if all materials are saved for the specific option
-  //   const areAllMaterialsSaved = () => {
-  //     const optionInputs = materialInputs[option];
-  //     return (
-  //       optionInputs &&
-  //       optionInputs.concrete.isSaved &&
-  //       optionInputs.steel.isSaved &&
-  //       optionInputs.wood.isSaved
-  //     );
-  //   };
-
-  //   const calculateResults = () => {
-  //     if (areAllMaterialsSaved()) {
-  //       const optionInputs = materialInputs[option];
-  //       const calculatedResults = calculateValues(optionInputs);
-  //       dispatch(setCalculatedValues({ option, values: calculatedResults }));
-  //     } else {
-  //       alert("Please save all material inputs before calculating.");
-  //     }
-  //   };
 
   return (
     <div>
