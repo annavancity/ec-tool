@@ -59,12 +59,12 @@ body {
 }
 
 .material-button {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 400px;
   height: 222px;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .material-image {
@@ -78,15 +78,34 @@ body {
 }
 .material-image.active {
   border: 1px solid #f9f82c;
-  opacity: 70%;
+}
+
+.overlay {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.overlay.active-bckg,
+.overlay:hover {
+  opacity: 1;
 }
 
 .material-image:hover {
   cursor: pointer;
-  opacity: 70%;
+  background: #010101;
+  transition: 0.3s ease-in-out;
 }
 
 .icon-text {
+  position: relative; /* Ensures text is on top of the overlay */
+  z-index: 3;
   font-family: "Shadows Into Light", cursive;
   font-weight: 400;
   font-size: 28px;

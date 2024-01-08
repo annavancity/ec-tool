@@ -111,6 +111,11 @@ const OptionGenericLogic = ({ option }) => {
               src={concrete}
               alt="concrete"
             />
+            <div
+              className={`overlay ${
+                selectedComponent === "concrete" ? "active-bckg" : ""
+              }`}
+            ></div>
             <h4
               className={`icon-text ${
                 selectedComponent === "concrete" ? "active-text" : ""
@@ -130,6 +135,11 @@ const OptionGenericLogic = ({ option }) => {
               src={wood}
               alt="wood"
             />
+            <div
+              className={`overlay ${
+                selectedComponent === "wood" ? "active-bckg" : ""
+              }`}
+            ></div>
             <h4
               className={`icon-text ${
                 selectedComponent === "wood" ? "active-text" : ""
@@ -149,6 +159,11 @@ const OptionGenericLogic = ({ option }) => {
               src={steel}
               alt="steel"
             />
+            <div
+              className={`overlay ${
+                selectedComponent === "steel" ? "active-bckg" : ""
+              }`}
+            ></div>
             <h4
               className={`icon-text ${
                 selectedComponent === "steel" ? "active-text" : ""
