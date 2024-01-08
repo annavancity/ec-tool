@@ -101,40 +101,66 @@ const OptionGenericLogic = ({ option }) => {
       <div className="container">
         <div className="select-material">
           <button
-            className={`material-button ${
-              selectedComponent === "concrete" ? "active" : ""
-            }`}
+            className="material-button"
             onClick={() => setSelectedComponent("concrete")}
           >
-            <img className="material-image" src={concrete} alt="concrete" />
-            <h4 className="icon-text">Concrete</h4>
+            <img
+              className={`material-image ${
+                selectedComponent === "concrete" ? "active" : ""
+              }`}
+              src={concrete}
+              alt="concrete"
+            />
+            <h4
+              className={`icon-text ${
+                selectedComponent === "concrete" ? "active-text" : ""
+              }`}
+            >
+              CONCRETE
+            </h4>
           </button>
           <button
-            className={`material-button ${
-              selectedComponent === "wood" ? "active" : ""
-            }`}
+            className="material-button"
             onClick={() => setSelectedComponent("wood")}
           >
-            <img className="material-image" src={wood} alt="wood" />
-            <h4 className="icon-text">Wood</h4>
+            <img
+              className={`material-image ${
+                selectedComponent === "wood" ? "active" : ""
+              }`}
+              src={wood}
+              alt="wood"
+            />
+            <h4
+              className={`icon-text ${
+                selectedComponent === "wood" ? "active-text" : ""
+              }`}
+            >
+              WOOD
+            </h4>
           </button>
           <button
-            className={`material-button ${
-              selectedComponent === "steel" ? "active" : ""
-            }`}
+            className="material-button"
             onClick={() => setSelectedComponent("steel")}
           >
-            <img className="material-image" src={steel} alt="steel" />
-            <h4 className="icon-text">Steel</h4>
+            <img
+              className={`material-image ${
+                selectedComponent === "steel" ? "active" : ""
+              }`}
+              src={steel}
+              alt="steel"
+            />
+            <h4
+              className={`icon-text ${
+                selectedComponent === "steel" ? "active-text" : ""
+              }`}
+            >
+              STEEL
+            </h4>
           </button>
         </div>
         {selectedComponent === "concrete" && <Concrete option={option} />}
         {selectedComponent === "wood" && <Wood option={option} />}
         {selectedComponent === "steel" && <Steel option={option} />}
-        {/* <ConcreteGeneric handleInputChange={handleInputChange} calculatedValues = {calculatedValues} />
-                <SteelGeneric handleInputChange={handleInputChange} calculatedValues = {calculatedValues} />
-                <WoodGeneric handleInputChange={handleInputChange} calculatedValues = {calculatedValues} /> */}
-
         <div>
           <button className="btn" onClick={calculateResults}>
             Calculate

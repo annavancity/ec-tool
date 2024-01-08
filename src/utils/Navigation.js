@@ -6,42 +6,44 @@ const Navigation = ({ allOptionsCalculated }) => {
   const currentPath = location.pathname;
 
   return (
-    <nav className="btn-all">
-      <Link
-        className={`btn option-one ${
-          currentPath === "/option_one" ? "active" : ""
-        }`}
-        to="/option_one"
-      >
-        Option 1
-      </Link>
-      <Link
-        className={`btn option-two ${
-          currentPath === "/option_two" ? "active" : ""
-        }`}
-        to="/option_two"
-      >
-        Option 2
-      </Link>
-      <Link
-        className={`btn option-three ${
-          currentPath === "/option_three" ? "active" : ""
-        }`}
-        to="/option_three"
-      >
-        Option 3
-      </Link>
-      {allOptionsCalculated && (
+    <div className="container">
+      <nav className="btn-all">
         <Link
-          className={`btn ${
-            currentPath === "/summary_comparison" ? "active" : ""
+          className={`btn option-one ${
+            currentPath === "/option_one" ? "active" : ""
           }`}
-          to="/summary_comparison"
+          to="/option_one"
         >
-          Summary Comparison
+          Option 1
         </Link>
-      )}
-    </nav>
+        <Link
+          className={`btn option-two ${
+            currentPath === "/option_two" ? "active" : ""
+          }`}
+          to="/option_two"
+        >
+          Option 2
+        </Link>
+        <Link
+          className={`btn option-three ${
+            currentPath === "/option_three" ? "active" : ""
+          }`}
+          to="/option_three"
+        >
+          Option 3
+        </Link>
+        {allOptionsCalculated && (
+          <Link
+            className={`btn ${
+              currentPath === "/summary_comparison" ? "active" : ""
+            }`}
+            to="/summary_comparison"
+          >
+            Summary Comparison
+          </Link>
+        )}
+      </nav>
+    </div>
   );
 };
 

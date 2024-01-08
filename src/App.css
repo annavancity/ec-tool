@@ -15,7 +15,6 @@ body {
 .btn-all {
   display: flex;
   justify-content: space-between;
-  padding: 0px 30px;
 }
 .btn-options {
   display: flex;
@@ -52,38 +51,39 @@ body {
 }
 
 .select-material {
+  margin: 80px 0px;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  height: 150px;
 }
 
 .material-button {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.material-button.active {
-  background-color: #f9f82c;
+  width: 400px;
+  height: 222px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .material-image {
-  position: fixed;
-  width: 300px;
-  height: 150px;
+  position: absolute;
+  width: 400px;
+  height: 222px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 80%;
   z-index: 1;
+}
+.material-image.active {
+  border: 1px solid #f9f82c;
+  opacity: 70%;
 }
 
 .material-image:hover {
-  opacity: 70%;
-  /* border: 1px solid #777764; */
-  /* box-shadow: 0 4px 8px #777764be; */
   cursor: pointer;
+  opacity: 70%;
 }
 
 .icon-text {
@@ -92,8 +92,13 @@ body {
   font-size: 28px;
   color: #fefefe;
   line-height: 32px;
-  z-index: 2;
+  z-index: 99;
   cursor: pointer;
+}
+
+.icon-text.active-text {
+  color: #f9f82c;
+  z-index: 99;
 }
 
 .value-row {
