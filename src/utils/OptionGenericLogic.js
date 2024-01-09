@@ -86,7 +86,7 @@ const OptionGenericLogic = ({ option }) => {
 
   return (
     <div>
-      <div>
+      <div className="container">
         {description && <h3 className="description-text">{description}</h3>}
         <ModalDescription
           isOpen={isModalDescriptionOpen}
