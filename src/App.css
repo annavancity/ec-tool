@@ -127,6 +127,7 @@ body {
 .value-row {
   display: flex;
   align-items: center;
+  width: 800px;
 }
 
 .menu-text-large {
@@ -182,6 +183,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.input-hide {
+  border-bottom: none;
+}
+
 .value-row-GWP {
   width: 80px;
   margin-left: 20px;
@@ -189,7 +194,7 @@ input[type="number"] {
 
 .value-row-description {
   display: flex;
-  width: 630px;
+  width: 800px;
   justify-content: flex-end;
   padding: 0px;
   margin-bottom: -25px;

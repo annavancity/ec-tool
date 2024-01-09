@@ -62,14 +62,17 @@ const Wood = ({ option }) => {
 
   return (
     <div className="wood-section">
-      <div className="value-row-description">
-        <p className="menu-text-large description-label">
+      <div className="value-row">
+        <label className="menu-text-large value-name"></label>
+        <input className="input-hide" type="number" />
+        <p className="menu-text-large conv"></p>
+        <p className="menu-text-large value-row-GWP">
           GWP{" "}
-          <span>
+          <span className="menu-text-small">
             (kgCO<sub>2</sub>e)
           </span>
         </p>
-        <p className="menu-text-large description-label">%</p>
+        <p className="menu-text-large value-row-percentage">%</p>
       </div>
       <div className="value-row">
         <label className="menu-text-large value-name">Wood - CLT:</label>
@@ -251,7 +254,9 @@ const Wood = ({ option }) => {
           placeholder="wood-custom value"
         />
         <p className="menu-text-large conv">
-          m<sup>3</sup>
+          <span className="menu-text-small">
+            (kgCO<sub>2</sub>e)
+          </span>
         </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">

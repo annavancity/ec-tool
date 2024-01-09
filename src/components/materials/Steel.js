@@ -62,14 +62,17 @@ const Steel = ({ option }) => {
 
   return (
     <div className="steel-section">
-      <div className="value-row-description">
-        <p className="menu-text-large description-label">
+      <div className="value-row">
+        <label className="menu-text-large value-name"></label>
+        <input className="input-hide" type="number" />
+        <p className="menu-text-large conv"></p>
+        <p className="menu-text-large value-row-GWP">
           GWP{" "}
-          <span>
+          <span className="menu-text-small">
             (kgCO<sub>2</sub>e)
           </span>
         </p>
-        <p className="menu-text-large description-label">%</p>
+        <p className="menu-text-large value-row-percentage">%</p>
       </div>
       <div className="value-row">
         <label className="menu-text-large value-name">
@@ -177,7 +180,11 @@ const Steel = ({ option }) => {
           onChange={handleInputChange}
           placeholder="steel-custom value"
         />
-        <p className="menu-text-large conv">kg</p>
+        <p className="menu-text-large conv">
+          <span className="menu-text-small">
+            (kgCO<sub>2</sub>e)
+          </span>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {steelCalculatedValues.steelCustomGWPCalculated}

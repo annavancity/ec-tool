@@ -62,7 +62,19 @@ const Concrete = ({ option }) => {
 
   return (
     <div className="concrete-section">
-      <div className="value-row-description">
+      <div className="value-row">
+        <label className="menu-text-large value-name"></label>
+        <input className="input-hide" type="number" />
+        <p className="menu-text-large conv"></p>
+        <p className="menu-text-large value-row-GWP">
+          GWP{" "}
+          <span className="menu-text-small">
+            (kgCO<sub>2</sub>e)
+          </span>
+        </p>
+        <p className="menu-text-large value-row-percentage">%</p>
+      </div>
+      {/* <div className="value-row-description">
         <p className="menu-text-large description-label">
           GWP{" "}
           <span className="menu-text-small">
@@ -70,7 +82,7 @@ const Concrete = ({ option }) => {
           </span>
         </p>
         <p className="menu-text-large description-label">%</p>
-      </div>
+      </div> */}
 
       <div className="value-row">
         <label className="menu-text-large value-name">
