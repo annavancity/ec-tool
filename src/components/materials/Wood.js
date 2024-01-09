@@ -63,9 +63,7 @@ const Wood = ({ option }) => {
   return (
     <div className="wood-section">
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - CLT (m<sup>3</sup>){" "}
-        </label>
+        <label className="menu-text-large value-name">Wood - CLT:</label>
         <input
           type="number"
           value={localInputs.woodCLT}
@@ -73,6 +71,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-CLT value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodCLTGWPCalculated}
@@ -83,9 +84,7 @@ const Wood = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - DLT/NLT (m<sup>3</sup>){" "}
-        </label>
+        <label className="menu-text-large value-name">Wood - DLT / NLT:</label>
         <input
           type="number"
           value={localInputs.woodDltNlt}
@@ -93,6 +92,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-DLT/NLT value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodDltNltGWPCalculated}
@@ -103,9 +105,7 @@ const Wood = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - MPP (m<sup>3</sup>){" "}
-        </label>
+        <label className="menu-text-large value-name">Wood - MPP:</label>
         <input
           type="number"
           value={localInputs.woodMPP}
@@ -113,6 +113,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-MPP value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodMPPGWPCalculated}
@@ -123,9 +126,7 @@ const Wood = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - Plywood (m<sup>3</sup>){" "}
-        </label>
+        <label className="menu-text-large value-name">Wood - Plywood:</label>
         <input
           type="number"
           value={localInputs.woodPlywood}
@@ -133,6 +134,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-plywood value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodPlywoodGWPCalculated}
@@ -143,9 +147,7 @@ const Wood = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - Glulam (m<sup>3</sup>){" "}
-        </label>
+        <label className="menu-text-large value-name">Wood - Glulam:</label>
         <input
           type="number"
           value={localInputs.woodGlulam}
@@ -153,6 +155,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-glulam value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodGlulamGWPCalculated}
@@ -164,7 +169,7 @@ const Wood = ({ option }) => {
 
       <div className="value-row">
         <label className="menu-text-large value-name">
-          Wood - PSL / LSL / LVL (m<sup>3</sup>){" "}
+          Wood - PSL / LSL / LVL:
         </label>
         <input
           type="number"
@@ -173,6 +178,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-PSL/LSL/LVL value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodPslLslLvlGWPCalculated}
@@ -183,9 +191,7 @@ const Wood = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - TJI (m<sup>3</sup>){" "}
-        </label>
+        <label className="menu-text-large value-name">Wood - TJI:</label>
         <input
           type="number"
           value={localInputs.woodTJI}
@@ -193,6 +199,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-TJI value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodTJIGWPCalculated}
@@ -203,9 +212,7 @@ const Wood = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - Lumber (m<sup>3</sup>){" "}
-        </label>
+        <label className="menu-text-large value-name">Wood - Lumber:</label>
         <input
           type="number"
           value={localInputs.woodLumber}
@@ -213,6 +220,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-lumber value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodLumberGWPCalculated}
@@ -223,9 +233,7 @@ const Wood = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - Custom (m<sup>3</sup>){" "}
-        </label>
+        <label className="menu-text-large value-name">Wood - Custom:</label>
         <input
           type="number"
           value={localInputs.woodCustom}
@@ -233,6 +241,9 @@ const Wood = ({ option }) => {
           onChange={handleInputChange}
           placeholder="wood-custom value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {woodCalculatedValues.woodCustomGWPCalculated}

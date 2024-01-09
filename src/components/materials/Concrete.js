@@ -64,7 +64,7 @@ const Concrete = ({ option }) => {
     <div className="concrete-section">
       <div className="value-row">
         <label className="menu-text-large value-name">
-          Concrete - Horizontal (m<sup>3</sup>){" "}
+          Concrete - Horizontal:
         </label>
         <input
           type="number"
@@ -73,6 +73,9 @@ const Concrete = ({ option }) => {
           onChange={handleInputChange}
           placeholder="conc-horiz value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {concreteCalculatedValues.concHorizGWPCalculated}
@@ -83,7 +86,7 @@ const Concrete = ({ option }) => {
       </div>
       <div className="value-row">
         <label className="menu-text-large value-name">
-          Concrete - Vertical (m<sup>3</sup>){" "}
+          Concrete - Vertical:
         </label>
         <input
           type="number"
@@ -92,6 +95,9 @@ const Concrete = ({ option }) => {
           onChange={handleInputChange}
           placeholder="conc-vert value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {concreteCalculatedValues.concVertGWPCalculated}
@@ -102,7 +108,7 @@ const Concrete = ({ option }) => {
       </div>
       <div className="value-row">
         <label className="menu-text-large value-name">
-          Concrete - Foundation (m<sup>3</sup>){" "}
+          Concrete - Foundation:
         </label>
         <input
           type="number"
@@ -111,6 +117,9 @@ const Concrete = ({ option }) => {
           onChange={handleInputChange}
           placeholder="conc-foundation value"
         />
+        <p className="menu-text-large conv">
+          m<sup>3</sup>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {concreteCalculatedValues.concFoundGWPCalculated}
@@ -120,9 +129,7 @@ const Concrete = ({ option }) => {
         </p>
       </div>
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Concrete - Rebar (kg){" "}
-        </label>
+        <label className="menu-text-large value-name">Concrete - Rebar:</label>
         <input
           type="number"
           value={localInputs.concRebar}
@@ -130,6 +137,7 @@ const Concrete = ({ option }) => {
           onChange={handleInputChange}
           placeholder="conc-rebar value"
         />
+        <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {concreteCalculatedValues.concRebarGWPCalculated}
@@ -139,9 +147,7 @@ const Concrete = ({ option }) => {
         </p>
       </div>
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Concrete - Custom (?){" "}
-        </label>
+        <label className="menu-text-large value-name">Concrete - Custom:</label>
         <input
           type="number"
           value={localInputs.concCustom}
@@ -149,6 +155,7 @@ const Concrete = ({ option }) => {
           onChange={handleInputChange}
           placeholder="conc-custom value"
         />
+        <p className="menu-text-large conv">?</p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {concreteCalculatedValues.concCustomGWPCalculated}

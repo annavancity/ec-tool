@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import PieChart from "./PieChart";
+import CustomPieChart from "./CustomPieChart";
 
 const Comparison = () => {
   // Access the calculated values from the Redux store
@@ -16,11 +16,11 @@ const Comparison = () => {
 
   // Function to render option results
   const renderOptionResults = (calculatedValues, optionName) => (
-    <div>
+    <div className="container">
       <h2>{optionName}</h2>
       <div className="optionResults">
         <div className="total-values">
-          <div className="value-row">
+          {/* <div className="value-row">
             <p className="menu-text-large total-value-name">Concrete</p>
             <p className="menu-text-large total-value-name">
               {calculatedValues.concrete?.concGWPTotal}
@@ -52,14 +52,11 @@ const Comparison = () => {
             <p className="menu-text-large total-value-name">
               {calculatedValues.totals?.GWPTotal}
             </p>
-            {/* <p className="menu-text-large">
-        {calculatedValues.totals?.PercentageTotal}
-      </p> */}
-          </div>
+          </div> */}
         </div>
 
         <div className="chart-container">
-          <PieChart
+          <CustomPieChart
             concretePercentage={calculatedValues.concrete?.concGWPTotal || 0}
             steelPercentage={calculatedValues.steel?.steelGWPTotal || 0}
             woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}

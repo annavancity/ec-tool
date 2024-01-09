@@ -15,8 +15,8 @@ import {
   setCalculatedValues,
   markOptionAsCalculated,
 } from "../features/calculatedValuesSlice";
-import PieChart from "../components/PieChart";
 import ModalDescription from "./ModalDescription";
+import CustomPieChart from "../components/CustomPieChart";
 
 const OptionGenericLogic = ({ option }) => {
   const [description, setDescription] = useState("");
@@ -184,7 +184,7 @@ const OptionGenericLogic = ({ option }) => {
 
         {showResults && (
           <div className="optionResults">
-            <div className="total-values">
+            {/* <div className="total-values">
               <div className="value-row">
                 <p className="menu-text-large total-value-name">Concrete</p>
                 <p className="menu-text-large total-value-name">
@@ -217,21 +217,23 @@ const OptionGenericLogic = ({ option }) => {
                 <p className="menu-text-large total-value-name">
                   {calculatedValues.totals?.GWPTotal}
                 </p>
-                {/* <p className="menu-text-large">
-        {calculatedValues.totals?.PercentageTotal}
-      </p> */}
               </div>
-            </div>
+            </div> */}
 
-            <div className="chart-container">
-              <PieChart
-                concretePercentage={
-                  calculatedValues.concrete?.concGWPTotal || 0
-                }
-                steelPercentage={calculatedValues.steel?.steelGWPTotal || 0}
-                woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
-              />
-            </div>
+            {showResults &&
+              calculatedValues.concrete &&
+              calculatedValues.steel &&
+              calculatedValues.wood && (
+                <div className="chart-container">
+                  <CustomPieChart
+                    concretePercentage={
+                      calculatedValues.concrete?.concGWPTotal || 0
+                    }
+                    steelPercentage={calculatedValues.steel?.steelGWPTotal || 0}
+                    woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
+                  />
+                </div>
+              )}
           </div>
         )}
       </div>

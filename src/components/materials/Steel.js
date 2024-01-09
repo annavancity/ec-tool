@@ -64,7 +64,7 @@ const Steel = ({ option }) => {
     <div className="steel-section">
       <div className="value-row">
         <label className="menu-text-large value-name">
-          Steel - Hot Rolled (kg){" "}
+          Steel - Hot Rolled:
         </label>
         <input
           type="number"
@@ -73,6 +73,7 @@ const Steel = ({ option }) => {
           onChange={handleInputChange}
           placeholder="steel-hot rolled value"
         />
+        <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {steelCalculatedValues.steelHotRolledGWPCalculated}
@@ -83,7 +84,7 @@ const Steel = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Steel - HSS (kg) </label>
+        <label className="menu-text-large value-name">Steel - HSS:</label>
         <input
           type="number"
           value={localInputs.steelHSS}
@@ -91,6 +92,7 @@ const Steel = ({ option }) => {
           onChange={handleInputChange}
           placeholder="steel-HSS value"
         />
+        <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {steelCalculatedValues.steelHSSGWPCalculated}
@@ -101,7 +103,7 @@ const Steel = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Steel - OWSJ (kg) </label>
+        <label className="menu-text-large value-name">Steel - OWSJ:</label>
         <input
           type="number"
           value={localInputs.steelOWSJ}
@@ -109,6 +111,7 @@ const Steel = ({ option }) => {
           onChange={handleInputChange}
           placeholder="steel-OWSJ value"
         />
+        <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {steelCalculatedValues.steelOWSJGWPCalculated}
@@ -119,9 +122,7 @@ const Steel = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Steel - Plate (kg){" "}
-        </label>
+        <label className="menu-text-large value-name">Steel - Plate:</label>
         <input
           type="number"
           value={localInputs.steelPlate}
@@ -129,6 +130,7 @@ const Steel = ({ option }) => {
           onChange={handleInputChange}
           placeholder="steel-plate value"
         />
+        <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {steelCalculatedValues.steelPlateGWPCalculated}
@@ -139,7 +141,7 @@ const Steel = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Steel - Deck (kg) </label>
+        <label className="menu-text-large value-name">Steel - Deck:</label>
         <input
           type="number"
           value={localInputs.steelDeck}
@@ -147,6 +149,7 @@ const Steel = ({ option }) => {
           onChange={handleInputChange}
           placeholder="steel-deck value"
         />
+        <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {steelCalculatedValues.steelDeckGWPCalculated}
@@ -157,9 +160,7 @@ const Steel = ({ option }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Steel - Custom (?){" "}
-        </label>
+        <label className="menu-text-large value-name">Steel - Custom:</label>
         <input
           type="number"
           value={localInputs.steelCustom}
@@ -167,6 +168,7 @@ const Steel = ({ option }) => {
           onChange={handleInputChange}
           placeholder="steel-custom value"
         />
+        <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {steelCalculatedValues.steelCustomGWPCalculated}

@@ -23,6 +23,7 @@ body {
 }
 
 .btn {
+  font-size: 18px;
   text-decoration: none;
   padding: 5px;
   cursor: pointer;
@@ -127,10 +128,14 @@ body {
 }
 
 .menu-text-large {
-  font-size: 14px;
+  font-size: 18px;
   color: #f7f7f7;
   font-weight: 300;
   margin-right: 10px;
+}
+
+.conv {
+  margin-left: 5px;
 }
 
 .description-text {
@@ -149,10 +154,25 @@ body {
 }
 
 input {
-  font-size: 12px;
+  font-size: 18px;
   padding: 5px;
   background-color: #010101;
   color: #f7f7f7;
+  text-align: right;
+  border: none;
+  border-bottom: 2px solid #f9f82c;
+}
+
+/* For Chrome, Safari, Edge, and Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .value-row-GWP {
@@ -204,6 +224,8 @@ input {
 .total-value-name {
   width: 80px;
 }
-.chart-container {
+/* .chart-container {
+  width: 1500px;
   height: 300px;
-}
+  position: relative;
+} */
