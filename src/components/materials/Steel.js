@@ -62,6 +62,15 @@ const Steel = ({ option }) => {
 
   return (
     <div className="steel-section">
+      <div className="value-row-description">
+        <p className="menu-text-large description-label">
+          GWP{" "}
+          <span>
+            (kgCO<sub>2</sub>e)
+          </span>
+        </p>
+        <p className="menu-text-large description-label">%</p>
+      </div>
       <div className="value-row">
         <label className="menu-text-large value-name">
           Steel - Hot Rolled:

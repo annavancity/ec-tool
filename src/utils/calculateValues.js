@@ -69,7 +69,7 @@ const calculateValues = (optionData) => {
 
   const concRebarGWPCalculated = steelRebarGwp * concRebar;
 
-  const concCustomGWPCalculated = concCustom * 0; // to update
+  const concCustomGWPCalculated = concCustom * 1; // to update
 
   const steelHotRolledGWPCalculated = steelHotRolledGwp * steelHotRolled;
 
@@ -81,7 +81,7 @@ const calculateValues = (optionData) => {
 
   const steelDeckGWPCalculated = steelDeckGwp * steelDeck;
 
-  const steelCustomGWPCalculated = steelCustom * 0; // to update
+  const steelCustomGWPCalculated = steelCustom * 1; // to update
 
   const woodCLTGWPCalculated = woodCLTGwp * woodCLT;
 
@@ -99,7 +99,7 @@ const calculateValues = (optionData) => {
 
   const woodLumberGWPCalculated = woodSoftwoodLumberGwp * woodLumber;
 
-  const woodCustomGWPCalculated = woodCustom * 0; // to update
+  const woodCustomGWPCalculated = woodCustom * 1; // to update
 
   const concGWPTotal =
     concHorizGWPCalculated +

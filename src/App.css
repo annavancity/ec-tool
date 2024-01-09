@@ -9,6 +9,9 @@ body {
 }
 
 /* --------------------------------ALL - OPTIONS----------------------------*/
+.wrapper {
+  height: 100vh;
+}
 .container {
   padding: 0px 20px;
 }
@@ -123,7 +126,6 @@ body {
 
 .value-row {
   display: flex;
-  margin-top: 5px;
   align-items: center;
 }
 
@@ -134,8 +136,13 @@ body {
   margin-right: 10px;
 }
 
+.menu-text-small {
+  font-size: 13px;
+}
+
 .conv {
   margin-left: 5px;
+  width: 50px;
 }
 
 .description-text {
@@ -180,13 +187,30 @@ input[type="number"] {
   margin-left: 20px;
 }
 
+.value-row-description {
+  display: flex;
+  width: 630px;
+  justify-content: flex-end;
+  padding: 0px;
+  margin-bottom: -25px;
+}
+.description-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+}
+
+/* MODALS */
+
 .modal {
   display: inline-block;
   position: fixed;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 99;
+  z-index: 100;
   width: 200px;
   background-color: #010101;
   padding: 20px;
@@ -201,6 +225,51 @@ input[type="number"] {
 .modal-content {
   position: relative;
   margin-left: 60px;
+}
+
+.modal-description {
+  display: inline-block;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 300px;
+  background-color: #010101;
+  padding: 30px 10px 40px 10px;
+  border: 1px solid #f9f82c;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px #777764be;
+  font-size: 14px;
+  color: #f9f82c;
+  font-weight: 300;
+}
+
+.modal-description-input {
+  text-align: left;
+  width: 250px;
+  font-size: 16px;
+}
+.modal-description-content {
+  position: relative;
+  margin-left: 20px;
+}
+
+.btn-small {
+  position: absolute;
+  bottom: -30px;
+  right: 1px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #777764;
+  background-color: #010101;
+  color: white;
+  border-radius: 5px;
+}
+
+.btn-small:hover {
+  border: 1px solid #f9f82c;
+  color: #f9f82c;
 }
 
 .close {

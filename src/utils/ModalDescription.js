@@ -18,18 +18,21 @@ const ModalDescription = ({
   if (!isOpen) return null;
 
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal-description">
+      <div className="modal-description-content">
         <span className="close" onClick={handleClose}>
           &times;
         </span>
         <input
+          className="modal-description-input"
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Enter description"
         />
-        <button onClick={handleSave}>Save</button>
+        <button className="btn-small" onClick={handleSave}>
+          Save
+        </button>
       </div>
     </div>
   );

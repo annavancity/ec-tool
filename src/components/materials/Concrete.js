@@ -62,6 +62,16 @@ const Concrete = ({ option }) => {
 
   return (
     <div className="concrete-section">
+      <div className="value-row-description">
+        <p className="menu-text-large description-label">
+          GWP{" "}
+          <span className="menu-text-small">
+            (kgCO<sub>2</sub>e)
+          </span>
+        </p>
+        <p className="menu-text-large description-label">%</p>
+      </div>
+
       <div className="value-row">
         <label className="menu-text-large value-name">
           Concrete - Horizontal:
@@ -155,7 +165,11 @@ const Concrete = ({ option }) => {
           onChange={handleInputChange}
           placeholder="conc-custom value"
         />
-        <p className="menu-text-large conv">?</p>
+        <p className="menu-text-large conv">
+          <span className="menu-text-small">
+            (kgCO<sub>2</sub>e)
+          </span>
+        </p>
         <span className="error-message"></span>
         <p className="menu-text-large value-row-GWP">
           {concreteCalculatedValues.concCustomGWPCalculated}
