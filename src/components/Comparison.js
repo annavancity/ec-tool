@@ -35,28 +35,39 @@ const Comparison = () => {
     </div>
   );
 
+  // Retrieve area from local storage
+  const OptionOneBuildingArea =
+    localStorage.getItem("OptionOneBuildingArea") || 1;
+  const OptionTwoBuildingArea =
+    localStorage.getItem("OptionTwoBuildingArea") || 1;
+  const OptionThreeBuildingArea =
+    localStorage.getItem("OptionThreeBuildingArea") || 1;
+
   // Calculate data for bar charts
   const barChartData = [
     {
       name: descriptionOne,
       gwptotal: calculatedValuesOne.totals?.GWPTotal || 0,
-      gwpPerArea:
+      gwpPerArea: Math.round(
         (calculatedValuesOne.totals?.GWPTotal || 0) /
-        (calculatedValuesOne.buildingArea || 1),
+          (OptionOneBuildingArea || 1)
+      ),
     },
     {
       name: descriptionTwo,
       gwptotal: calculatedValuesTwo.totals?.GWPTotal || 0,
-      gwpPerArea:
+      gwpPerArea: Math.round(
         (calculatedValuesTwo.totals?.GWPTotal || 0) /
-        (calculatedValuesTwo.buildingArea || 1),
+          (OptionTwoBuildingArea || 1)
+      ),
     },
     {
       name: descriptionThree,
       gwptotal: calculatedValuesThree.totals?.GWPTotal || 0,
-      gwpPerArea:
+      gwpPerArea: Math.round(
         (calculatedValuesThree.totals?.GWPTotal || 0) /
-        (calculatedValuesThree.buildingArea || 1),
+          (OptionThreeBuildingArea || 1)
+      ),
     },
   ];
 

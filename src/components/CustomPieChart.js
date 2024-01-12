@@ -14,9 +14,16 @@ const CustomPieChart = ({
   woodPercentage,
 }) => {
   const data = [
-    { name: "Concrete", value: concretePercentage, color: "#BF3131" },
-    { name: "Steel", value: steelPercentage, color: "#86B6F6" },
-    { name: "Wood", value: woodPercentage, color: "#FF9843" },
+    {
+      name: "Concrete",
+      value: concretePercentage,
+      color: "rgb(192, 192, 192)",
+    },
+    { name: "Steel", value: steelPercentage, color: "rgb(221, 236, 255)" },
+    { name: "Wood", value: woodPercentage, color: "rgb(222, 207, 180)" },
+    // { name: "Concrete", value: concretePercentage, color: "#BF3131" },
+    // { name: "Steel", value: steelPercentage, color: "#86B6F6" },
+    // { name: "Wood", value: woodPercentage, color: "#FF9843" },
   ];
 
   // Calculate total value

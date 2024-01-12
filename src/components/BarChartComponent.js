@@ -25,13 +25,16 @@ const BarChartComponent = ({ data }) => {
     [descriptionTwo]: "#FFB996",
     [descriptionThree]: "#AAD9BB",
   };
-  console.log(data);
 
   return (
     <div className="summary">
       <div className="chart">
-        <ResponsiveContainer width={600} height={300}>
-          <BarChart layout="vertical" data={data}>
+        <ResponsiveContainer width={500} height={300}>
+          <BarChart
+            layout="vertical"
+            data={data}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" />
             <YAxis dataKey="name" type="category" />
@@ -51,7 +54,11 @@ const BarChartComponent = ({ data }) => {
       </div>
       <div className="chart">
         <ResponsiveContainer width={600} height={300}>
-          <BarChart layout="vertical" data={data}>
+          <BarChart
+            layout="vertical"
+            data={data}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" />
             <YAxis dataKey="name" type="category" />
