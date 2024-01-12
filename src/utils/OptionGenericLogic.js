@@ -9,6 +9,7 @@ import Steel from "../components/materials/Steel";
 import {
   updateMaterialInputs,
   markMaterialAsSaved,
+  updateBuildingArea,
 } from "../features/materialInputsSlice";
 import calculateValues from "../utils/calculateValues";
 import {
@@ -28,6 +29,26 @@ const OptionGenericLogic = ({ option }) => {
   const calculatedValues = useSelector(
     (state) => state.calculatedValues[option]
   );
+  const buildingArea = useSelector(
+    (state) => state.materialInputs[option].buildingArea
+  );
+
+  // Function to handle building area change
+  const handleBuildingAreaChange = (e) => {
+    const newArea = e.target.value;
+    dispatch(updateBuildingArea({ option, area: newArea }));
+  };
+
+  // Effect to save building area to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem(`${option}BuildingArea`, buildingArea);
+  }, [buildingArea, option]);
+
+  useEffect(() => {
+    // Load building area from local storage
+    const savedArea = localStorage.getItem(`${option}BuildingArea`);
+    dispatch(updateBuildingArea({ option, area: savedArea }));
+  }, [option, dispatch]);
 
   // Load the description from local storage
   useEffect(() => {
@@ -87,16 +108,35 @@ const OptionGenericLogic = ({ option }) => {
   return (
     <div className="wrapper">
       <div className="container">
-        {description && <h3 className="description-text">{description}</h3>}
+        <div className="container-description">
+          <button className="btn" onClick={openModalDescription}>
+            Set / Modify Description
+          </button>
+          {description && <h3 className="description-text">{description}</h3>}
+        </div>
+        <div className="container-area">
+          <div className="value-row">
+            <label className="menu-text-large">Building area:</label>
+            <input
+              type="number"
+              value={buildingArea || ""}
+              onChange={handleBuildingAreaChange}
+              name="area"
+              placeholder="area"
+            />
+            <p className="menu-text-large conv">
+              m<sup>2</sup>
+            </p>
+            <span className="error-message"></span>
+          </div>
+        </div>
+
         <ModalDescription
           isOpen={isModalDescriptionOpen}
           handleClose={closeModalDescription}
           handleSubmit={handleSaveDescription}
           defaultDescription={description}
         />
-        <button className="btn" onClick={openModalDescription}>
-          Set / Modify Description
-        </button>
       </div>
       <div className="container">
         <div className="select-material">

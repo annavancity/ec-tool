@@ -38,6 +38,7 @@ const initialState = {
       },
       isSaved: false,
     },
+    buildingArea: 0,
   },
   OptionTwo: {
     concrete: {
@@ -75,6 +76,7 @@ const initialState = {
       },
       isSaved: false,
     },
+    buildingArea: 0,
   },
   OptionThree: {
     concrete: {
@@ -112,6 +114,7 @@ const initialState = {
       },
       isSaved: false,
     },
+    buildingArea: 0,
   },
 };
 
@@ -127,10 +130,15 @@ export const materialInputsSlice = createSlice({
       const { option, materialType } = action.payload;
       state[option][materialType].isSaved = true;
     },
+    updateBuildingArea: (state, action) => {
+      // Updating building area
+      const { option, area } = action.payload;
+      state[option].buildingArea = area;
+    },
   },
 });
 
-export const { updateMaterialInputs, markMaterialAsSaved } =
+export const { updateMaterialInputs, markMaterialAsSaved, updateBuildingArea } =
   materialInputsSlice.actions;
 
 export default materialInputsSlice.reducer;

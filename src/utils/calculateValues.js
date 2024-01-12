@@ -61,45 +61,53 @@ const calculateValues = (optionData) => {
     woodCustom,
   } = optionData.wood.inputs;
 
-  const concHorizGWPCalculated = concHorizGwp * concHoriz;
+  const concHorizGWPCalculated = Math.round(concHorizGwp * concHoriz);
 
-  const concVertGWPCalculated = concVertGwp * concVert;
+  const concVertGWPCalculated = Math.round(concVertGwp * concVert);
 
-  const concFoundGWPCalculated = concVertGwp * concFound;
+  const concFoundGWPCalculated = Math.round(concVertGwp * concFound);
 
-  const concRebarGWPCalculated = steelRebarGwp * concRebar;
+  const concRebarGWPCalculated = Math.round(steelRebarGwp * concRebar);
 
-  const concCustomGWPCalculated = concCustom * 1; // to update
+  const concCustomGWPCalculated = Math.round(concCustom * 1); // to update
 
-  const steelHotRolledGWPCalculated = steelHotRolledGwp * steelHotRolled;
+  const steelHotRolledGWPCalculated = Math.round(
+    steelHotRolledGwp * steelHotRolled
+  );
 
-  const steelHSSGWPCalculated = steelHSSGwp * steelHSS;
+  const steelHSSGWPCalculated = Math.round(steelHSSGwp * steelHSS);
 
-  const steelOWSJGWPCalculated = steelOWSJGwp * steelOWSJ;
+  const steelOWSJGWPCalculated = Math.round(steelOWSJGwp * steelOWSJ);
 
-  const steelPlateGWPCalculated = steelPlateGwp * steelPlate;
+  const steelPlateGWPCalculated = Math.round(steelPlateGwp * steelPlate);
 
-  const steelDeckGWPCalculated = steelDeckGwp * steelDeck;
+  const steelDeckGWPCalculated = Math.round(steelDeckGwp * steelDeck);
 
-  const steelCustomGWPCalculated = steelCustom * 1; // to update
+  const steelCustomGWPCalculated = Math.round(steelCustom * 1); // to update
 
-  const woodCLTGWPCalculated = woodCLTGwp * woodCLT;
+  const woodCLTGWPCalculated = Math.round(woodCLTGwp * woodCLT);
 
-  const woodDltNltGWPCalculated = woodDltGwp * woodDltNlt;
+  const woodDltNltGWPCalculated = Math.round(woodDltGwp * woodDltNlt);
 
-  const woodMPPGWPCalculated = woodMPPGwp * woodMPP;
+  const woodMPPGWPCalculated = Math.round(woodMPPGwp * woodMPP);
 
-  const woodPlywoodGWPCalculated = woodSoftwoodPlywoodGwp * woodPlywood;
+  const woodPlywoodGWPCalculated = Math.round(
+    woodSoftwoodPlywoodGwp * woodPlywood
+  );
 
-  const woodGlulamGWPCalculated = woodGlulamGwp * woodGlulam;
+  const woodGlulamGWPCalculated = Math.round(woodGlulamGwp * woodGlulam);
 
-  const woodPslLslLvlGWPCalculated = woodPslLslLvlGwp * woodPslLslLvl;
+  const woodPslLslLvlGWPCalculated = Math.round(
+    woodPslLslLvlGwp * woodPslLslLvl
+  );
 
-  const woodTJIGWPCalculated = woodTJIGwp * woodTJI;
+  const woodTJIGWPCalculated = Math.round(woodTJIGwp * woodTJI);
 
-  const woodLumberGWPCalculated = woodSoftwoodLumberGwp * woodLumber;
+  const woodLumberGWPCalculated = Math.round(
+    woodSoftwoodLumberGwp * woodLumber
+  );
 
-  const woodCustomGWPCalculated = woodCustom * 1; // to update
+  const woodCustomGWPCalculated = Math.round(woodCustom * 1); // to update
 
   const concGWPTotal =
     concHorizGWPCalculated +
@@ -132,7 +140,7 @@ const calculateValues = (optionData) => {
   const concVertPercentageCalculated = Math.round(
     (concVertGWPCalculated / GWPTotal) * 100
   );
-  const concFoundPercentageCalculated = Math.floor(
+  const concFoundPercentageCalculated = Math.round(
     (concFoundGWPCalculated / GWPTotal) * 100
   );
   const concRebarPercentageCalculated = Math.round(
