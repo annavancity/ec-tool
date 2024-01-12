@@ -298,8 +298,29 @@ input[type="number"] {
 .total-value-name {
   width: 80px;
 }
-/* .chart-container {
-  width: 1500px;
-  height: 300px;
-  position: relative;
-} */
+
+/* --------------------SUMMARY-------------------- */
+.summary {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+.summary-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-description {
+  text-transform: uppercase;
+  text-decoration: underline;
+}

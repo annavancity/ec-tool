@@ -66,7 +66,7 @@ const Concrete = ({ option }) => {
         <label className="menu-text-large value-name"></label>
         <input className="input-hide" type="number" />
         <p className="menu-text-large conv"></p>
-        <p className="menu-text-large value-row-GWP">
+        <p className="menu-text-large value-row-GWP ">
           GWP{" "}
           <span className="menu-text-small">
             (kgCO<sub>2</sub>e)

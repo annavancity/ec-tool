@@ -14,63 +14,31 @@ const Comparison = () => {
     (state) => state.calculatedValues.OptionThree
   );
 
-  // Function to render option results
-  const renderOptionResults = (calculatedValues, optionName) => (
-    <div className="container">
-      <h2>{optionName}</h2>
-      <div className="optionResults">
-        <div className="total-values">
-          {/* <div className="value-row">
-            <p className="menu-text-large total-value-name">Concrete</p>
-            <p className="menu-text-large total-value-name">
-              {calculatedValues.concrete?.concGWPTotal}
-            </p>
-            <p className="menu-text-large">
-              {calculatedValues.concrete?.concPercentageTotal}
-            </p>
-          </div>
-          <div className="value-row">
-            <p className="menu-text-large total-value-name">Steel</p>
-            <p className="menu-text-large total-value-name">
-              {calculatedValues.steel?.steelGWPTotal}
-            </p>
-            <p className="menu-text-large">
-              {calculatedValues.steel?.steelPercentageTotal}
-            </p>
-          </div>
-          <div className="value-row">
-            <p className="menu-text-large total-value-name">Wood</p>
-            <p className="menu-text-large total-value-name">
-              {calculatedValues.wood?.woodGWPTotal}
-            </p>
-            <p className="menu-text-large">
-              {calculatedValues.wood?.woodPercentageTotal}
-            </p>
-          </div>
-          <div className="value-row">
-            <p className="menu-text-large total-value-name">Total</p>
-            <p className="menu-text-large total-value-name">
-              {calculatedValues.totals?.GWPTotal}
-            </p>
-          </div> */}
-        </div>
+  // Retrieve descriptions from local storage
+  const descriptionOne =
+    localStorage.getItem("OptionOneDescription") || "Option One";
+  const descriptionTwo =
+    localStorage.getItem("OptionTwoDescription") || "Option Two";
+  const descriptionThree =
+    localStorage.getItem("OptionThreeDescription") || "Option Three";
 
-        <div className="chart-container">
-          <CustomPieChart
-            concretePercentage={calculatedValues.concrete?.concGWPTotal || 0}
-            steelPercentage={calculatedValues.steel?.steelGWPTotal || 0}
-            woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
-          />
-        </div>
-      </div>
+  // Function to render option results
+  const renderOptionResults = (calculatedValues, description) => (
+    <div className="chart">
+      <CustomPieChart
+        concretePercentage={calculatedValues.concrete?.concGWPTotal || 0}
+        steelPercentage={calculatedValues.steel?.steelGWPTotal || 0}
+        woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
+      />
+      <h2 className="chart-description">{description}</h2>
     </div>
   );
 
   return (
-    <div>
-      {renderOptionResults(calculatedValuesOne, "Option One")}
-      {renderOptionResults(calculatedValuesTwo, "Option Two")}
-      {renderOptionResults(calculatedValuesThree, "Option Three")}
+    <div className="summary">
+      {renderOptionResults(calculatedValuesOne, descriptionOne)}
+      {renderOptionResults(calculatedValuesTwo, descriptionTwo)}
+      {renderOptionResults(calculatedValuesThree, descriptionThree)}
     </div>
   );
 };
