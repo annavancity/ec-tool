@@ -213,18 +213,15 @@ const OptionGenericLogic = ({ option }) => {
             </h4>
           </button>
         </div>
-        {selectedComponent === "concrete" && <Concrete option={option} />}
-        {selectedComponent === "wood" && <Wood option={option} />}
-        {selectedComponent === "steel" && <Steel option={option} />}
-        <div>
-          <button className="btn" onClick={calculateResults}>
-            Calculate
-          </button>
-        </div>
-
-        {showResults && (
-          <div className="optionResults">
-            {/* <div className="total-values">
+        <div className="optionResults">
+          <div>
+            {selectedComponent === "concrete" && <Concrete option={option} />}
+            {selectedComponent === "wood" && <Wood option={option} />}
+            {selectedComponent === "steel" && <Steel option={option} />}
+          </div>
+          {showResults && (
+            <div className="optionResults">
+              {/* <div className="total-values">
               <div className="value-row">
                 <p className="menu-text-large total-value-name">Concrete</p>
                 <p className="menu-text-large total-value-name">
@@ -260,22 +257,30 @@ const OptionGenericLogic = ({ option }) => {
               </div>
             </div> */}
 
-            {showResults &&
-              calculatedValues.concrete &&
-              calculatedValues.steel &&
-              calculatedValues.wood && (
-                <div className="chart-container">
-                  <CustomPieChart
-                    concretePercentage={
-                      calculatedValues.concrete?.concGWPTotal || 0
-                    }
-                    steelPercentage={calculatedValues.steel?.steelGWPTotal || 0}
-                    woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
-                  />
-                </div>
-              )}
-          </div>
-        )}
+              {showResults &&
+                calculatedValues.concrete &&
+                calculatedValues.steel &&
+                calculatedValues.wood && (
+                  <div className="chart-container">
+                    <CustomPieChart
+                      concretePercentage={
+                        calculatedValues.concrete?.concGWPTotal || 0
+                      }
+                      steelPercentage={
+                        calculatedValues.steel?.steelGWPTotal || 0
+                      }
+                      woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
+                    />
+                  </div>
+                )}
+            </div>
+          )}
+        </div>
+        <div>
+          <button className="btn" onClick={calculateResults}>
+            Calculate
+          </button>
+        </div>
       </div>
     </div>
   );
