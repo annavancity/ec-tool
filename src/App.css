@@ -59,7 +59,7 @@ body {
   color: #f9f82c;
 }
 
-.select-material {
+/* .select-material {
   margin: 80px 0px;
   display: flex;
   flex-wrap: wrap;
@@ -83,11 +83,47 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  z-index: 1; */
+/* } */
+
+.select-material {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px 0px;
+}
+
+.material-button {
+  position: relative;
+  display: flex;
+  align-items: center; /* This will vertically center the icon-text */
+  justify-content: center; /* This will horizontally center the icon-text */
+  width: calc((100% / 3) - 20px); /* Adjust for 3 items per row with margins */
+  height: calc((100% / 3) - 20px); /* Initial height based on width */
+  cursor: pointer;
+  border: none;
+  background: none;
+  box-sizing: border-box;
+  padding-top: calc(
+    (100% / 16) - 20px
+  ); /* This doubles the height relative to the width */
+  padding-bottom: calc((100% / 16) - 20px);
+}
+
+.material-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Full height of the button */
+  object-fit: cover;
   z-index: 1;
 }
-.material-image.active {
+
+/* .material-image.active {
   border: 1px solid #f9f82c;
-}
+} */
 
 .overlay {
   z-index: 2;
@@ -96,9 +132,10 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.593);
   opacity: 0;
   transition: opacity 0.3s;
+  border: 1px solid #f9f82c;
 }
 
 .overlay.active-bckg,
@@ -113,15 +150,13 @@ body {
 }
 
 .icon-text {
-  position: relative; /* Ensures text is on top of the overlay */
-  z-index: 3;
   font-family: "Shadows Into Light", cursive;
   font-weight: 400;
   font-size: 28px;
   color: #fefefe;
-  line-height: 32px;
-  z-index: 99;
   cursor: pointer;
+  text-align: center;
+  z-index: 3;
 }
 
 .icon-text.active-text {
