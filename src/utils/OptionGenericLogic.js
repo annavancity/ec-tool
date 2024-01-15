@@ -17,7 +17,7 @@ import {
   markOptionAsCalculated,
 } from "../features/calculatedValuesSlice";
 import ModalDescription from "./ModalDescription";
-import CustomPieChart from "../components/CustomPieChart";
+import StackedBarChart from "../components/StackedBarChart";
 
 const OptionGenericLogic = ({ option }) => {
   const [description, setDescription] = useState("");
@@ -262,7 +262,7 @@ const OptionGenericLogic = ({ option }) => {
                 calculatedValues.steel &&
                 calculatedValues.wood && (
                   <div className="chart-container">
-                    <CustomPieChart
+                    <StackedBarChart
                       concretePercentage={
                         calculatedValues.concrete?.concGWPTotal || 0
                       }
