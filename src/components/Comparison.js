@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import { useSelector } from "react-redux";
 import CustomPieChart from "./CustomPieChart";
 import BarChartComponent from "./BarChartComponent";
 
 const Comparison = () => {
+  // print current page
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   // Access the calculated values from the Redux store
   const calculatedValuesOne = useSelector(
     (state) => state.calculatedValues.OptionOne
@@ -72,14 +79,19 @@ const Comparison = () => {
   ];
 
   return (
-    <div>
-      <div className="summary">
-        {renderOptionResults(calculatedValuesOne, descriptionOne)}
-        {renderOptionResults(calculatedValuesTwo, descriptionTwo)}
-        {renderOptionResults(calculatedValuesThree, descriptionThree)}
-      </div>
-      <div className="summary">
-        <BarChartComponent data={barChartData} />
+    <div className="container">
+      <button className="btn" onClick={handlePrint}>
+        Print PDF
+      </button>
+      <div ref={componentRef}>
+        <div className="summary">
+          {renderOptionResults(calculatedValuesOne, descriptionOne)}
+          {renderOptionResults(calculatedValuesTwo, descriptionTwo)}
+          {renderOptionResults(calculatedValuesThree, descriptionThree)}
+        </div>
+        <div className="summary">
+          <BarChartComponent data={barChartData} />
+        </div>
       </div>
     </div>
   );
