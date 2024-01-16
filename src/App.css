@@ -167,7 +167,6 @@ body {
 .value-row {
   display: flex;
   align-items: center;
-  width: 800px;
 }
 
 .menu-text-large {
@@ -343,6 +342,12 @@ input[type="number"] {
 }
 
 /* --------------------SUMMARY-------------------- */
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .summary {
   width: 100vw;
   display: flex;

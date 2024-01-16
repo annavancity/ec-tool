@@ -17,10 +17,10 @@ const CustomPieChart = ({
     {
       name: "Concrete",
       value: concretePercentage,
-      color: "rgb(192, 192, 192)",
+      color: "rgb(169, 169, 169)",
     },
-    { name: "Steel", value: steelPercentage, color: "rgb(221, 236, 255)" },
-    { name: "Wood", value: woodPercentage, color: "rgb(222, 207, 180)" },
+    { name: "Steel", value: steelPercentage, color: "rgb(52, 104, 192)" },
+    { name: "Wood", value: woodPercentage, color: "rgb(255, 187, 100)" },
     // { name: "Concrete", value: concretePercentage, color: "#BF3131" },
     // { name: "Steel", value: steelPercentage, color: "#86B6F6" },
     // { name: "Wood", value: woodPercentage, color: "#FF9843" },
@@ -79,7 +79,7 @@ const CustomPieChart = ({
   };
 
   return (
-    <ResponsiveContainer width={600} height={300}>
+    <ResponsiveContainer width={500} height={300}>
       <PieChart>
         <Pie
           data={data}
