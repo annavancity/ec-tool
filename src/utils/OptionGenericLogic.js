@@ -132,7 +132,7 @@ const OptionGenericLogic = ({ option }) => {
     <div className="wrapper">
       <div className="container">
         <div>
-          <button className="btn" onClick={resetAllInputs}>
+          <button className="btn-reset" onClick={resetAllInputs}>
             Reset All Inputs
           </button>
         </div>

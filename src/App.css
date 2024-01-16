@@ -30,7 +30,8 @@ body {
   width: 400px;
 }
 
-.btn {
+.btn,
+.btn-reset {
   font-size: 18px;
   text-decoration: none;
   padding: 5px;
@@ -50,6 +51,11 @@ body {
 .btn:hover {
   border: 1px solid #f9f82c;
   color: #f9f82c;
+}
+
+.btn-reset:hover {
+  border: 1px solid #ed2225;
+  color: #ed2225;
 }
 
 /* --------------------------------OPTIONS----------------------------*/
