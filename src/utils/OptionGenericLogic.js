@@ -9,7 +9,6 @@ import Steel from "../components/materials/Steel";
 import {
   updateMaterialInputs,
   markMaterialAsSaved,
-  updateBuildingArea,
 } from "../features/materialInputsSlice";
 import calculateValues from "../utils/calculateValues";
 import {
@@ -18,7 +17,7 @@ import {
 } from "../features/calculatedValuesSlice";
 import ModalDescription from "./ModalDescription";
 import StackedBarChart from "../components/StackedBarChart";
-import CustomPieChart from "../components/CustomPieChart";
+import CustomPieChartPercentage from "../components/CustomPieChartPercentage";
 
 const OptionGenericLogic = ({ option }) => {
   const [description, setDescription] = useState("");
@@ -264,7 +263,7 @@ const OptionGenericLogic = ({ option }) => {
                 calculatedValues.steel &&
                 calculatedValues.wood && (
                   <div className="chart-container">
-                    <CustomPieChart
+                    <CustomPieChartPercentage
                       concretePercentage={
                         calculatedValues.concrete?.concPercentageTotal || 0
                       }
