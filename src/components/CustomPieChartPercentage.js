@@ -24,7 +24,7 @@ const CustomPieChartPercentage = ({
   ];
 
   // Calculate total value
-  const totalValue = data.reduce((sum, entry) => sum + entry.value, 0);
+  //   const totalValue = data.reduce((sum, entry) => sum + entry.value, 0);
 
   // Custom tooltip function for displaying percentages
   //   const CustomTooltip = ({ active, payload }) => {
