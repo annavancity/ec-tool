@@ -115,6 +115,21 @@ const OptionGenericLogic = ({ option }) => {
           </button>
           {description && <h3 className="description-text">{description}</h3>}
         </div>
+
+        <div className="container-area">
+          <div className="value-row">
+            <label className="menu-text-large">Description:</label>
+            <input
+              className="input-description"
+              type="text"
+              // value={buildingArea !== null ? buildingArea : ""}
+              // onChange={handleBuildingAreaChange}
+              name="description"
+              placeholder="Enter description"
+            />
+          </div>
+        </div>
+
         <div className="container-area">
           <div className="value-row">
             <label className="menu-text-large">Building area:</label>

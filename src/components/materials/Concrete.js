@@ -74,15 +74,6 @@ const Concrete = ({ option }) => {
         </p>
         <p className="menu-text-large value-row-percentage">%</p>
       </div>
-      {/* <div className="value-row-description">
-        <p className="menu-text-large description-label">
-          GWP{" "}
-          <span className="menu-text-small">
-            (kgCO<sub>2</sub>e)
-          </span>
-        </p>
-        <p className="menu-text-large description-label">%</p>
-      </div> */}
 
       <div className="value-row">
         <label className="menu-text-large value-name">

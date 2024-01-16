@@ -227,6 +227,10 @@ input[type="number"] {
   border-bottom: none;
 }
 
+.input-description {
+  width: 180px;
+}
+
 .value-row-GWP {
   width: 80px;
   margin-left: 20px;
