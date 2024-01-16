@@ -21,9 +21,6 @@ const CustomPieChartPercentage = ({
     },
     { name: "Steel", value: steelPercentage, color: "rgb(52, 104, 192)" },
     { name: "Wood", value: woodPercentage, color: "rgb(255, 187, 100)" },
-    // { name: "Concrete", value: concretePercentage, color: "#BF3131" },
-    // { name: "Steel", value: steelPercentage, color: "#86B6F6" },
-    // { name: "Wood", value: woodPercentage, color: "#FF9843" },
   ];
 
   // Calculate total value
