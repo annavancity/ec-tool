@@ -30,26 +30,27 @@ const OptionGenericLogic = ({ option }) => {
   const calculatedValues = useSelector(
     (state) => state.calculatedValues[option]
   );
-  const buildingArea = useSelector(
-    (state) => state.materialInputs[option].buildingArea
+
+  // Retrieve building area from local storage
+  const savedBuildingArea = localStorage.getItem(`${option}BuildingArea`);
+
+  // Initialize building area state. Use null if nothing in local storage.
+  const [buildingArea, setBuildingArea] = useState(
+    savedBuildingArea ? Number(savedBuildingArea) : null
   );
 
   // Function to handle building area change
   const handleBuildingAreaChange = (e) => {
     const newArea = e.target.value;
-    dispatch(updateBuildingArea({ option, area: newArea }));
+    setBuildingArea(newArea ? Number(newArea) : null);
   };
 
   // Effect to save building area to local storage whenever it changes
   useEffect(() => {
-    localStorage.setItem(`${option}BuildingArea`, buildingArea);
+    if (buildingArea !== null) {
+      localStorage.setItem(`${option}BuildingArea`, buildingArea);
+    }
   }, [buildingArea, option]);
-
-  useEffect(() => {
-    // Load building area from local storage
-    const savedArea = localStorage.getItem(`${option}BuildingArea`);
-    dispatch(updateBuildingArea({ option, area: savedArea }));
-  }, [option, dispatch]);
 
   // Load the description from local storage
   useEffect(() => {
@@ -120,10 +121,10 @@ const OptionGenericLogic = ({ option }) => {
             <label className="menu-text-large">Building area:</label>
             <input
               type="number"
-              value={buildingArea || ""}
+              value={buildingArea !== null ? buildingArea : ""}
               onChange={handleBuildingAreaChange}
               name="area"
-              placeholder="area"
+              placeholder="Enter area"
             />
             <p className="menu-text-large conv">
               m<sup>2</sup>
@@ -265,12 +266,14 @@ const OptionGenericLogic = ({ option }) => {
                   <div className="chart-container">
                     <CustomPieChart
                       concretePercentage={
-                        calculatedValues.concrete?.concGWPTotal || 0
+                        calculatedValues.concrete?.concPercentageTotal || 0
                       }
                       steelPercentage={
-                        calculatedValues.steel?.steelGWPTotal || 0
+                        calculatedValues.steel?.steelPercentageTotal || 0
                       }
-                      woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
+                      woodPercentage={
+                        calculatedValues.wood?.woodPercentageTotal || 0
+                      }
                     />
 
                     <StackedBarChart
