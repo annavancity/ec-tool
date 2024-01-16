@@ -106,9 +106,36 @@ const OptionGenericLogic = ({ option }) => {
     }
   };
 
+  const resetAllInputs = () => {
+    const options = ["OptionOne", "OptionTwo", "OptionThree"];
+
+    options.forEach((opt) => {
+      // Clear local storage for each option
+      localStorage.removeItem(`${opt}BuildingArea`);
+      localStorage.removeItem(`${opt}Description`);
+      localStorage.removeItem(`${opt}`);
+      // Add any other keys specific to each option that need to be cleared
+    });
+
+    // Update states and Redux store as needed to reflect the reset state
+    // ...
+
+    // Example: Resetting state and Redux store for the current option
+    setBuildingArea(null);
+    setDescription("");
+    setShowResults(false);
+    dispatch(setCalculatedValues({ option, values: {} }));
+    // You might need to add more dispatch calls to reset other parts of the Redux store
+  };
+
   return (
     <div className="wrapper">
       <div className="container">
+        <div>
+          <button className="btn" onClick={resetAllInputs}>
+            Reset All Inputs
+          </button>
+        </div>
         <div className="container-description">
           <button className="btn" onClick={openModalDescription}>
             Set / Modify Description
