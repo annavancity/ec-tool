@@ -144,6 +144,9 @@ const OptionGenericLogic = ({ option }) => {
     setBuildingArea(null);
     setDescription("");
     setShowResults(false);
+
+    // Perform a hard reload of the page
+    window.location.reload();
   };
 
   return (
