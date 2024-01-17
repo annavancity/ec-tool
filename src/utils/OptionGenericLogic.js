@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import concrete from "../images/concrete.jpg";
 import steel from "../images/steel.jpg";
 import wood from "../images/wood.jpg";
@@ -40,7 +39,6 @@ const OptionGenericLogic = ({ option }) => {
   const [buildingArea, setBuildingArea] = useState(
     savedBuildingArea ? Number(savedBuildingArea) : null
   );
-  const navigate = useNavigate();
 
   // Function to handle building area change
   const handleBuildingAreaChange = (e) => {
@@ -150,7 +148,7 @@ const OptionGenericLogic = ({ option }) => {
     // Perform a hard reload of the page
     window.location.reload();
     // Navigate to the default page after the reload
-    navigate("/option_one");
+    window.location.href = "/";
   };
 
   return (
