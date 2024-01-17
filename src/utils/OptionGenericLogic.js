@@ -89,6 +89,13 @@ const OptionGenericLogic = ({ option }) => {
     }
   }, [dispatch, option]);
 
+  useEffect(() => {
+    // Assuming calculatedValues has a property to indicate if calculation is done
+    if (calculatedValues.isCalculated) {
+      setShowResults(true);
+    }
+  }, [calculatedValues.isCalculated]);
+
   const areAllMaterialsSaved = () => {
     return (
       materialInputs.concrete.isSaved &&
