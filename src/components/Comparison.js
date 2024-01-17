@@ -3,6 +3,7 @@ import { useReactToPrint } from "react-to-print";
 import { useSelector } from "react-redux";
 import CustomPieChart from "./CustomPieChart";
 import BarChartComponent from "./BarChartComponent";
+import logo from "../../src/images/logo-min.svg";
 
 const Comparison = () => {
   // print current page
@@ -79,11 +80,17 @@ const Comparison = () => {
   ];
 
   return (
-    <div className="container">
-      <button className="btn" onClick={handlePrint}>
+    <div className="container-summary">
+      <button className="btn print" onClick={handlePrint}>
         Print PDF
       </button>
-      <div ref={componentRef}>
+      <div className="container print logo">
+        <span>Fast</span>
+        <img src={logo} alt="Logo-plus" className="logo-image" />
+        <span>Epp</span>
+      </div>
+
+      <div className="container-charts-all" ref={componentRef}>
         <div className="summary">
           {renderOptionResults(calculatedValuesOne, descriptionOne)}
           {renderOptionResults(calculatedValuesTwo, descriptionTwo)}

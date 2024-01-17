@@ -353,6 +353,25 @@ input[type="number"] {
 
 /* --------------------SUMMARY-------------------- */
 
+.container-summary {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  height: 100vh;
+}
+
+.print {
+  align-self: flex-end;
+}
+.container-charts-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
 .chart-container {
   display: flex;
   justify-content: center;
@@ -361,7 +380,7 @@ input[type="number"] {
 .summary {
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   padding: 10px 0;
@@ -380,10 +399,34 @@ input[type="number"] {
 
 .chart-description {
   text-transform: uppercase;
-  text-decoration: underline;
 }
 
 /* -----------------PRINT PDF STYLE--------------- */
 @media print {
   /* Add your print-specific styles here */
+}
+
+/* ---------------------LOGO----------------------- */
+
+.logo {
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.container.print.logo {
+  display: flex;
+  align-items: center; /* Aligns the text and image vertically */
+  justify-content: center; /* Centers the content */
+}
+
+.container.print.logo span {
+  margin: 0 1px; /* Adjusts the space between the words and the image */
+}
+
+.logo-image {
+  width: 25px; /* Set the width of your image */
+  height: auto; /* Maintains the aspect ratio of the image */
+  align-self: flex-end;
 }
