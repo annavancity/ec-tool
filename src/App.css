@@ -383,7 +383,7 @@ input[type="number"] {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 50px 0;
+  /* padding: 50px 0; */
 }
 .summary-container {
   display: flex;
@@ -410,6 +410,7 @@ input[type="number"] {
 /* ---------------------LOGO----------------------- */
 
 .logo {
+  margin-top: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-weight: 200;
