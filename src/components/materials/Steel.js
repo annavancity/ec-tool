@@ -47,6 +47,17 @@ const Steel = ({ option }) => {
   };
 
   // Load from local storage
+  // useEffect(() => {
+  //   // Check if the concrete data is marked as saved in the Redux state
+  //   if (materialInputs.steel.isSaved) {
+  //     // If it's saved, use the saved data from Redux state
+  //     setLocalInputs(steelInputs);
+  //   } else {
+  //     // If it's not saved (e.g., after a reset), use the initial state for the given option
+  //     setLocalInputs(initialState[option].steel.inputs);
+  //   }
+  // }, [materialInputs.steel, steelInputs, option]);
+
   useEffect(() => {
     if (materialInputs.steel.isSaved) {
       const savedData = JSON.parse(localStorage.getItem(option));
