@@ -9,7 +9,6 @@ import Steel from "../components/materials/Steel";
 import {
   updateMaterialInputs,
   markMaterialAsSaved,
-  resetOptionState,
 } from "../features/materialInputsSlice";
 import calculateValues from "../utils/calculateValues";
 import {

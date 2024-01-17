@@ -135,18 +135,10 @@ export const materialInputsSlice = createSlice({
       const { option, area } = action.payload;
       state[option].buildingArea = area;
     },
-    resetOptionState: (state, action) => {
-      const { option } = action.payload;
-      state[option] = initialState[option];
-    },
   },
 });
 
-export const {
-  updateMaterialInputs,
-  markMaterialAsSaved,
-  updateBuildingArea,
-  resetOptionState,
-} = materialInputsSlice.actions;
+export const { updateMaterialInputs, markMaterialAsSaved, updateBuildingArea } =
+  materialInputsSlice.actions;
 
 export default materialInputsSlice.reducer;
