@@ -378,12 +378,12 @@ input[type="number"] {
   align-items: center;
 }
 .summary {
-  width: 100vw;
+  padding: 0px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 10px 0;
+  padding: 50px 0;
 }
 .summary-container {
   display: flex;
@@ -395,6 +395,7 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .chart-description {
@@ -409,7 +410,6 @@ input[type="number"] {
 /* ---------------------LOGO----------------------- */
 
 .logo {
-  margin-top: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-weight: 200;

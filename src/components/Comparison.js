@@ -84,13 +84,13 @@ const Comparison = () => {
       <button className="btn print" onClick={handlePrint}>
         Print PDF
       </button>
-      <div className="container print logo">
-        <span>Fast</span>
-        <img src={logo} alt="Logo-plus" className="logo-image" />
-        <span>Epp</span>
-      </div>
 
       <div className="container-charts-all" ref={componentRef}>
+        <div className="container print logo">
+          <span>Fast</span>
+          <img src={logo} alt="Logo-plus" className="logo-image" />
+          <span>Epp</span>
+        </div>
         <div className="summary">
           {renderOptionResults(calculatedValuesOne, descriptionOne)}
           {renderOptionResults(calculatedValuesTwo, descriptionTwo)}
