@@ -30,6 +30,10 @@ function App() {
         <Route path="/option_two" element={<OptionTwo />} />
         <Route path="/option_three" element={<OptionThree />} />
         <Route path="/summary_comparison" element={<Comparison />} />
+        {/* <Route
+  path="/summary_comparison"
+  element={allOptionsCalculated ? <Comparison /> : <Redirect to="/" />} // Redirect or show an alternative component if not all options are calculated
+/> */}
       </Routes>
     </Router>
   );

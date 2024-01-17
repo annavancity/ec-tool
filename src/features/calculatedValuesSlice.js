@@ -36,9 +36,16 @@ export const calculatedValuesSlice = createSlice({
       const { option } = action.payload;
       state[option].isCalculated = true;
     },
+    resetCalculatedValues: (state, action) => {
+      const { option } = action.payload;
+      state[option] = initialState[option];
+    },
   },
 });
 
-export const { setCalculatedValues, markOptionAsCalculated } =
-  calculatedValuesSlice.actions;
+export const {
+  setCalculatedValues,
+  markOptionAsCalculated,
+  resetCalculatedValues,
+} = calculatedValuesSlice.actions;
 export default calculatedValuesSlice.reducer;

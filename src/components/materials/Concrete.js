@@ -6,6 +6,7 @@ import {
 } from "../../features/materialInputsSlice";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
+import { initialState } from "../../features/materialInputsSlice";
 
 const Concrete = ({ option }) => {
   const dispatch = useDispatch();
@@ -26,6 +27,11 @@ const Concrete = ({ option }) => {
     });
   };
 
+  // Update local state when Redux state changes
+  useEffect(() => {
+    setLocalInputs({ ...concreteInputs });
+  }, [concreteInputs]);
+
   // Save inputs
   const saveInputs = () => {
     const concreteData = { inputs: localInputs };
@@ -42,18 +48,23 @@ const Concrete = ({ option }) => {
 
   // Load from local storage
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem(option));
-    if (savedData && savedData.concrete) {
-      setLocalInputs(savedData.concrete.inputs);
-      dispatch(
-        updateMaterialInputs({
-          option,
-          materialType: "concrete",
-          inputs: savedData.concrete.inputs,
-        })
-      );
+    if (materialInputs.concrete.isSaved) {
+      const savedData = JSON.parse(localStorage.getItem(option));
+      if (savedData && savedData.concrete) {
+        setLocalInputs(savedData.concrete.inputs);
+        dispatch(
+          updateMaterialInputs({
+            option,
+            materialType: "concrete",
+            inputs: savedData.concrete.inputs,
+          })
+        );
+      }
+    } else {
+      // Reset local state if isSaved is false
+      setLocalInputs(initialState[option].concrete.inputs);
     }
-  }, [option, dispatch]);
+  }, [option, materialInputs.concrete.isSaved, dispatch]);
 
   // Close modal
   const handleCloseModal = () => {

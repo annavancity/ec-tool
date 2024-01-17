@@ -9,15 +9,18 @@ import Steel from "../components/materials/Steel";
 import {
   updateMaterialInputs,
   markMaterialAsSaved,
+  resetOptionState,
 } from "../features/materialInputsSlice";
 import calculateValues from "../utils/calculateValues";
 import {
   setCalculatedValues,
   markOptionAsCalculated,
+  resetCalculatedValues,
 } from "../features/calculatedValuesSlice";
 import ModalDescription from "./ModalDescription";
 import StackedBarChart from "../components/StackedBarChart";
 import CustomPieChartPercentage from "../components/CustomPieChartPercentage";
+import { initialState } from "../features/materialInputsSlice";
 
 const OptionGenericLogic = ({ option }) => {
   const [description, setDescription] = useState("");
@@ -110,22 +113,38 @@ const OptionGenericLogic = ({ option }) => {
     const options = ["OptionOne", "OptionTwo", "OptionThree"];
 
     options.forEach((opt) => {
-      // Clear local storage for each option
       localStorage.removeItem(`${opt}BuildingArea`);
       localStorage.removeItem(`${opt}Description`);
-      localStorage.removeItem(`${opt}`);
-      // Add any other keys specific to each option that need to be cleared
+      localStorage.removeItem(opt);
+
+      dispatch(resetCalculatedValues({ option: opt })); // Dispatch reset action
+      dispatch(
+        updateMaterialInputs({
+          option: opt,
+          materialType: "concrete",
+          inputs: initialState[opt].concrete.inputs,
+        })
+      );
+      dispatch(
+        updateMaterialInputs({
+          option: opt,
+          materialType: "steel",
+          inputs: initialState[opt].steel.inputs,
+        })
+      );
+      dispatch(
+        updateMaterialInputs({
+          option: opt,
+          materialType: "wood",
+          inputs: initialState[opt].wood.inputs,
+        })
+      );
     });
 
-    // Update states and Redux store as needed to reflect the reset state
-    // ...
-
-    // Example: Resetting state and Redux store for the current option
+    // Reset the local states for building area and description
     setBuildingArea(null);
     setDescription("");
     setShowResults(false);
-    dispatch(setCalculatedValues({ option, values: {} }));
-    // You might need to add more dispatch calls to reset other parts of the Redux store
   };
 
   return (
@@ -264,42 +283,6 @@ const OptionGenericLogic = ({ option }) => {
           </div>
           {showResults && (
             <div className="optionResults">
-              {/* <div className="total-values">
-              <div className="value-row">
-                <p className="menu-text-large total-value-name">Concrete</p>
-                <p className="menu-text-large total-value-name">
-                  {calculatedValues.concrete?.concGWPTotal}
-                </p>
-                <p className="menu-text-large">
-                  {calculatedValues.concrete?.concPercentageTotal}
-                </p>
-              </div>
-              <div className="value-row">
-                <p className="menu-text-large total-value-name">Steel</p>
-                <p className="menu-text-large total-value-name">
-                  {calculatedValues.steel?.steelGWPTotal}
-                </p>
-                <p className="menu-text-large">
-                  {calculatedValues.steel?.steelPercentageTotal}
-                </p>
-              </div>
-              <div className="value-row">
-                <p className="menu-text-large total-value-name">Wood</p>
-                <p className="menu-text-large total-value-name">
-                  {calculatedValues.wood?.woodGWPTotal}
-                </p>
-                <p className="menu-text-large">
-                  {calculatedValues.wood?.woodPercentageTotal}
-                </p>
-              </div>
-              <div className="value-row">
-                <p className="menu-text-large total-value-name">Total</p>
-                <p className="menu-text-large total-value-name">
-                  {calculatedValues.totals?.GWPTotal}
-                </p>
-              </div>
-            </div> */}
-
               {showResults &&
                 calculatedValues.concrete &&
                 calculatedValues.steel &&

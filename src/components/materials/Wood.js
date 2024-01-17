@@ -6,6 +6,7 @@ import {
 } from "../../features/materialInputsSlice";
 import Modal from "../../utils/Modal";
 import handleSaveInputs from "../../utils/handleSaveInputs";
+import { initialState } from "../../features/materialInputsSlice";
 
 const Wood = ({ option }) => {
   const dispatch = useDispatch();
@@ -26,6 +27,11 @@ const Wood = ({ option }) => {
     });
   };
 
+  // Update local state when Redux state changes
+  useEffect(() => {
+    setLocalInputs({ ...woodInputs });
+  }, [woodInputs]);
+
   // Save inputs
   const saveInputs = () => {
     const woodData = { inputs: localInputs };
@@ -42,18 +48,23 @@ const Wood = ({ option }) => {
 
   // Load from local storage
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem(option));
-    if (savedData && savedData.wood) {
-      setLocalInputs(savedData.wood.inputs);
-      dispatch(
-        updateMaterialInputs({
-          option,
-          materialType: "wood",
-          inputs: savedData.wood.inputs,
-        })
-      );
+    if (materialInputs.wood.isSaved) {
+      const savedData = JSON.parse(localStorage.getItem(option));
+      if (savedData && savedData.wood) {
+        setLocalInputs(savedData.wood.inputs);
+        dispatch(
+          updateMaterialInputs({
+            option,
+            materialType: "wood",
+            inputs: savedData.wood.inputs,
+          })
+        );
+      }
+    } else {
+      // Reset local state if isSaved is false
+      setLocalInputs(initialState[option].wood.inputs);
     }
-  }, [option, dispatch]);
+  }, [option, materialInputs.wood.isSaved, dispatch]);
 
   // Close modal
   const handleCloseModal = () => {
