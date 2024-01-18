@@ -74,16 +74,6 @@ const OptionGenericLogic = ({ option }) => {
     localStorage.setItem(`${option}Description`, newDescription);
   };
 
-
-    useEffect(() => {
-      const handler = () => setValue(localStorage.getItem(key));
-      window.addEventListener("storage", handler);
-      return () => window.removeEventListener("storage", handler);
-    }, [key]);
-
-    return value;
-  }
-
   useEffect(() => {
     // Load saved inputs from local storage and update Redux store
     const savedData = JSON.parse(localStorage.getItem(option));
