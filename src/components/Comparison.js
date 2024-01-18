@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { useSelector } from "react-redux";
-import CustomPieChart from "./CustomPieChart";
-import BarChartComponent from "./BarChartComponent";
+import CustomPieChart from "./charts/CustomPieChart";
+import BarChartComponent from "./charts/BarChartComponent";
 import logo from "../../src/images/logo-min.svg";
 
 const Comparison = () => {

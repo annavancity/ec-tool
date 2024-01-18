@@ -185,7 +185,11 @@ body {
 .menu-text-small {
   font-size: 13px;
 }
-
+.recalculate-message {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #ed2225;
+}
 .conv {
   margin-left: 5px;
   width: 50px;
@@ -363,6 +367,7 @@ input[type="number"] {
 
 .print {
   align-self: flex-end;
+  margin-bottom: 20px;
 }
 .container-charts-all {
   display: flex;

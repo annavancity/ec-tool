@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useContext } from "react";
+import { CalculationContext } from "../../utils/CalculationContext";
 import {
   updateMaterialInputs,
   markMaterialAsSaved,
@@ -11,6 +13,7 @@ import { initialState } from "../../features/materialInputsSlice";
 const Concrete = ({ option }) => {
   const dispatch = useDispatch();
   const materialInputs = useSelector((state) => state.materialInputs[option]);
+  const { markInputsChanged } = useContext(CalculationContext);
   const concreteInputs = materialInputs.concrete.inputs;
   const concreteCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.concrete || {}
@@ -41,22 +44,15 @@ const Concrete = ({ option }) => {
         materialType: "concrete",
         inputs: concreteData.inputs,
       })
-    ); // Update Redux state with new inputs
-    handleSaveInputs(option, "concrete", concreteData); // Save to local storage
-    dispatch(markMaterialAsSaved({ option, materialType: "concrete" })); // Mark as saved in Redux state
+    );
+    handleSaveInputs(option, "concrete", concreteData);
+    dispatch(markMaterialAsSaved({ option, materialType: "concrete" }));
+
+    // Mark inputs as changed
+    markInputsChanged(option, true);
   };
 
   // Load from local storage
-  // useEffect(() => {
-  //   // Check if the concrete data is marked as saved in the Redux state
-  //   if (materialInputs.concrete.isSaved) {
-  //     // If it's saved, use the saved data from Redux state
-  //     setLocalInputs(concreteInputs);
-  //   } else {
-  //     // If it's not saved (e.g., after a reset), use the initial state for the given option
-  //     setLocalInputs(initialState[option].concrete.inputs);
-  //   }
-  // }, [materialInputs.concrete, concreteInputs, option]);
 
   useEffect(() => {
     if (materialInputs.concrete.isSaved) {

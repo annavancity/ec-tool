@@ -7,6 +7,7 @@ import OptionOne from "./components/OptionOne";
 import OptionTwo from "./components/OptionTwo";
 import OptionThree from "./components/OptionThree";
 import Navigation from "./utils/Navigation";
+import { CalculationProvider } from "./utils/CalculationContext";
 
 function App() {
   const isOptionOneCalculated = useSelector(
@@ -22,16 +23,18 @@ function App() {
     isOptionOneCalculated && isOptionTwoCalculated && isOptionThreeCalculated;
 
   return (
-    <Router>
-      <Navigation allOptionsCalculated={allOptionsCalculated} />
+    <CalculationProvider>
+      <Router>
+        <Navigation allOptionsCalculated={allOptionsCalculated} />
 
-      <Routes>
-        <Route path="/option_one" element={<OptionOne />} />
-        <Route path="/option_two" element={<OptionTwo />} />
-        <Route path="/option_three" element={<OptionThree />} />
-        <Route path="/summary_comparison" element={<Comparison />} />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route path="/option_one" element={<OptionOne />} />
+          <Route path="/option_two" element={<OptionTwo />} />
+          <Route path="/option_three" element={<OptionThree />} />
+          <Route path="/summary_comparison" element={<Comparison />} />
+        </Routes>
+      </Router>
+    </CalculationProvider>
   );
 }
 

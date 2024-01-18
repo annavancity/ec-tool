@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useContext } from "react";
+import { CalculationContext } from "../../utils/CalculationContext";
 import {
   updateMaterialInputs,
   markMaterialAsSaved,
@@ -11,6 +13,7 @@ import { initialState } from "../../features/materialInputsSlice";
 const Steel = ({ option }) => {
   const dispatch = useDispatch();
   const materialInputs = useSelector((state) => state.materialInputs[option]);
+  const { markInputsChanged } = useContext(CalculationContext);
   const steelInputs = materialInputs.steel.inputs;
   const steelCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.steel || {}
@@ -44,19 +47,12 @@ const Steel = ({ option }) => {
     ); // Update Redux state with new inputs
     handleSaveInputs(option, "steel", steelData); // Save to local storage
     dispatch(markMaterialAsSaved({ option, materialType: "steel" })); // Mark as saved in Redux state
+
+    // Mark inputs as changed
+    markInputsChanged(option, true);
   };
 
   // Load from local storage
-  // useEffect(() => {
-  //   // Check if the concrete data is marked as saved in the Redux state
-  //   if (materialInputs.steel.isSaved) {
-  //     // If it's saved, use the saved data from Redux state
-  //     setLocalInputs(steelInputs);
-  //   } else {
-  //     // If it's not saved (e.g., after a reset), use the initial state for the given option
-  //     setLocalInputs(initialState[option].steel.inputs);
-  //   }
-  // }, [materialInputs.steel, steelInputs, option]);
 
   useEffect(() => {
     if (materialInputs.steel.isSaved) {

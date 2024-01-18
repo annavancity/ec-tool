@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useContext } from "react";
+import { CalculationContext } from "../utils/CalculationContext";
 import concrete from "../images/concrete.jpg";
 import steel from "../images/steel.jpg";
 import wood from "../images/wood.jpg";
@@ -17,12 +19,14 @@ import {
   resetCalculatedValues,
 } from "../features/calculatedValuesSlice";
 import ModalDescription from "./ModalDescription";
-import StackedBarChart from "../components/StackedBarChart";
-import CustomPieChartPercentage from "../components/CustomPieChartPercentage";
+import StackedBarChart from "../components/charts/StackedBarChart";
+import CustomPieChartPercentage from "../components/charts/CustomPieChartPercentage";
 import { initialState } from "../features/materialInputsSlice";
 
 const OptionGenericLogic = ({ option }) => {
   const [description, setDescription] = useState("");
+  const { inputsChanged, markInputsChanged } = useContext(CalculationContext);
+  const [showRecalculateMessage, setShowRecalculateMessage] = useState(false);
   const [isModalDescriptionOpen, setIsModalDescriptionOpen] = useState(false);
   const [showResults, setShowResults] = useState(false); // state for showing totals and piechart after calculate button clicked
   const dispatch = useDispatch();
@@ -70,6 +74,20 @@ const OptionGenericLogic = ({ option }) => {
     localStorage.setItem(`${option}Description`, newDescription);
   };
 
+  function useLocalStorageListener(key, defaultValue = "") {
+    const [value, setValue] = useState(
+      () => localStorage.getItem(key) || defaultValue
+    );
+
+    useEffect(() => {
+      const handler = () => setValue(localStorage.getItem(key));
+      window.addEventListener("storage", handler);
+      return () => window.removeEventListener("storage", handler);
+    }, [key]);
+
+    return value;
+  }
+
   useEffect(() => {
     // Load saved inputs from local storage and update Redux store
     const savedData = JSON.parse(localStorage.getItem(option));
@@ -104,12 +122,21 @@ const OptionGenericLogic = ({ option }) => {
     );
   };
 
+  useEffect(() => {
+    if (inputsChanged[option]) {
+      setShowRecalculateMessage(true);
+    }
+  }, [inputsChanged, option]);
+
   const calculateResults = () => {
     if (areAllMaterialsSaved()) {
       const calculatedResults = calculateValues(materialInputs);
       dispatch(setCalculatedValues({ option, values: calculatedResults }));
       dispatch(markOptionAsCalculated({ option })); // Mark the option as calculated
       setShowResults(true);
+      // Reset flag in context
+      markInputsChanged(option, false);
+      setShowRecalculateMessage(false);
     } else {
       alert("Please save all material inputs before calculating.");
     }
@@ -325,6 +352,11 @@ const OptionGenericLogic = ({ option }) => {
             </div>
           )}
         </div>
+        {showRecalculateMessage && (
+          <div className="recalculate-message">
+            Calculations and charts are out-of-date.
+          </div>
+        )}
         <div>
           <button className="btn" onClick={calculateResults}>
             Calculate
