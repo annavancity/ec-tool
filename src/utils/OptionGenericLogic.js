@@ -18,19 +18,20 @@ import {
   markOptionAsCalculated,
   resetCalculatedValues,
 } from "../features/calculatedValuesSlice";
-import ModalDescription from "./ModalDescription";
 import StackedBarChart from "../components/charts/StackedBarChart";
 import CustomPieChartPercentage from "../components/charts/CustomPieChartPercentage";
 import { initialState } from "../features/materialInputsSlice";
 
 const OptionGenericLogic = ({ option }) => {
-  const [description, setDescription] = useState("");
   const { inputsChanged, markInputsChanged } = useContext(CalculationContext);
   const [showRecalculateMessage, setShowRecalculateMessage] = useState(false);
-  const [isModalDescriptionOpen, setIsModalDescriptionOpen] = useState(false);
   const [showResults, setShowResults] = useState(false); // state for showing totals and piechart after calculate button clicked
   const dispatch = useDispatch();
   const [selectedComponent, setSelectedComponent] = useState("concrete");
+
+  const savedDescription = localStorage.getItem(`${option}Description`) || ""; // Initialize description state with value from local storage
+  const [description, setDescription] = useState(savedDescription);
+
   const materialInputs = useSelector((state) => state.materialInputs[option]);
   const calculatedValues = useSelector(
     (state) => state.calculatedValues[option]
@@ -57,19 +58,9 @@ const OptionGenericLogic = ({ option }) => {
     }
   }, [buildingArea, option]);
 
-  // Load the description from local storage
-  useEffect(() => {
-    const savedDescription = localStorage.getItem(`${option}Description`);
-    if (savedDescription) {
-      setDescription(savedDescription);
-    }
-  }, [option]);
-
-  const openModalDescription = () => setIsModalDescriptionOpen(true);
-
-  const closeModalDescription = () => setIsModalDescriptionOpen(false);
-
-  const handleSaveDescription = (newDescription) => {
+  // Function to handle description change
+  const handleDescriptionChange = (e) => {
+    const newDescription = e.target.value;
     setDescription(newDescription);
     localStorage.setItem(`${option}Description`, newDescription);
   };
@@ -179,31 +170,31 @@ const OptionGenericLogic = ({ option }) => {
             Reset All Inputs
           </button>
         </div>
-        <div className="container-description">
-          <button className="btn" onClick={openModalDescription}>
-            Set / Modify Description
-          </button>
-          {description && <h3 className="description-text">{description}</h3>}
-        </div>
 
         <div className="container-area">
           <div className="value-row">
-            <label className="menu-text-large">Description:</label>
+            <label className="menu-text-large label-area-fixed">
+              Description:
+            </label>
             <input
-              className="input-description"
+              className="input-area-fixed"
               type="text"
-              // value={buildingArea !== null ? buildingArea : ""}
-              // onChange={handleBuildingAreaChange}
+              value={description}
+              onChange={handleDescriptionChange}
               name="description"
               placeholder="Enter description"
+              maxLength="30"
             />
           </div>
         </div>
 
         <div className="container-area">
           <div className="value-row">
-            <label className="menu-text-large">Building area:</label>
+            <label className="menu-text-large label-area-fixed">
+              Building area:
+            </label>
             <input
+              className="input-area-fixed"
               type="number"
               value={buildingArea !== null ? buildingArea : ""}
               onChange={handleBuildingAreaChange}
@@ -216,13 +207,6 @@ const OptionGenericLogic = ({ option }) => {
             <span className="error-message"></span>
           </div>
         </div>
-
-        <ModalDescription
-          isOpen={isModalDescriptionOpen}
-          handleClose={closeModalDescription}
-          handleSubmit={handleSaveDescription}
-          defaultDescription={description}
-        />
       </div>
       <div className="container">
         <div className="select-material">

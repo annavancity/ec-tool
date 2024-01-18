@@ -52,6 +52,9 @@ body {
   border: 1px solid #f9f82c;
   color: #f9f82c;
 }
+.btn-reset {
+  margin-bottom: 10px;
+}
 
 .btn-reset:hover {
   border: 1px solid #ed2225;
@@ -59,38 +62,19 @@ body {
 }
 
 /* --------------------------------OPTIONS----------------------------*/
-/* Active option highlighted */
+.input-area-fixed {
+  width: 200px;
+  text-align: left;
+}
+
+.label-area-fixed {
+  width: 120px;
+}
+
 .btn.active {
   border: 1px solid #f9f82c;
   color: #f9f82c;
 }
-
-/* .select-material {
-  margin: 80px 0px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.material-button {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-  height: 222px;
-}
-
-.material-image {
-  position: absolute;
-  width: 400px;
-  height: 222px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 1; */
-/* } */
 
 .select-material {
   display: flex;
@@ -126,10 +110,6 @@ body {
   object-fit: cover;
   z-index: 1;
 }
-
-/* .material-image.active {
-  border: 1px solid #f9f82c;
-} */
 
 .overlay {
   z-index: 2;

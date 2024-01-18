@@ -29,11 +29,11 @@ const BarChartComponent = ({ data }) => {
   return (
     <div className="summary">
       <div className="chart">
-        <ResponsiveContainer width={500} height={300}>
+        <ResponsiveContainer width={700} height={300}>
           <BarChart
             layout="vertical"
             data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 5, right: 5, left: 100, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" />
@@ -53,11 +53,11 @@ const BarChartComponent = ({ data }) => {
         <h2 className="chart-description">Total GWP</h2>
       </div>
       <div className="chart">
-        <ResponsiveContainer width={600} height={300}>
+        <ResponsiveContainer width={700} height={300}>
           <BarChart
             layout="vertical"
             data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 5, right: 5, left: 100, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" />
