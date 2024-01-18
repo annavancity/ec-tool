@@ -82,7 +82,7 @@ const Wood = ({ option }) => {
     <div className="wood-section">
       <div className="value-row">
         <label className="menu-text-large value-name"></label>
-        <input className="input-hide" type="number" />
+        <input className="input-hide" disabled={true} />
         <p className="menu-text-large conv"></p>
         <p className="menu-text-large value-row-GWP ">
           GWP{" "}
