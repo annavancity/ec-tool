@@ -387,11 +387,6 @@ input[type="number"] {
   text-transform: uppercase;
 }
 
-/* -----------------PRINT PDF STYLE--------------- */
-@media print {
-  /* Add your print-specific styles here */
-}
-
 /* ---------------------LOGO----------------------- */
 
 .logo {
@@ -415,4 +410,15 @@ input[type="number"] {
   width: 25px; /* Set the width of your image */
   height: auto; /* Maintains the aspect ratio of the image */
   align-self: flex-end;
+}
+
+/* -----------------PRINT PDF STYLE--------------- */
+@media print {
+  @page {
+    size: 17in 11in; /* landscape orientation for Tabloid size */
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
 }
