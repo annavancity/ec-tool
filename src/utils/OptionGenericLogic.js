@@ -74,10 +74,6 @@ const OptionGenericLogic = ({ option }) => {
     localStorage.setItem(`${option}Description`, newDescription);
   };
 
-  function useLocalStorageListener(key, defaultValue = "") {
-    const [value, setValue] = useState(
-      () => localStorage.getItem(key) || defaultValue
-    );
 
     useEffect(() => {
       const handler = () => setValue(localStorage.getItem(key));
