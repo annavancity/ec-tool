@@ -7,7 +7,6 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
   Cell,
 } from "recharts";
 
@@ -29,51 +28,51 @@ const BarChartComponent = ({ data }) => {
   return (
     <div className="summary">
       <div className="chart">
-        <ResponsiveContainer width={700} height={300}>
-          <BarChart
-            layout="vertical"
-            data={data}
-            margin={{ top: 5, right: 5, left: 90, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" />
-            <YAxis dataKey="name" type="category" />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="gwptotal">
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={optionColors[entry.name] || "#000"}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+        <BarChart
+          width={700}
+          height={300}
+          layout="vertical"
+          data={data}
+          margin={{ top: 5, right: 5, left: 90, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis type="number" />
+          <YAxis dataKey="name" type="category" />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="gwptotal">
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={optionColors[entry.name] || "#000"}
+              />
+            ))}
+          </Bar>
+        </BarChart>
         <h2 className="chart-description">Total GWP</h2>
       </div>
       <div className="chart">
-        <ResponsiveContainer width={700} height={300}>
-          <BarChart
-            layout="vertical"
-            data={data}
-            margin={{ top: 5, right: 5, left: 90, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" />
-            <YAxis dataKey="name" type="category" />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="gwpPerArea">
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={optionColors[entry.name] || "#000"}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+        <BarChart
+          width={700}
+          height={300}
+          layout="vertical"
+          data={data}
+          margin={{ top: 5, right: 5, left: 90, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis type="number" />
+          <YAxis dataKey="name" type="category" />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="gwpPerArea">
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={optionColors[entry.name] || "#000"}
+              />
+            ))}
+          </Bar>
+        </BarChart>
         <h2 className="chart-description">GWP per Building Area</h2>
       </div>
     </div>

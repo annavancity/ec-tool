@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  PieChart,
-  Pie,
-  Legend,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
-} from "recharts";
+import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
 
 const CustomPieChart = ({
   concretePercentage,
@@ -21,9 +14,6 @@ const CustomPieChart = ({
     },
     { name: "Steel", value: steelPercentage, color: "rgb(52, 104, 192)" },
     { name: "Wood", value: woodPercentage, color: "rgb(255, 187, 100)" },
-    // { name: "Concrete", value: concretePercentage, color: "#BF3131" },
-    // { name: "Steel", value: steelPercentage, color: "#86B6F6" },
-    // { name: "Wood", value: woodPercentage, color: "#FF9843" },
   ];
 
   // Calculate total value
@@ -79,26 +69,24 @@ const CustomPieChart = ({
   };
 
   return (
-    <ResponsiveContainer width={500} height={300}>
-      <PieChart>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomLabel}
-          outerRadius={90}
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} />
-          ))}
-        </Pie>
+    <PieChart width={500} height={300}>
+      <Pie
+        data={data}
+        cx="50%"
+        cy="50%"
+        labelLine={false}
+        label={renderCustomLabel}
+        outerRadius={90}
+        dataKey="value"
+      >
+        {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={entry.color} />
+        ))}
+      </Pie>
 
-        <Legend />
-        <Tooltip content={<CustomTooltip />} />
-      </PieChart>
-    </ResponsiveContainer>
+      <Legend />
+      <Tooltip content={<CustomTooltip />} />
+    </PieChart>
   );
 };
 
