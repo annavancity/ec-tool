@@ -100,7 +100,9 @@ const OptionGenericLogic = ({ option }) => {
   };
 
   useEffect(() => {
-    if (inputsChanged[option]) {
+    // Check for changes in inputs after the first calculation
+    const calculationDone = localStorage.getItem(`${option}CalculationDone`);
+    if (inputsChanged[option] && calculationDone) {
       setShowRecalculateMessage(true);
     }
   }, [inputsChanged, option]);
@@ -110,9 +112,13 @@ const OptionGenericLogic = ({ option }) => {
       const calculatedResults = calculateValues(materialInputs);
       dispatch(setCalculatedValues({ option, values: calculatedResults }));
       dispatch(markOptionAsCalculated({ option })); // Mark the option as calculated
+
+      // Mark as calculation done for the first time
+      localStorage.setItem(`${option}CalculationDone`, "true");
+
       setShowResults(true);
-      // Reset flag in context
-      markInputsChanged(option, false);
+
+      markInputsChanged(option, false); // Reset flag in context
       setShowRecalculateMessage(false);
     } else {
       alert("Please save all material inputs before calculating.");
@@ -159,7 +165,17 @@ const OptionGenericLogic = ({ option }) => {
     // Perform a hard reload of the page
     window.location.reload();
     // Navigate to the default page after the reload
-    window.location.href = "/";
+    window.location.href = "/option_one";
+  };
+
+  // Function to check if all inputs are zeros
+  const areAllInputsZeros = () => {
+    const materials = ["concrete", "steel", "wood"];
+    return materials.every((material) =>
+      Object.values(materialInputs[material].inputs).every(
+        (value) => value === 0
+      )
+    );
   };
 
   return (
@@ -290,8 +306,9 @@ const OptionGenericLogic = ({ option }) => {
             {selectedComponent === "steel" && <Steel option={option} />}
           </div>
           {showResults && (
-            <div className="optionResults">
-              {showResults &&
+            <div className="optionResults-charts">
+              {!areAllInputsZeros() &&
+                showResults &&
                 calculatedValues.concrete &&
                 calculatedValues.steel &&
                 calculatedValues.wood && (

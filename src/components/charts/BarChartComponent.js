@@ -29,11 +29,11 @@ const BarChartComponent = ({ data }) => {
     <div className="summary">
       <div className="chart">
         <BarChart
-          width={700}
-          height={300}
+          width={600}
+          height={250}
           layout="vertical"
           data={data}
-          margin={{ top: 5, right: 5, left: 90, bottom: 5 }}
+          margin={{ top: 5, right: 90, left: 90, bottom: 10 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="number" />
@@ -49,15 +49,15 @@ const BarChartComponent = ({ data }) => {
             ))}
           </Bar>
         </BarChart>
-        <h2 className="chart-description">Total GWP</h2>
+        <h2 className="chart-description left-offset">Total GWP</h2>
       </div>
       <div className="chart">
         <BarChart
-          width={700}
-          height={300}
+          width={600}
+          height={250}
           layout="vertical"
           data={data}
-          margin={{ top: 5, right: 5, left: 90, bottom: 5 }}
+          margin={{ top: 5, right: 90, left: 90, bottom: 10 }}
           className="custom-bar-chart"
         >
           <CartesianGrid strokeDasharray="3 3" />
@@ -74,7 +74,7 @@ const BarChartComponent = ({ data }) => {
             ))}
           </Bar>
         </BarChart>
-        <h2 className="chart-description">GWP per Building Area</h2>
+        <h2 className="chart-description left-offset">GWP per Building Area</h2>
       </div>
     </div>
   );

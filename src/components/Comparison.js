@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { useSelector } from "react-redux";
-import CustomPieChart from "./charts/CustomPieChart";
 import BarChartComponent from "./charts/BarChartComponent";
 import logo from "../../src/images/logo-min.svg";
+import CustomPieChartPercentage from "./charts/CustomPieChartPercentage";
 
 const Comparison = () => {
   // print current page
@@ -31,18 +31,6 @@ const Comparison = () => {
   const descriptionThree =
     localStorage.getItem("OptionThreeDescription") || "Option Three";
 
-  // Function to render option results
-  const renderOptionResults = (calculatedValues, description) => (
-    <div className="chart">
-      <CustomPieChart
-        concretePercentage={calculatedValues.concrete?.concGWPTotal || 0}
-        steelPercentage={calculatedValues.steel?.steelGWPTotal || 0}
-        woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
-      />
-      <h2 className="chart-description">{description}</h2>
-    </div>
-  );
-
   // Retrieve area from local storage
   const OptionOneBuildingArea =
     localStorage.getItem("OptionOneBuildingArea") || 1;
@@ -50,6 +38,36 @@ const Comparison = () => {
     localStorage.getItem("OptionTwoBuildingArea") || 1;
   const OptionThreeBuildingArea =
     localStorage.getItem("OptionThreeBuildingArea") || 1;
+
+  // Function to render option results
+  const renderOptionResults = (calculatedValues, description, area) => {
+    // Check if all values are zero
+    const allZeros =
+      calculatedValues.concrete?.concPercentageTotal === 0 &&
+      calculatedValues.steel?.steelPercentageTotal === 0 &&
+      calculatedValues.wood?.woodPercentageTotal === 0;
+
+    if (allZeros) {
+      return null; // or return <div></div> to render nothing for this option
+    }
+
+    return (
+      <div className="chart">
+        <CustomPieChartPercentage
+          concretePercentage={
+            calculatedValues.concrete?.concPercentageTotal || 0
+          }
+          steelPercentage={calculatedValues.steel?.steelPercentageTotal || 0}
+          woodPercentage={calculatedValues.wood?.woodPercentageTotal || 0}
+        />
+
+        <p className="menu-text-large chart-area">
+          Area: {area} m<sup>2</sup>
+        </p>
+        <h2 className="chart-description">{description}</h2>
+      </div>
+    );
+  };
 
   // Calculate data for bar charts
   const barChartData = [
@@ -93,9 +111,21 @@ const Comparison = () => {
         </div>
 
         <div className="summary">
-          {renderOptionResults(calculatedValuesOne, descriptionOne)}
-          {renderOptionResults(calculatedValuesTwo, descriptionTwo)}
-          {renderOptionResults(calculatedValuesThree, descriptionThree)}
+          {renderOptionResults(
+            calculatedValuesOne,
+            descriptionOne,
+            OptionOneBuildingArea
+          )}
+          {renderOptionResults(
+            calculatedValuesTwo,
+            descriptionTwo,
+            OptionTwoBuildingArea
+          )}
+          {renderOptionResults(
+            calculatedValuesThree,
+            descriptionThree,
+            OptionThreeBuildingArea
+          )}
         </div>
         <div className="summary">
           <BarChartComponent data={barChartData} />

@@ -78,6 +78,11 @@ const Concrete = ({ option }) => {
     setIsModalOpen(false);
   };
 
+  // Function to check if all concrete inputs are zeros
+  const areConcreteInputsZeros = () => {
+    return Object.values(localInputs).every((value) => value === 0);
+  };
+
   return (
     <div className="concrete-section">
       <div className="value-row">
@@ -108,12 +113,16 @@ const Concrete = ({ option }) => {
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        <p className="menu-text-large value-row-GWP">
-          {concreteCalculatedValues.concHorizGWPCalculated}
-        </p>
-        <p className="menu-text-large value-row-percentage">
-          {concreteCalculatedValues.concHorizPercentageCalculated}
-        </p>
+        {!areConcreteInputsZeros() && (
+          <>
+            <p className="menu-text-large value-row-GWP">
+              {concreteCalculatedValues.concHorizGWPCalculated}
+            </p>
+            <p className="menu-text-large value-row-percentage">
+              {concreteCalculatedValues.concHorizPercentageCalculated}
+            </p>
+          </>
+        )}
       </div>
       <div className="value-row">
         <label className="menu-text-large value-name">
@@ -130,12 +139,16 @@ const Concrete = ({ option }) => {
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        <p className="menu-text-large value-row-GWP">
-          {concreteCalculatedValues.concVertGWPCalculated}
-        </p>
-        <p className="menu-text-large value-row-percentage">
-          {concreteCalculatedValues.concVertPercentageCalculated}
-        </p>
+        {!areConcreteInputsZeros() && (
+          <>
+            <p className="menu-text-large value-row-GWP">
+              {concreteCalculatedValues.concVertGWPCalculated}
+            </p>
+            <p className="menu-text-large value-row-percentage">
+              {concreteCalculatedValues.concVertPercentageCalculated}
+            </p>
+          </>
+        )}
       </div>
       <div className="value-row">
         <label className="menu-text-large value-name">
@@ -152,12 +165,16 @@ const Concrete = ({ option }) => {
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        <p className="menu-text-large value-row-GWP">
-          {concreteCalculatedValues.concFoundGWPCalculated}
-        </p>
-        <p className="menu-text-large value-row-percentage">
-          {concreteCalculatedValues.concFoundPercentageCalculated}
-        </p>
+        {!areConcreteInputsZeros() && (
+          <>
+            <p className="menu-text-large value-row-GWP">
+              {concreteCalculatedValues.concFoundGWPCalculated}
+            </p>
+            <p className="menu-text-large value-row-percentage">
+              {concreteCalculatedValues.concFoundPercentageCalculated}
+            </p>
+          </>
+        )}
       </div>
       <div className="value-row">
         <label className="menu-text-large value-name">Concrete - Rebar:</label>
@@ -170,12 +187,16 @@ const Concrete = ({ option }) => {
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
-        <p className="menu-text-large value-row-GWP">
-          {concreteCalculatedValues.concRebarGWPCalculated}
-        </p>
-        <p className="menu-text-large value-row-percentage">
-          {concreteCalculatedValues.concRebarPercentageCalculated}
-        </p>
+        {!areConcreteInputsZeros() && (
+          <>
+            <p className="menu-text-large value-row-GWP">
+              {concreteCalculatedValues.concRebarGWPCalculated}
+            </p>
+            <p className="menu-text-large value-row-percentage">
+              {concreteCalculatedValues.concRebarPercentageCalculated}
+            </p>
+          </>
+        )}
       </div>
       <div className="value-row">
         <label className="menu-text-large value-name">Concrete - Custom:</label>
@@ -192,12 +213,16 @@ const Concrete = ({ option }) => {
           </span>
         </p>
         <span className="error-message"></span>
-        <p className="menu-text-large value-row-GWP">
-          {concreteCalculatedValues.concCustomGWPCalculated}
-        </p>
-        <p className="menu-text-large value-row-percentage">
-          {concreteCalculatedValues.concCustomPercentageCalculated}
-        </p>
+        {!areConcreteInputsZeros() && (
+          <>
+            <p className="menu-text-large value-row-GWP">
+              {concreteCalculatedValues.concCustomGWPCalculated}
+            </p>
+            <p className="menu-text-large value-row-percentage">
+              {concreteCalculatedValues.concCustomPercentageCalculated}
+            </p>
+          </>
+        )}
       </div>
       <div>
         <button className="btn" onClick={saveInputs}>

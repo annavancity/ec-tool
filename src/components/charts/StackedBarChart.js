@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 const StackedBarChart = ({
   concretePercentage,
@@ -24,18 +16,18 @@ const StackedBarChart = ({
 
   return (
     <BarChart
-      width={400}
+      width={300}
       height={300}
-      layout="vertical"
+      // layout="vertical"
       data={data}
       barCategoryGap="35%"
       margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis type="number" />
-      <YAxis type="category" dataKey="" width={80} hide />
+      <XAxis type="category" dataKey="material" width={80} hide />
+      <YAxis type="number" />
       <Tooltip />
-      <Legend />
+
       <Bar dataKey="Concrete" stackId="a" fill="rgb(169, 169, 169)" />
       <Bar dataKey="Steel" stackId="a" fill="rgb(52, 104, 192)" />
       <Bar dataKey="Wood" stackId="a" fill="rgb(255, 187, 100)" />

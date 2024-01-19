@@ -1,5 +1,5 @@
 import React from "react";
-import { PieChart, Pie, Legend, Cell } from "recharts";
+import { PieChart, Pie, Cell } from "recharts";
 
 const CustomPieChartPercentage = ({
   concretePercentage,
@@ -58,7 +58,7 @@ const CustomPieChartPercentage = ({
         ))}
       </Pie>
 
-      <Legend />
+      {/* <Legend /> */}
     </PieChart>
   );
 };
