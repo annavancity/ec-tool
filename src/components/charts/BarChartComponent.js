@@ -6,7 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  // Legend,
   Cell,
 } from "recharts";
 
@@ -39,7 +39,7 @@ const BarChartComponent = ({ data }) => {
           <XAxis type="number" />
           <YAxis dataKey="name" type="category" />
           <Tooltip />
-          <Legend />
+          {/* <Legend /> */}
           <Bar dataKey="gwptotal">
             {data.map((entry, index) => (
               <Cell
@@ -58,12 +58,13 @@ const BarChartComponent = ({ data }) => {
           layout="vertical"
           data={data}
           margin={{ top: 5, right: 5, left: 90, bottom: 5 }}
+          className="custom-bar-chart"
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="number" />
           <YAxis dataKey="name" type="category" />
           <Tooltip />
-          <Legend />
+          {/* <Legend /> */}
           <Bar dataKey="gwpPerArea">
             {data.map((entry, index) => (
               <Cell

@@ -91,6 +91,7 @@ const Comparison = () => {
           <img src={logo} alt="Logo-plus" className="logo-image" />
           <span>Epp</span>
         </div>
+
         <div className="summary">
           {renderOptionResults(calculatedValuesOne, descriptionOne)}
           {renderOptionResults(calculatedValuesTwo, descriptionTwo)}

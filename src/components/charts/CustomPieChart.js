@@ -27,7 +27,7 @@ const CustomPieChart = ({
         <div
           style={{
             backgroundColor: "black",
-            padding: "5px",
+            padding: "0px 20px",
             border: "1px solid black",
             color: "#f9f82c",
           }}
