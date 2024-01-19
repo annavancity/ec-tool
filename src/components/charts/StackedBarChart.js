@@ -21,7 +21,7 @@ const StackedBarChart = ({
       // layout="vertical"
       data={data}
       barCategoryGap="35%"
-      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      margin={{ top: 2, right: 30, left: 20, bottom: 20 }}
     >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis type="category" dataKey="material" width={80} hide />

@@ -33,7 +33,7 @@ const BarChartComponent = ({ data }) => {
           height={250}
           layout="vertical"
           data={data}
-          margin={{ top: 5, right: 90, left: 90, bottom: 10 }}
+          margin={{ top: 5, right: 90, left: 90, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="number" />
@@ -57,7 +57,7 @@ const BarChartComponent = ({ data }) => {
           height={250}
           layout="vertical"
           data={data}
-          margin={{ top: 5, right: 90, left: 90, bottom: 10 }}
+          margin={{ top: 5, right: 90, left: 90, bottom: 20 }}
           className="custom-bar-chart"
         >
           <CartesianGrid strokeDasharray="3 3" />

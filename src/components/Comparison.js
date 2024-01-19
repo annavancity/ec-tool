@@ -39,16 +39,27 @@ const Comparison = () => {
   const OptionThreeBuildingArea =
     localStorage.getItem("OptionThreeBuildingArea") || 1;
 
-  // Function to render option results
-  const renderOptionResults = (calculatedValues, description, area) => {
-    // Check if all values are zero
-    const allZeros =
+  // Function to check if all values are zero for an option
+  const isAllZeros = (calculatedValues) => {
+    return (
+      calculatedValues &&
       calculatedValues.concrete?.concPercentageTotal === 0 &&
       calculatedValues.steel?.steelPercentageTotal === 0 &&
-      calculatedValues.wood?.woodPercentageTotal === 0;
+      calculatedValues.wood?.woodPercentageTotal === 0
+    );
+  };
 
-    if (allZeros) {
-      return null; // or return <div></div> to render nothing for this option
+  // Mapping between option descriptions and their calculated values
+  const calculatedValuesMapping = {
+    "Option One": calculatedValuesOne,
+    "Option Two": calculatedValuesTwo,
+    "Option Three": calculatedValuesThree,
+  };
+
+  // Function to render option results
+  const renderOptionResults = (calculatedValues, description, area) => {
+    if (isAllZeros(calculatedValues)) {
+      return null;
     }
 
     return (
@@ -97,6 +108,12 @@ const Comparison = () => {
     },
   ];
 
+  // Filter the options for the bar chart
+  const filteredBarChartData = barChartData.filter((data) => {
+    const optionCalculatedValues = calculatedValuesMapping[data.name];
+    return !isAllZeros(optionCalculatedValues);
+  });
+
   return (
     <div className="container-summary">
       <button className="btn print" onClick={handlePrint}>
@@ -128,7 +145,7 @@ const Comparison = () => {
           )}
         </div>
         <div className="summary">
-          <BarChartComponent data={barChartData} />
+          <BarChartComponent data={filteredBarChartData} />
         </div>
       </div>
     </div>

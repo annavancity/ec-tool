@@ -5,6 +5,12 @@ const Navigation = ({ allOptionsCalculated }) => {
   const location = useLocation();
   const currentPath = location.pathname;
 
+  const handleLinkClick = (e) => {
+    if (!allOptionsCalculated) {
+      e.preventDefault(); // Prevent link navigation
+    }
+  };
+
   return (
     <div className="container">
       <nav className="btn-all">
@@ -33,17 +39,16 @@ const Navigation = ({ allOptionsCalculated }) => {
           >
             Option 3
           </Link>
-        </div>
-        {allOptionsCalculated && (
           <Link
+            to="/summary_comparison"
             className={`btn ${
               currentPath === "/summary_comparison" ? "active" : ""
-            }`}
-            to="/summary_comparison"
+            } ${!allOptionsCalculated ? "disabled" : ""}`}
+            onClick={handleLinkClick}
           >
             Summary Comparison
           </Link>
-        )}
+        </div>
       </nav>
     </div>
   );

@@ -181,10 +181,27 @@ const OptionGenericLogic = ({ option }) => {
   return (
     <div className="wrapper">
       <div className="container">
-        <div>
+        <div className="options-page-top">
           <button className="btn-reset" onClick={resetAllInputs}>
             Reset All Inputs
           </button>
+          <div className="container-disclamer">
+            <p className="menu-text-small">
+              Note: Provided embodied carbon and material quantity data are
+              informative only, and shall not be used for any other purposes,
+              including but not limited to costing exercises, tender bidding,
+              embodied carbon reporting, etc.
+            </p>
+            <p className="menu-text-small">
+              By using this application, you are agreeing to our{" "}
+              <a
+                href="https://www.fastepp.com/terms-conditions/"
+                class="header-link"
+              >
+                Terms and Conditions.
+              </a>
+            </p>
+          </div>
         </div>
 
         <div className="container-area">
@@ -313,27 +330,38 @@ const OptionGenericLogic = ({ option }) => {
                 calculatedValues.steel &&
                 calculatedValues.wood && (
                   <div className="chart-container">
-                    <CustomPieChartPercentage
-                      concretePercentage={
-                        calculatedValues.concrete?.concPercentageTotal || 0
-                      }
-                      steelPercentage={
-                        calculatedValues.steel?.steelPercentageTotal || 0
-                      }
-                      woodPercentage={
-                        calculatedValues.wood?.woodPercentageTotal || 0
-                      }
-                    />
+                    <div className="chart-title  pie-options">
+                      <CustomPieChartPercentage
+                        concretePercentage={
+                          calculatedValues.concrete?.concPercentageTotal || 0
+                        }
+                        steelPercentage={
+                          calculatedValues.steel?.steelPercentageTotal || 0
+                        }
+                        woodPercentage={
+                          calculatedValues.wood?.woodPercentageTotal || 0
+                        }
+                      />
 
-                    <StackedBarChart
-                      concretePercentage={
-                        calculatedValues.concrete?.concGWPTotal || 0
-                      }
-                      steelPercentage={
-                        calculatedValues.steel?.steelGWPTotal || 0
-                      }
-                      woodPercentage={calculatedValues.wood?.woodGWPTotal || 0}
-                    />
+                      <h2 className="chart-description">
+                        Percentage of total GWP
+                      </h2>
+                    </div>
+
+                    <div className="chart-title">
+                      <StackedBarChart
+                        concretePercentage={
+                          calculatedValues.concrete?.concGWPTotal || 0
+                        }
+                        steelPercentage={
+                          calculatedValues.steel?.steelGWPTotal || 0
+                        }
+                        woodPercentage={
+                          calculatedValues.wood?.woodGWPTotal || 0
+                        }
+                      />
+                      <h2 className="chart-description">Total GWP</h2>
+                    </div>
                   </div>
                 )}
             </div>
