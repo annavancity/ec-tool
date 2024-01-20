@@ -144,7 +144,7 @@ const Comparison = () => {
             OptionThreeBuildingArea
           )}
         </div>
-        <div className="summary">
+        <div>
           <BarChartComponent data={filteredBarChartData} />
         </div>
       </div>

@@ -186,13 +186,13 @@ const OptionGenericLogic = ({ option }) => {
             Reset All Inputs
           </button>
           <div className="container-disclamer">
-            <p className="menu-text-small">
+            <p className="menu-text-medium">
               Note: Provided embodied carbon and material quantity data are
               informative only, and shall not be used for any other purposes,
               including but not limited to costing exercises, tender bidding,
               embodied carbon reporting, etc.
             </p>
-            <p className="menu-text-small">
+            <p className="menu-text-medium">
               By using this application, you are agreeing to our{" "}
               <a
                 href="https://www.fastepp.com/terms-conditions/"

@@ -4,7 +4,7 @@
 body {
   margin: 0;
   background-color: #010101;
-  color: white;
+  color: #f7f7f7;
   font-family: "Roboto", sans-serif;
 }
 
@@ -22,7 +22,7 @@ body {
 }
 
 .container-disclamer {
-  width: 450px;
+  width: 600px;
 }
 
 .container-description {
@@ -176,10 +176,15 @@ body {
   margin-right: 10px;
 }
 
+.menu-text-medium {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
 .menu-text-small {
   font-size: 13px;
   font-weight: 300;
-  line-height: 20px;
 }
 
 .header-link {
