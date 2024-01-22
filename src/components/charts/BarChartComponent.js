@@ -20,9 +20,9 @@ const descriptionThree =
 
 const BarChartComponent = ({ data }) => {
   const optionColors = {
-    [descriptionOne]: "rgb(132,136,132)",
-    [descriptionTwo]: "rgb(113,121,126)",
-    [descriptionThree]: "rgb(137,148,153)",
+    [descriptionOne]: "rgb(138,154,91)",
+    [descriptionTwo]: "rgb(95,133,117)",
+    [descriptionThree]: "rgb(79,121,66)",
 
     // [descriptionOne]: "#AC87C5",
     // [descriptionTwo]: "#FFB996",
