@@ -360,7 +360,9 @@ const OptionGenericLogic = ({ option }) => {
                           calculatedValues.wood?.woodGWPTotal || 0
                         }
                       />
-                      <h2 className="chart-description">Total GWP</h2>
+                      <h2 className="chart-description">
+                        Total GWP
+                      </h2>
                     </div>
                   </div>
                 )}

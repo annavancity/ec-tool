@@ -1,10 +1,19 @@
+:root {
+  --color-background: #010101;
+  --color-white: #fefefe;
+  --color-red: #ed2224;
+  --color-yellow: #f9f82c;
+  --color-grey: #777764;
+  --color-shadow: #777764be;
+}
+
 .App {
   text-align: center;
 }
 body {
   margin: 0;
-  background-color: #010101;
-  color: #f7f7f7;
+  background-color: var(--color-background);
+  color: var(--color-white);
   font-family: "Roboto", sans-serif;
 }
 
@@ -46,9 +55,9 @@ body {
   padding: 5px;
   cursor: pointer;
   margin-top: 20px;
-  border: 1px solid #777764;
-  background-color: #010101;
-  color: white;
+  border: 1px solid var(--color-grey);
+  background-color: var(--color-background);
+  color: var(--color-white);
   border-radius: 5px;
   margin-right: 20px;
 }
@@ -58,16 +67,16 @@ body {
 }
 
 .btn:hover {
-  border: 1px solid #f9f82c;
-  color: #f9f82c;
+  border: 1px solid var(--color-yellow);
+  color: var(--color-yellow);
 }
 .btn-reset {
   margin-bottom: 10px;
 }
 
 .btn-reset:hover {
-  border: 1px solid #ed2225;
-  color: #ed2225;
+  border: 1px solid var(--color-red);
+  color: var(--color-red);
 }
 
 /* --------------------------------OPTIONS----------------------------*/
@@ -81,12 +90,12 @@ body {
 }
 
 .btn.active {
-  border: 1px solid #f9f82c;
-  color: #f9f82c;
+  border: 1px solid var(--color-yellow);
+  color: var(--color-yellow);
 }
 
 .btn.disabled {
-  color: #777764;
+  color: var(--color-grey);
   pointer-events: none;
 }
 
@@ -135,7 +144,7 @@ body {
   background-color: rgba(0, 0, 0, 0.593);
   opacity: 0;
   transition: opacity 0.3s;
-  border: 1px solid #f9f82c;
+  border: 1px solid var(--color-yellow);
 }
 
 .overlay.active-bckg,
@@ -145,7 +154,7 @@ body {
 
 .material-image:hover {
   cursor: pointer;
-  background: #010101;
+  background: var(--color-background);
   transition: 0.3s ease-in-out;
 }
 
@@ -153,14 +162,14 @@ body {
   font-family: "Shadows Into Light", cursive;
   font-weight: 400;
   font-size: 28px;
-  color: #fefefe;
+  color: var(--color-white);
   cursor: pointer;
   text-align: center;
   z-index: 3;
 }
 
 .icon-text.active-text {
-  color: #f9f82c;
+  color: var(--color-yellow);
   z-index: 99;
 }
 
@@ -171,7 +180,7 @@ body {
 
 .menu-text-large {
   font-size: 18px;
-  color: #f7f7f7;
+  color: var(--color-white);
   font-weight: 300;
   margin-right: 10px;
 }
@@ -188,7 +197,7 @@ body {
 }
 
 .header-link {
-  color: #f9f82c;
+  color: var(--color-yellow);
   cursor: pointer;
   text-decoration: none;
 }
@@ -200,7 +209,7 @@ body {
 .recalculate-message {
   margin-top: 10px;
   font-size: 13px;
-  color: #ed2225;
+  color: var(--color-red);
 }
 .conv {
   margin-left: 5px;
@@ -209,7 +218,7 @@ body {
 
 .description-text {
   font-size: 18px;
-  color: #f9f82c;
+  color: var(--color-yellow);
   font-weight: 300;
 }
 
@@ -226,11 +235,11 @@ input {
   width: 120px;
   font-size: 18px;
   padding: 5px;
-  background-color: #010101;
-  color: #f7f7f7;
+  background-color: var(--color-background);
+  color: var(--color-white);
   text-align: right;
   border: none;
-  border-bottom: 2px solid #f9f82c;
+  border-bottom: 2px solid var(--color-yellow);
 }
 
 /* For Chrome, Safari, Edge, and Opera */
@@ -283,13 +292,13 @@ input[type="number"] {
   transform: translate(-50%, -50%);
   z-index: 100;
   width: 200px;
-  background-color: #010101;
+  background-color: var(--color-background);
   padding: 20px;
-  border: 1px solid #f9f82c;
+  border: 1px solid var(--color-yellow);
   border-radius: 5px;
-  box-shadow: 0 4px 8px #777764be;
+  box-shadow: 0 4px 8px var(--color-shadow);
   font-size: 14px;
-  color: #f9f82c;
+  color: var(--color-yellow);
   font-weight: 300;
 }
 
@@ -306,13 +315,13 @@ input[type="number"] {
   transform: translate(-50%, -50%);
   z-index: 100;
   width: 300px;
-  background-color: #010101;
+  background-color: var(--color-background);
   padding: 30px 10px 40px 10px;
-  border: 1px solid #f9f82c;
+  border: 1px solid var(--color-yellow);
   border-radius: 5px;
-  box-shadow: 0 4px 8px #777764be;
+  box-shadow: 0 4px 8px var(--color-shadow);
   font-size: 14px;
-  color: #f9f82c;
+  color: var(--color-yellow);
   font-weight: 300;
 }
 
@@ -332,15 +341,15 @@ input[type="number"] {
   right: 1px;
   font-size: 16px;
   cursor: pointer;
-  border: 1px solid #777764;
-  background-color: #010101;
-  color: white;
+  border: 1px solid var(--color-grey);
+  background-color: var(--color-background);
+  color: var(--color-white);
   border-radius: 5px;
 }
 
 .btn-small:hover {
-  border: 1px solid #f9f82c;
-  color: #f9f82c;
+  border: 1px solid var(--color-yellow);
+  color: var(--color-yellow);
 }
 
 .close {
