@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  // Legend,
-  Cell,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Cell } from "recharts";
 
 // Retrieve descriptions from local storage
 const descriptionOne =
@@ -23,10 +14,21 @@ const BarChartComponent = ({ data }) => {
     [descriptionOne]: "rgb(138,154,91)",
     [descriptionTwo]: "rgb(95,133,117)",
     [descriptionThree]: "rgb(79,121,66)",
+  };
 
-    // [descriptionOne]: "#AC87C5",
-    // [descriptionTwo]: "#FFB996",
-    // [descriptionThree]: "#AAD9BB",
+  const renderCustomLabel = (props) => {
+    const { x, y, width, height, value } = props;
+    return (
+      <text
+        x={x + width / 2}
+        y={y + height / 1.8}
+        fill="#fff"
+        textAnchor="middle"
+        dominantBaseline="middle"
+      >
+        {value}
+      </text>
+    );
   };
 
   return (
@@ -42,13 +44,11 @@ const BarChartComponent = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="number" />
           <YAxis dataKey="name" type="category" />
-          <Tooltip />
-          {/* <Legend /> */}
-          <Bar dataKey="gwptotal">
+          <Bar dataKey="gwptotal" label={renderCustomLabel}>
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={optionColors[entry.name] || "#000"}
+                fill={optionColors[entry.name] || "rgb(95,133,110)"}
               />
             ))}
           </Bar>
@@ -67,13 +67,11 @@ const BarChartComponent = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="number" />
           <YAxis dataKey="name" type="category" />
-          <Tooltip />
-          {/* <Legend /> */}
-          <Bar dataKey="gwpPerArea">
+          <Bar dataKey="gwpPerArea" label={renderCustomLabel}>
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={optionColors[entry.name] || "#000"}
+                fill={optionColors[entry.name] || "rgb(95,133,110)"}
               />
             ))}
           </Bar>

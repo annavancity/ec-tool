@@ -127,6 +127,10 @@ const Comparison = () => {
           <span>Epp</span>
         </div>
 
+        <div>
+          <h2 className="chart-description">Global Warming Potential</h2>
+        </div>
+
         <div className="summary">
           {renderOptionResults(
             calculatedValuesOne,
