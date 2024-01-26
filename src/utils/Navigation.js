@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navigation = ({ allOptionsCalculated }) => {
@@ -21,7 +20,7 @@ const Navigation = ({ allOptionsCalculated }) => {
             }`}
             to="/option_one"
           >
-            Option 1
+            Scheme 1
           </Link>
           <Link
             className={`btn option-two ${
@@ -29,7 +28,7 @@ const Navigation = ({ allOptionsCalculated }) => {
             }`}
             to="/option_two"
           >
-            Option 2
+            Scheme 2
           </Link>
           <Link
             className={`btn option-three ${
@@ -37,7 +36,7 @@ const Navigation = ({ allOptionsCalculated }) => {
             }`}
             to="/option_three"
           >
-            Option 3
+            Scheme 3
           </Link>
           <Link
             to="/summary_comparison"
@@ -47,6 +46,13 @@ const Navigation = ({ allOptionsCalculated }) => {
             onClick={handleLinkClick}
           >
             Summary Comparison
+            {!allOptionsCalculated && (
+              <div className="tooltip">
+                <p className="error-message">
+                  All 3 schemes have to be <br></br>calculated to view this page
+                </p>
+              </div>
+            )}
           </Link>
         </div>
       </nav>

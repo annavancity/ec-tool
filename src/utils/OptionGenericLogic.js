@@ -182,9 +182,12 @@ const OptionGenericLogic = ({ option }) => {
     <div className="wrapper">
       <div className="container">
         <div className="options-page-top">
-          <button className="btn-reset" onClick={resetAllInputs}>
-            Reset All Inputs
-          </button>
+          <div className="options-reset">
+            <button className="btn-reset">Reset Scheme 1</button>
+            <button className="btn-reset" onClick={resetAllInputs}>
+              Reset All Schemes
+            </button>
+          </div>
           <div className="container-disclamer">
             <p className="menu-text-medium">
               Note: Provided embodied carbon and material quantity data are
@@ -360,9 +363,7 @@ const OptionGenericLogic = ({ option }) => {
                           calculatedValues.wood?.woodGWPTotal || 0
                         }
                       />
-                      <h2 className="chart-description">
-                        Total GWP
-                      </h2>
+                      <h2 className="chart-description">Total GWP</h2>
                     </div>
                   </div>
                 )}
@@ -370,10 +371,11 @@ const OptionGenericLogic = ({ option }) => {
           )}
         </div>
         {showRecalculateMessage && (
-          <div className="recalculate-message">
+          <div className="error-message">
             Calculations and charts are out-of-date.
           </div>
         )}
+
         <div>
           <button className="btn" onClick={calculateResults}>
             Calculate

@@ -30,6 +30,11 @@ body {
   align-items: flex-start;
 }
 
+.options-reset {
+  display: flex;
+  flex-direction: column;
+}
+
 .container-disclamer {
   width: 600px;
 }
@@ -54,7 +59,7 @@ body {
   text-decoration: none;
   padding: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 10px;
   border: 1px solid var(--color-grey);
   background-color: var(--color-background);
   color: var(--color-white);
@@ -70,9 +75,9 @@ body {
   border: 1px solid var(--color-yellow);
   color: var(--color-yellow);
 }
-.btn-reset {
+/* .btn-reset {
   margin-bottom: 10px;
-}
+} */
 
 .btn-reset:hover {
   border: 1px solid var(--color-red);
@@ -96,7 +101,22 @@ body {
 
 .btn.disabled {
   color: var(--color-grey);
-  pointer-events: none;
+  position: relative; /* Needed for tooltip positioning */
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-white);
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.btn.disabled:hover .tooltip {
+  display: block;
 }
 
 .select-material {
@@ -206,7 +226,7 @@ body {
   text-decoration: underline;
 }
 
-.recalculate-message {
+.error-message {
   margin-top: 10px;
   font-size: 13px;
   color: var(--color-red);
