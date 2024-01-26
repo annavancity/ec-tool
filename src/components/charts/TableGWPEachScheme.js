@@ -1,6 +1,5 @@
 const TableGWPEachScheme = ({ data }) => {
   const calculateValue = (GWPTotal, factor) => GWPTotal / factor;
-  console.log(data);
 
   // Retrieve descriptions from local storage
   const descriptionOne =

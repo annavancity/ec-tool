@@ -1,4 +1,3 @@
-import React from "react";
 import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
 
 const CustomPieChart = ({

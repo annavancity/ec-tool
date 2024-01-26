@@ -1,5 +1,3 @@
-import React from "react";
-import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Comparison from "./components/Comparison";
@@ -10,22 +8,10 @@ import Navigation from "./utils/Navigation";
 import { CalculationProvider } from "./utils/CalculationContext";
 
 function App() {
-  const isOptionOneCalculated = useSelector(
-    (state) => state.calculatedValues.OptionOne.isCalculated
-  );
-  const isOptionTwoCalculated = useSelector(
-    (state) => state.calculatedValues.OptionTwo.isCalculated
-  );
-  const isOptionThreeCalculated = useSelector(
-    (state) => state.calculatedValues.OptionThree.isCalculated
-  );
-  const allOptionsCalculated =
-    isOptionOneCalculated && isOptionTwoCalculated && isOptionThreeCalculated;
-
   return (
     <CalculationProvider>
       <Router>
-        <Navigation allOptionsCalculated={allOptionsCalculated} />
+        <Navigation />
 
         <Routes>
           <Route path="/option_one" element={<OptionOne />} />

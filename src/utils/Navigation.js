@@ -1,6 +1,19 @@
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
-const Navigation = ({ allOptionsCalculated }) => {
+const Navigation = () => {
+  const isOptionOneCalculated = useSelector(
+    (state) => state.calculatedValues.OptionOne.isCalculated
+  );
+  const isOptionTwoCalculated = useSelector(
+    (state) => state.calculatedValues.OptionTwo.isCalculated
+  );
+  const isOptionThreeCalculated = useSelector(
+    (state) => state.calculatedValues.OptionThree.isCalculated
+  );
+  const allOptionsCalculated =
+    isOptionOneCalculated && isOptionTwoCalculated && isOptionThreeCalculated;
+
   const location = useLocation();
   const currentPath = location.pathname;
 
