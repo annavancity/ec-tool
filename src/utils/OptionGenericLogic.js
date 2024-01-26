@@ -125,6 +125,43 @@ const OptionGenericLogic = ({ option }) => {
     }
   };
 
+  //Function to reset only current option
+  const resetCurrentOptionInputs = () => {
+    localStorage.removeItem(`${option}BuildingArea`);
+    localStorage.removeItem(`${option}Description`);
+    localStorage.removeItem(option);
+
+    dispatch(resetCalculatedValues({ option })); // Dispatch reset action for current option
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "concrete",
+        inputs: initialState[option].concrete.inputs,
+      })
+    );
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "steel",
+        inputs: initialState[option].steel.inputs,
+      })
+    );
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "wood",
+        inputs: initialState[option].wood.inputs,
+      })
+    );
+
+    setBuildingArea(null);
+    setDescription("");
+    setShowResults(false);
+
+    // window.location.reload();
+  };
+
+  //Function to reset all inputs at once
   const resetAllInputs = () => {
     const options = ["OptionOne", "OptionTwo", "OptionThree"];
 
@@ -183,7 +220,9 @@ const OptionGenericLogic = ({ option }) => {
       <div className="container">
         <div className="options-page-top">
           <div className="options-reset">
-            <button className="btn-reset">Reset Scheme 1</button>
+            <button className="btn-reset" onClick={resetCurrentOptionInputs}>
+              Remove {option.replace("Option", "Scheme ")}
+            </button>
             <button className="btn-reset" onClick={resetAllInputs}>
               Reset All Schemes
             </button>

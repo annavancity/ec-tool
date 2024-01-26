@@ -25,11 +25,11 @@ const Comparison = () => {
 
   // Retrieve descriptions from local storage
   const descriptionOne =
-    localStorage.getItem("OptionOneDescription") || "Option One";
+    localStorage.getItem("OptionOneDescription") || "Scheme One";
   const descriptionTwo =
-    localStorage.getItem("OptionTwoDescription") || "Option Two";
+    localStorage.getItem("OptionTwoDescription") || "Scheme Two";
   const descriptionThree =
-    localStorage.getItem("OptionThreeDescription") || "Option Three";
+    localStorage.getItem("OptionThreeDescription") || "Scheme Three";
 
   // Retrieve area from local storage
   const OptionOneBuildingArea =
