@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import BarChartComponent from "./charts/BarChartComponent";
 import logo from "../../src/images/logo-min.svg";
 import CustomPieChartPercentage from "./charts/CustomPieChartPercentage";
+import TableGWPEachScheme from "./charts/TableGWPEachScheme";
 
 const Comparison = () => {
   // print current page
@@ -150,6 +151,9 @@ const Comparison = () => {
         </div>
         <div>
           <BarChartComponent data={filteredBarChartData} />
+        </div>
+        <div>
+          <TableGWPEachScheme data={filteredBarChartData} />
         </div>
       </div>
     </div>

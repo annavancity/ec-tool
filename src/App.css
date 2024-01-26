@@ -416,8 +416,6 @@ input[type="number"] {
 .container-summary {
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
   height: 100vh;
 }
 
@@ -472,6 +470,28 @@ input[type="number"] {
 
 .left-offset {
   margin-left: 70px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table thead th {
+  text-align: center;
+}
+
+table th,
+table td {
+  border: 1px solid var(--color-grey);
+  text-align: left;
+  padding: 5px;
+  width: 150px;
+}
+
+table th:first-child,
+table td:first-child {
+  width: 200px;
 }
 
 /* ---------------------LOGO----------------------- */

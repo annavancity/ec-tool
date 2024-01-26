@@ -1,4 +1,3 @@
-import React from "react";
 import { BarChart, Bar, XAxis, YAxis, Cell } from "recharts";
 
 // Retrieve descriptions from local storage
