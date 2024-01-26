@@ -24,6 +24,10 @@ const CustomPieChartPercentage = ({
     value,
     index,
   }) => {
+    if (value === 0) {
+      return null; // Do not render label for 0% values
+    }
+
     const RADIAN = Math.PI / 180;
     const radius = outerRadius + 12; // You can adjust this for label positioning
     const x = cx + radius * Math.cos(-midAngle * RADIAN);

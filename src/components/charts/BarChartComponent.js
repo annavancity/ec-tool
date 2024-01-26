@@ -1,13 +1,13 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Cell } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Cell } from "recharts";
 
 // Retrieve descriptions from local storage
 const descriptionOne =
-  localStorage.getItem("OptionOneDescription") || "Option One";
+  localStorage.getItem("OptionOneDescription") || "Scheme One";
 const descriptionTwo =
-  localStorage.getItem("OptionTwoDescription") || "Option Two";
+  localStorage.getItem("OptionTwoDescription") || "Scheme Two";
 const descriptionThree =
-  localStorage.getItem("OptionThreeDescription") || "Option Three";
+  localStorage.getItem("OptionThreeDescription") || "Scheme Three";
 
 const BarChartComponent = ({ data }) => {
   const optionColors = {
@@ -41,7 +41,7 @@ const BarChartComponent = ({ data }) => {
           data={data}
           margin={{ top: 5, right: 90, left: 90, bottom: 20 }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
           <XAxis type="number" />
           <YAxis dataKey="name" type="category" />
           <Bar dataKey="gwptotal" label={renderCustomLabel}>
@@ -64,7 +64,7 @@ const BarChartComponent = ({ data }) => {
           margin={{ top: 5, right: 90, left: 90, bottom: 20 }}
           className="custom-bar-chart"
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
           <XAxis type="number" />
           <YAxis dataKey="name" type="category" />
           <Bar dataKey="gwpPerArea" label={renderCustomLabel}>
