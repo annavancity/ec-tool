@@ -232,7 +232,12 @@ const OptionGenericLogic = ({ option }) => {
         <div className="options-page-top">
           <div className="options-reset">
             <button className="btn-reset" onClick={resetCurrentOptionInputs}>
-              Reset {option.replace("Option", "Scheme ")}
+              Reset{" "}
+              {option
+                .replace("Option", "Scheme ")
+                .replace("One", "1")
+                .replace("Two", "2")
+                .replace("Three", "3")}
             </button>
             <button className="btn-reset" onClick={resetAllInputs}>
               Reset All Schemes

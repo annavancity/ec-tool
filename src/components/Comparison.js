@@ -27,11 +27,11 @@ const Comparison = () => {
 
   // Retrieve descriptions from local storage
   const descriptionOne =
-    localStorage.getItem("OptionOneDescription") || "Scheme One";
+    localStorage.getItem("OptionOneDescription") || "Scheme 1";
   const descriptionTwo =
-    localStorage.getItem("OptionTwoDescription") || "Scheme Two";
+    localStorage.getItem("OptionTwoDescription") || "Scheme 2";
   const descriptionThree =
-    localStorage.getItem("OptionThreeDescription") || "Scheme Three";
+    localStorage.getItem("OptionThreeDescription") || "Scheme 3";
 
   // Retrieve area from local storage
   const OptionOneBuildingArea =
@@ -53,9 +53,9 @@ const Comparison = () => {
 
   // Mapping between option descriptions and their calculated values
   const calculatedValuesMapping = {
-    "Option One": calculatedValuesOne,
-    "Option Two": calculatedValuesTwo,
-    "Option Three": calculatedValuesThree,
+    "Scheme 1": calculatedValuesOne,
+    "Scheme 2": calculatedValuesTwo,
+    "Scheme 3": calculatedValuesThree,
   };
 
   // Function to render option results

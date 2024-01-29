@@ -2,11 +2,11 @@ import { BarChart, Bar, XAxis, YAxis, Cell } from "recharts";
 
 // Retrieve descriptions from local storage
 const descriptionOne =
-  localStorage.getItem("OptionOneDescription") || "Scheme One";
+  localStorage.getItem("OptionOneDescription") || "Scheme 1";
 const descriptionTwo =
-  localStorage.getItem("OptionTwoDescription") || "Scheme Two";
+  localStorage.getItem("OptionTwoDescription") || "Scheme 2";
 const descriptionThree =
-  localStorage.getItem("OptionThreeDescription") || "Scheme Three";
+  localStorage.getItem("OptionThreeDescription") || "Scheme 3";
 
 const BarChartComponent = ({ data }) => {
   const optionColors = {
