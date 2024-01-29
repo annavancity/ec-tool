@@ -5,6 +5,7 @@ import { CalculationContext } from "../utils/CalculationContext";
 import concrete from "../images/concrete.jpg";
 import steel from "../images/steel.jpg";
 import wood from "../images/wood.jpg";
+import aboutapp from "../images/question-mark.png";
 import Concrete from "../components/materials/Concrete";
 import Wood from "../components/materials/Wood";
 import Steel from "../components/materials/Steel";
@@ -243,6 +244,7 @@ const OptionGenericLogic = ({ option }) => {
                 Terms and Conditions.
               </a>
             </p>
+            <img src={aboutapp} width="40px" />
           </div>
         </div>
 

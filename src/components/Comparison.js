@@ -5,6 +5,7 @@ import BarChartComponent from "./charts/BarChartComponent";
 import logo from "../../src/images/logo-min.svg";
 import CustomPieChartPercentage from "./charts/CustomPieChartPercentage";
 import TableGWPEachScheme from "./charts/TableGWPEachScheme";
+import TableGWPSequester from "./charts/TableGWPSequester";
 
 const Comparison = () => {
   // print current page
@@ -152,8 +153,9 @@ const Comparison = () => {
         <div>
           <BarChartComponent data={filteredBarChartData} />
         </div>
-        <div>
+        <div className="tables">
           <TableGWPEachScheme data={filteredBarChartData} />
+          <TableGWPSequester data={filteredBarChartData} />
         </div>
       </div>
     </div>

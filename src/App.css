@@ -472,9 +472,17 @@ input[type="number"] {
   margin-left: 70px;
 }
 
+/* ------------------ TABLES -------------------*/
+.tables {
+  display: flex;
+  align-items: space-around;
+  justify-content: space-around;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
+  margin: 10px;
 }
 
 table thead th {
@@ -484,16 +492,31 @@ table thead th {
 table th,
 table td {
   border: 1px solid var(--color-grey);
-  text-align: left;
-  padding: 5px;
-  width: 150px;
+  text-align: center;
+  padding: 3px;
+  width: 100px;
 }
 
 table th:first-child,
 table td:first-child {
-  width: 200px;
+  width: 30px;
 }
 
+.th-description {
+  width: 160px;
+}
+
+.img-table {
+  width: 35px;
+}
+
+.danger {
+  color: var(--color-red);
+}
+
+.info {
+  color: #4f7942;
+}
 /* ---------------------LOGO----------------------- */
 
 .logo {

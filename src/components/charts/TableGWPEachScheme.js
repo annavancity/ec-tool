@@ -1,5 +1,10 @@
+import house from "../../../src/images/house.png";
+import plane from "../../../src/images/airplane.png";
 const TableGWPEachScheme = ({ data }) => {
-  const calculateValue = (GWPTotal, factor) => GWPTotal / factor;
+  const calculateValue = (GWPTotal, factor) => {
+    const result = GWPTotal / factor;
+    return Number(result.toFixed(0)).toLocaleString();
+  };
 
   // Retrieve descriptions from local storage
   const descriptionOne =
@@ -21,42 +26,51 @@ const TableGWPEachScheme = ({ data }) => {
     <table>
       <thead>
         <tr>
-          <th colSpan="4" className="menu-text-medium">
+          <th colSpan="5" className="menu-text-medium">
             Total GWP for each Scheme equates to:
           </th>
         </tr>
         <tr>
           <th></th>
-          <th className="menu-text-medium">{descriptionOne}</th>
-          <th className="menu-text-medium">{descriptionTwo}</th>
+          <th></th>
+          <th className="menu-text-medium ">{descriptionOne}</th>
+          <th className="menu-text-medium ">{descriptionTwo}</th>
           <th className="menu-text-medium">{descriptionThree}</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td className="menu-text-small">
+            <img src={house} className="img-table" alt="house" />
+          </td>
+          <td className="menu-text-small th-description">
             Three Bedroom apartment energy usage for Entire Year
           </td>
-          <td className="menu-text-small">
-            {calculateValue(OptionOneGWPTotal, 0.92).toFixed(0)}
+          <td className="menu-text-small danger">
+            {calculateValue(OptionOneGWPTotal, 0.92 / 4000)}
           </td>
-          <td className="menu-text-small">
-            {calculateValue(OptionTwoGWPTotal, 0.92).toFixed(0)}
+          <td className="menu-text-small danger">
+            {calculateValue(OptionTwoGWPTotal, 0.92 / 4000)}
           </td>
-          <td className="menu-text-small">
-            {calculateValue(OptionThreeGWPTotal, 0.92).toFixed(0)}
+          <td className="menu-text-small danger">
+            {calculateValue(OptionThreeGWPTotal, 0.92 / 4000)}
           </td>
         </tr>
         <tr>
-          <td className="menu-text-small">Flights between NY and London</td>
           <td className="menu-text-small">
-            {calculateValue(OptionOneGWPTotal, 605).toFixed(0)}
+            <img src={plane} className="img-table" alt="plane" />
           </td>
-          <td className="menu-text-small">
-            {calculateValue(OptionTwoGWPTotal, 605).toFixed(0)}
+          <td className="menu-text-small th-description">
+            Flights between NY and London
           </td>
-          <td className="menu-text-small">
-            {calculateValue(OptionThreeGWPTotal, 605).toFixed(0)}
+          <td className="menu-text-small danger">
+            {calculateValue(OptionOneGWPTotal, 605)}
+          </td>
+          <td className="menu-text-small danger">
+            {calculateValue(OptionTwoGWPTotal, 605)}
+          </td>
+          <td className="menu-text-small danger">
+            {calculateValue(OptionThreeGWPTotal, 605)}
           </td>
         </tr>
       </tbody>
