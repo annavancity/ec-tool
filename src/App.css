@@ -352,8 +352,13 @@ input[type="number"] {
   font-weight: 300;
 }
 
+.about {
+  transition: transform 0.3s ease-in-out;
+}
+
 .about:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 .modal-description-content {
