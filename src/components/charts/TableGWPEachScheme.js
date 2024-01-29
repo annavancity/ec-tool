@@ -27,7 +27,7 @@ const TableGWPEachScheme = ({ data }) => {
       <thead>
         <tr>
           <th colSpan="5" className="menu-text-medium">
-            Total GWP for each Scheme equates to:
+            Total GWP for each scheme equates to:
           </th>
         </tr>
         <tr>
@@ -46,13 +46,13 @@ const TableGWPEachScheme = ({ data }) => {
           <td className="menu-text-small th-description">
             Three Bedroom apartment energy usage for Entire Year
           </td>
-          <td className="menu-text-small danger">
+          <td className="menu-text-medium danger">
             {calculateValue(OptionOneGWPTotal, 0.92 * 4000)}
           </td>
-          <td className="menu-text-small danger">
+          <td className="menu-text-medium danger">
             {calculateValue(OptionTwoGWPTotal, 0.92 * 4000)}
           </td>
-          <td className="menu-text-small danger">
+          <td className="menu-text-medium danger">
             {calculateValue(OptionThreeGWPTotal, 0.92 * 4000)}
           </td>
         </tr>
@@ -63,13 +63,13 @@ const TableGWPEachScheme = ({ data }) => {
           <td className="menu-text-small th-description">
             Flights between NY and London
           </td>
-          <td className="menu-text-small danger">
+          <td className="menu-text-medium danger">
             {calculateValue(OptionOneGWPTotal, 605)}
           </td>
-          <td className="menu-text-small danger">
+          <td className="menu-text-medium danger">
             {calculateValue(OptionTwoGWPTotal, 605)}
           </td>
-          <td className="menu-text-small danger">
+          <td className="menu-text-medium danger">
             {calculateValue(OptionThreeGWPTotal, 605)}
           </td>
         </tr>
