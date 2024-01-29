@@ -8,11 +8,11 @@ const TableGWPEachScheme = ({ data }) => {
 
   // Retrieve descriptions from local storage
   const descriptionOne =
-    localStorage.getItem("OptionOneDescription") || "Scheme One";
+    localStorage.getItem("OptionOneDescription") || "Scheme 1";
   const descriptionTwo =
-    localStorage.getItem("OptionTwoDescription") || "Scheme Two";
+    localStorage.getItem("OptionTwoDescription") || "Scheme 2";
   const descriptionThree =
-    localStorage.getItem("OptionThreeDescription") || "Scheme Three";
+    localStorage.getItem("OptionThreeDescription") || "Scheme 3";
 
   // Assuming the data array has the GWP total values
   const OptionOneGWPTotal =
@@ -47,13 +47,13 @@ const TableGWPEachScheme = ({ data }) => {
             Three Bedroom apartment energy usage for Entire Year
           </td>
           <td className="menu-text-small danger">
-            {calculateValue(OptionOneGWPTotal, 0.92 / 4000)}
+            {calculateValue(OptionOneGWPTotal, 0.92 * 4000)}
           </td>
           <td className="menu-text-small danger">
-            {calculateValue(OptionTwoGWPTotal, 0.92 / 4000)}
+            {calculateValue(OptionTwoGWPTotal, 0.92 * 4000)}
           </td>
           <td className="menu-text-small danger">
-            {calculateValue(OptionThreeGWPTotal, 0.92 / 4000)}
+            {calculateValue(OptionThreeGWPTotal, 0.92 * 4000)}
           </td>
         </tr>
         <tr>
