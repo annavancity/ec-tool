@@ -34,20 +34,8 @@ const TableGWPEachScheme = ({ data }) => {
       </thead>
       <tbody>
         <tr>
-          <td className="menu-text-small">Kilometers driven</td>
           <td className="menu-text-small">
-            {calculateValue(OptionOneGWPTotal, 0.12).toFixed(0)}
-          </td>
-          <td className="menu-text-small">
-            {calculateValue(OptionTwoGWPTotal, 0.12).toFixed(0)}
-          </td>
-          <td className="menu-text-small">
-            {calculateValue(OptionThreeGWPTotal, 0.12).toFixed(0)}
-          </td>
-        </tr>
-        <tr>
-          <td className="menu-text-small">
-            Two Bedroom apartment energy usage for Entire Year
+            Three Bedroom apartment energy usage for Entire Year
           </td>
           <td className="menu-text-small">
             {calculateValue(OptionOneGWPTotal, 0.92).toFixed(0)}
