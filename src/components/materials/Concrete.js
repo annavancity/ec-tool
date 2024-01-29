@@ -225,7 +225,7 @@ const Concrete = ({ option }) => {
         )}
       </div>
       <div>
-        <button className="btn" onClick={saveInputs}>
+        <button className="btn operations" onClick={saveInputs}>
           Save inputs
         </button>
         <Modal isOpen={isModalOpen} handleClose={handleCloseModal} />

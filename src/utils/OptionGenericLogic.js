@@ -446,7 +446,7 @@ const OptionGenericLogic = ({ option }) => {
         )}
 
         <div>
-          <button className="btn" onClick={calculateResults}>
+          <button className="btn operations" onClick={calculateResults}>
             Calculate
           </button>
         </div>

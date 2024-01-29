@@ -56,6 +56,10 @@ body {
   width: 400px;
 }
 
+.btn.operations {
+  width: 120px;
+}
+
 .btn,
 .btn-reset {
   font-size: 18px;
