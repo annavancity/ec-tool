@@ -7,7 +7,11 @@ const ModalDescription = ({ isOpen, handleClose }) => {
         <span
           className="close"
           onClick={handleClose}
-          style={{ fontSize: "30px", cursor: "pointer" }}
+          style={{
+            fontSize: "30px",
+            cursor: "pointer",
+            marginRight: "-10px",
+          }}
         >
           &times;
         </span>
