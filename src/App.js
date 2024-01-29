@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import Comparison from "./components/Comparison";
 import OptionOne from "./components/OptionOne";
@@ -14,6 +19,7 @@ function App() {
         <Navigation />
 
         <Routes>
+          <Route path="/" element={<Navigate to="/option_one" />} />
           <Route path="/option_one" element={<OptionOne />} />
           <Route path="/option_two" element={<OptionTwo />} />
           <Route path="/option_three" element={<OptionThree />} />
