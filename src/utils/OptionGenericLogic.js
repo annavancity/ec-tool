@@ -244,7 +244,7 @@ const OptionGenericLogic = ({ option }) => {
                 Terms and Conditions.
               </a>
             </p>
-            <img src={aboutapp} width="40px" />
+            <img src={aboutapp} width="40px" alt="about" />
           </div>
         </div>
 
