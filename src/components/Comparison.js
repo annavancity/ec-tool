@@ -12,6 +12,8 @@ const Comparison = () => {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
+    scale: 0.9,
+    pageStyle: "@page { size: 17in 11in; margin: 5%; }",
   });
 
   // Access the calculated values from the Redux store

@@ -1,7 +1,11 @@
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import ModalDescription from "./ModalDescription";
+import aboutapp from "../images/question-mark.png";
+import { useState } from "react";
 
 const Navigation = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const isOptionOneCalculated = useSelector(
     (state) => state.calculatedValues.OptionOne.isCalculated
   );
@@ -23,8 +27,19 @@ const Navigation = () => {
     }
   };
 
+  const handleOpenModalDescription = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModalDescription = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="container">
+      <div>
+        <p className="app-name">Embodied Carbon Calculator</p>
+      </div>
       <nav className="btn-all">
         <div className="btn-options">
           <Link
@@ -67,6 +82,17 @@ const Navigation = () => {
               </div>
             )}
           </Link>
+          <img
+            className="about"
+            src={aboutapp}
+            width="35px"
+            alt="about"
+            onClick={handleOpenModalDescription}
+          />
+          <ModalDescription
+            isOpen={isModalOpen}
+            handleClose={handleCloseModalDescription}
+          />
         </div>
       </nav>
     </div>

@@ -1,29 +1,102 @@
 :root {
   --color-background: #010101;
-  --color-white: #fefefe;
+  --color-header-font-light: #3d3935;
+  --color-white: #e6e6e6;
+  /* --color-white: #fefefe; */
   --color-red: #ed2224;
   --color-yellow: #f9f82c;
   --color-grey: #777764;
   --color-shadow: #777764be;
+  --color-footer-font: #b7b7b7;
 }
 
-.App {
-  text-align: center;
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
 body {
-  margin: 0;
   background-color: var(--color-background);
   color: var(--color-white);
   font-family: "Roboto", sans-serif;
 }
+/*----------------HEADER----------------*/
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+.navbar {
+  background-color: var(--color-yellow);
+}
+
+/* This is used to seperate the logo and the other items. */
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links-to-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Applies to the menu items. */
+.navbar .main-menu ul {
+  display: flex;
+}
+
+.navbar ul li a {
+  color: var(--color-header-font-light);
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 10px 10px;
+  transition: 0.3s;
+}
+
+/* .navbar ul li a:hover {
+  font-weight: 700;
+  letter-spacing: 1.42px;
+} */
+
+/* adds space around the final item, i.e., the button. */
+.navbar ul li:last-child a {
+  margin-left: 10px;
+}
+
+/* adds space betweent the icon and the icon text. */
+.navbar ul li i {
+  margin-right: 10px;
+}
 
 /* --------------------------------ALL - OPTIONS----------------------------*/
-.wrapper {
-  height: 100vh;
+.app-name {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
+  border-left: 3px solid var(--color-yellow);
+  padding-left: 25px;
 }
 .container {
   padding: 0px 20px;
 }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
 .options-page-top {
   display: flex;
   justify-content: space-between;
@@ -49,6 +122,7 @@ body {
 .btn-all {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .btn-options {
   display: flex;
@@ -219,8 +293,9 @@ body {
 }
 
 .menu-text-small {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 300;
+  line-height: 18px;
 }
 
 .header-link {
@@ -354,6 +429,8 @@ input[type="number"] {
 
 .about {
   transition: transform 0.3s ease-in-out;
+  align-self: center;
+  padding-top: 8px;
 }
 
 .about:hover {
@@ -435,7 +512,7 @@ input[type="number"] {
 .container-summary {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .btn.print {
@@ -453,7 +530,7 @@ input[type="number"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .chart-container {
@@ -462,7 +539,7 @@ input[type="number"] {
   align-items: center;
 }
 .summary {
-  padding: 50px 20px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -480,7 +557,7 @@ input[type="number"] {
 .chart-description {
   text-transform: uppercase;
   font-size: 22px;
-  margin-top: -8px;
+  margin-top: -10px;
 }
 
 .chart-area {
@@ -561,10 +638,105 @@ table td:first-child {
 /* -----------------PRINT PDF STYLE--------------- */
 @media print {
   @page {
-    size: 17in 11in; /* landscape orientation for Tabloid size */
+    size: 17in 11in;
+    margin: 5%;
   }
   body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+}
+
+/* -----------------FOOTER--------------- */
+.site-footer {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+
+.site-footer * {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.social-logo {
+  margin: 0px 7px;
+  background-color: var(--color-footer-font);
+}
+
+.social-logo:hover {
+  background-color: var(--color-red);
+}
+
+.instagram-logo {
+  width: 20px;
+}
+
+.twitter-logo {
+  width: 25px;
+}
+
+.linkedin-logo {
+  width: 23px;
+  margin: 0px 3px;
+}
+
+.container-footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.copyright,
+.newsletter,
+.terms a {
+  font-size: 11px;
+  font-weight: 200;
+  line-height: 21px;
+  font-family: "Roboto", sans-serif;
+  color: var(--color-footer-font);
+  text-decoration: none;
+}
+.terms a:first-child {
+  margin-right: 10px;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+.newsletter-link {
+  margin-left: 15px;
+  color: var(--color-footer-font);
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: underline var(--color-red);
+  text-underline-offset: 4px;
+}
+
+.newsletter-link:hover {
+  color: var(--color-red);
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    flex-direction: column;
+  }
+
+  .container-footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-logo {
+    margin: 3px;
   }
 }

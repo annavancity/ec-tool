@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useContext } from "react";
 import { CalculationContext } from "../utils/CalculationContext";
-import ModalDescription from "./ModalDescription";
 import concrete from "../images/concrete.jpg";
 import steel from "../images/steel.jpg";
 import wood from "../images/wood.jpg";
-import aboutapp from "../images/question-mark.png";
 import Concrete from "../components/materials/Concrete";
 import Wood from "../components/materials/Wood";
 import Steel from "../components/materials/Steel";
@@ -25,7 +23,6 @@ import CustomPieChartPercentage from "../components/charts/CustomPieChartPercent
 import { initialState } from "../features/materialInputsSlice";
 
 const OptionGenericLogic = ({ option }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { inputsChanged, markInputsChanged } = useContext(CalculationContext);
   const [showRecalculateMessage, setShowRecalculateMessage] = useState(false);
   const [showResults, setShowResults] = useState(false); // state for showing totals and piechart after calculate button clicked
@@ -39,14 +36,6 @@ const OptionGenericLogic = ({ option }) => {
   const calculatedValues = useSelector(
     (state) => state.calculatedValues[option]
   );
-
-  const handleOpenModalDescription = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModalDescription = () => {
-    setIsModalOpen(false);
-  };
 
   // Retrieve building area from local storage
   const savedBuildingArea = localStorage.getItem(`${option}BuildingArea`);
@@ -246,12 +235,17 @@ const OptionGenericLogic = ({ option }) => {
           <div className="container-disclamer">
             <div>
               <p className="menu-text-medium">
+                The EC Carbon Tool is a web-based application designed for
+                environmental impact assessment in schematic design stages of
+                projects.
+              </p>
+              <p className="menu-text-small">
                 Note: Provided embodied carbon and material quantity data are
                 informative only, and shall not be used for any other purposes,
                 including but not limited to costing exercises, tender bidding,
                 embodied carbon reporting, etc.
               </p>
-              <p className="menu-text-medium">
+              <p className="menu-text-small">
                 By using this application, you are agreeing to our{" "}
                 <a
                   href="https://www.fastepp.com/terms-conditions/"
@@ -261,18 +255,6 @@ const OptionGenericLogic = ({ option }) => {
                 </a>
               </p>
             </div>
-
-            <img
-              className="about"
-              src={aboutapp}
-              width="40px"
-              alt="about"
-              onClick={handleOpenModalDescription}
-            />
-            <ModalDescription
-              isOpen={isModalOpen}
-              handleClose={handleCloseModalDescription}
-            />
           </div>
         </div>
 
