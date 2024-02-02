@@ -60,11 +60,6 @@ ul {
   transition: 0.3s;
 }
 
-/* .navbar ul li a:hover {
-  font-weight: 700;
-  letter-spacing: 1.42px;
-} */
-
 /* adds space around the final item, i.e., the button. */
 .navbar ul li:last-child a {
   margin-left: 10px;
@@ -156,9 +151,6 @@ ul {
   border: 1px solid var(--color-yellow);
   color: var(--color-yellow);
 }
-/* .btn-reset {
-  margin-bottom: 10px;
-} */
 
 .btn-reset:hover {
   border: 1px solid var(--color-red);
@@ -204,24 +196,25 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin: 80px 0px;
 }
 
+/* .option-material {
+  display: flex;
+} */
 .material-button {
   position: relative;
   display: flex;
-  align-items: center; /* This will vertically center the icon-text */
-  justify-content: center; /* This will horizontally center the icon-text */
-  width: calc((100% / 3) - 20px); /* Adjust for 3 items per row with margins */
-  height: calc((100% / 3) - 20px); /* Initial height based on width */
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 10px);
+  height: 280px;
   cursor: pointer;
   border: none;
   background: none;
   box-sizing: border-box;
-  padding-top: calc(
-    (100% / 16) - 20px
-  ); /* This doubles the height relative to the width */
+  padding-top: calc((100% / 16) - 20px);
   padding-bottom: calc((100% / 16) - 20px);
 }
 
@@ -230,7 +223,7 @@ ul {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Full height of the button */
+  height: 100%;
   object-fit: cover;
   z-index: 1;
 }
@@ -477,6 +470,9 @@ input[type="number"] {
 }
 
 /* --------------------------------OPTION RESULTS----------------------------*/
+.option-materials-inputs {
+  display: flex;
+}
 .optionResults {
   display: flex;
   align-items: center;

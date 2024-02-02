@@ -27,7 +27,7 @@ const OptionGenericLogic = ({ option }) => {
   const [showRecalculateMessage, setShowRecalculateMessage] = useState(false);
   const [showResults, setShowResults] = useState(false); // state for showing totals and piechart after calculate button clicked
   const dispatch = useDispatch();
-  const [selectedComponent, setSelectedComponent] = useState("concrete");
+  // const [selectedComponent, setSelectedComponent] = useState("concrete");
 
   const savedDescription = localStorage.getItem(`${option}Description`) || ""; // Initialize description state with value from local storage
   const [description, setDescription] = useState(savedDescription);
@@ -297,84 +297,102 @@ const OptionGenericLogic = ({ option }) => {
       </div>
       <div className="container">
         <div className="select-material">
-          <button
-            className="material-button"
-            onClick={() => setSelectedComponent("concrete")}
-          >
-            <img
-              className={`material-image ${
-                selectedComponent === "concrete" ? "active" : ""
-              }`}
-              src={concrete}
-              alt="concrete"
-            />
-            <div
-              className={`overlay ${
-                selectedComponent === "concrete" ? "active-bckg" : ""
-              }`}
-            ></div>
-            <h4
-              className={`icon-text ${
-                selectedComponent === "concrete" ? "active-text" : ""
-              }`}
+          <div className="option-material">
+            <button
+              className="material-button"
+              // onClick={() => setSelectedComponent("concrete")}
             >
-              CONCRETE
-            </h4>
-          </button>
-          <button
-            className="material-button"
-            onClick={() => setSelectedComponent("wood")}
-          >
-            <img
-              className={`material-image ${
-                selectedComponent === "wood" ? "active" : ""
-              }`}
-              src={wood}
-              alt="wood"
-            />
-            <div
-              className={`overlay ${
-                selectedComponent === "wood" ? "active-bckg" : ""
-              }`}
-            ></div>
-            <h4
-              className={`icon-text ${
-                selectedComponent === "wood" ? "active-text" : ""
-              }`}
+              <img
+                className="material-image"
+                // {`material-image ${
+                //   selectedComponent === "concrete" ? "active" : ""
+                // }`}
+                src={concrete}
+                alt="concrete"
+              />
+              <div
+              // className={`overlay ${
+              //   selectedComponent === "concrete" ? "active-bckg" : ""
+              // }`}
+              ></div>
+              <h4
+                className="icon-text"
+                // className={`icon-text ${
+                //   selectedComponent === "concrete" ? "active-text" : ""
+                // }`}
+              >
+                CONCRETE
+              </h4>
+            </button>
+            <Concrete option={option} />
+          </div>
+          <div>
+            <button
+              className="material-button"
+              // onClick={() => setSelectedComponent("wood")}
             >
-              WOOD
-            </h4>
-          </button>
-          <button
-            className="material-button"
-            onClick={() => setSelectedComponent("steel")}
-          >
-            <img
-              className={`material-image ${
-                selectedComponent === "steel" ? "active" : ""
-              }`}
-              src={steel}
-              alt="steel"
-            />
-            <div
-              className={`overlay ${
-                selectedComponent === "steel" ? "active-bckg" : ""
-              }`}
-            ></div>
-            <h4
-              className={`icon-text ${
-                selectedComponent === "steel" ? "active-text" : ""
-              }`}
+              <img
+                className="material-image"
+                // className={`material-image ${
+                //   selectedComponent === "wood" ? "active" : ""
+                // }`}
+                src={wood}
+                alt="wood"
+              />
+              <div
+              // className={`overlay ${
+              //   selectedComponent === "wood" ? "active-bckg" : ""
+              // }`}
+              ></div>
+              <h4
+                className="icon-text"
+                // className={`icon-text ${
+                //   selectedComponent === "wood" ? "active-text" : ""
+                // }`}
+              >
+                WOOD
+              </h4>
+            </button>
+            <Wood option={option} />
+          </div>
+          <div>
+            <button
+              className="material-button"
+              // onClick={() => setSelectedComponent("steel")}
             >
-              STEEL
-            </h4>
-          </button>
+              <img
+                className="material-image"
+                // className={`material-image ${
+                //   selectedComponent === "steel" ? "active" : ""
+                // }`}
+                src={steel}
+                alt="steel"
+              />
+              <div
+              // className={`overlay ${
+              //   selectedComponent === "steel" ? "active-bckg" : ""
+              // }`}
+              ></div>
+              <h4
+                className="icon-text"
+                // className={`icon-text ${
+                //   selectedComponent === "steel" ? "active-text" : ""
+                // }`}
+              >
+                STEEL
+              </h4>
+            </button>
+            <Steel option={option} />
+          </div>
         </div>
         <div className="optionResults">
-          <div>
-            {selectedComponent === "concrete" && <Concrete option={option} />}
+          <div className="option-materials-inputs">
+            {/* <Concrete option={option} />
+            <Wood option={option} />
+            <Steel option={option} /> */}
+            {/* {selectedComponent === "concrete" && <Concrete option={option} />}
             {selectedComponent === "wood" && <Wood option={option} />}
-            {selectedComponent === "steel" && <Steel option={option} />}
+            {selectedComponent === "steel" && <Steel option={option} />} */}
           </div>
           {showResults && (
             <div className="optionResults-charts">
