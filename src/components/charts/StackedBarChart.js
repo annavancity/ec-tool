@@ -24,7 +24,7 @@ const StackedBarChart = ({
     >
       {/* <CartesianGrid strokeDasharray="3 3" /> */}
       <XAxis type="category" dataKey="material" width={80} hide />
-      <YAxis type="number" />
+      <YAxis type="number" width={70} />
       <Tooltip />
 
       <Bar dataKey="Concrete" stackId="a" fill="rgb(169, 169, 169)" />
