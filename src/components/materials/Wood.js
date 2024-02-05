@@ -1,26 +1,9 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useContext } from "react";
-import { CalculationContext } from "../../utils/CalculationContext";
-import {
-  updateMaterialInputs,
-  markMaterialAsSaved,
-} from "../../features/materialInputsSlice";
-import Modal from "../../utils/Modal";
-import handleSaveInputs from "../../utils/handleSaveInputs";
-import { initialState } from "../../features/materialInputsSlice";
+import { useSelector } from "react-redux";
 
-const Wood = ({ option }) => {
-  const dispatch = useDispatch();
-  const materialInputs = useSelector((state) => state.materialInputs[option]);
-  const { markInputsChanged } = useContext(CalculationContext);
-  const woodInputs = materialInputs.wood.inputs;
+const Wood = ({ option, localInputs, setLocalInputs }) => {
   const woodCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.wood || {}
   );
-
-  const [localInputs, setLocalInputs] = useState({ ...woodInputs });
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,54 +11,6 @@ const Wood = ({ option }) => {
       ...localInputs,
       [name]: Number(value),
     });
-  };
-
-  // Update local state when Redux state changes
-  useEffect(() => {
-    setLocalInputs({ ...woodInputs });
-  }, [woodInputs]);
-
-  // Save inputs
-  const saveInputs = () => {
-    const woodData = { inputs: localInputs };
-    dispatch(
-      updateMaterialInputs({
-        option,
-        materialType: "wood",
-        inputs: woodData.inputs,
-      })
-    ); // Update Redux state with new inputs
-    handleSaveInputs(option, "wood", woodData); // Save to local storage
-    dispatch(markMaterialAsSaved({ option, materialType: "wood" })); // Mark as saved in Redux state
-
-    // Mark inputs as changed
-    markInputsChanged(option, true);
-  };
-
-  // Load from local storage
-
-  useEffect(() => {
-    if (materialInputs.wood.isSaved) {
-      const savedData = JSON.parse(localStorage.getItem(option));
-      if (savedData && savedData.wood) {
-        setLocalInputs(savedData.wood.inputs);
-        dispatch(
-          updateMaterialInputs({
-            option,
-            materialType: "wood",
-            inputs: savedData.wood.inputs,
-          })
-        );
-      }
-    } else {
-      // Reset local state if isSaved is false
-      setLocalInputs(initialState[option].wood.inputs);
-    }
-  }, [option, materialInputs.wood.isSaved, dispatch]);
-
-  // Close modal
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
   };
 
   // Function to check if all concrete inputs are zeros
@@ -101,7 +36,7 @@ const Wood = ({ option }) => {
         <label className="menu-text-large value-name">Wood - CLT:</label>
         <input
           type="number"
-          value={localInputs.woodCLT}
+          value={localInputs.woodCLT || ""}
           name="woodCLT"
           onChange={handleInputChange}
           placeholder="wood-CLT value"
@@ -126,7 +61,7 @@ const Wood = ({ option }) => {
         <label className="menu-text-large value-name">Wood - DLT / NLT:</label>
         <input
           type="number"
-          value={localInputs.woodDltNlt}
+          value={localInputs.woodDltNlt || ""}
           name="woodDltNlt"
           onChange={handleInputChange}
           placeholder="wood-DLT/NLT value"
@@ -151,7 +86,7 @@ const Wood = ({ option }) => {
         <label className="menu-text-large value-name">Wood - MPP:</label>
         <input
           type="number"
-          value={localInputs.woodMPP}
+          value={localInputs.woodMPP || ""}
           name="woodMPP"
           onChange={handleInputChange}
           placeholder="wood-MPP value"
@@ -176,7 +111,7 @@ const Wood = ({ option }) => {
         <label className="menu-text-large value-name">Wood - Plywood:</label>
         <input
           type="number"
-          value={localInputs.woodPlywood}
+          value={localInputs.woodPlywood || ""}
           name="woodPlywood"
           onChange={handleInputChange}
           placeholder="wood-plywood value"
@@ -201,7 +136,7 @@ const Wood = ({ option }) => {
         <label className="menu-text-large value-name">Wood - Glulam:</label>
         <input
           type="number"
-          value={localInputs.woodGlulam}
+          value={localInputs.woodGlulam || ""}
           name="woodGlulam"
           onChange={handleInputChange}
           placeholder="wood-glulam value"
@@ -228,7 +163,7 @@ const Wood = ({ option }) => {
         </label>
         <input
           type="number"
-          value={localInputs.woodPslLslLvl}
+          value={localInputs.woodPslLslLvl || ""}
           name="woodPslLslLvl"
           onChange={handleInputChange}
           placeholder="wood-PSL/LSL/LVL value"
@@ -253,7 +188,7 @@ const Wood = ({ option }) => {
         <label className="menu-text-large value-name">Wood - TJI:</label>
         <input
           type="number"
-          value={localInputs.woodTJI}
+          value={localInputs.woodTJI || ""}
           name="woodTJI"
           onChange={handleInputChange}
           placeholder="wood-TJI value"
@@ -278,7 +213,7 @@ const Wood = ({ option }) => {
         <label className="menu-text-large value-name">Wood - Lumber:</label>
         <input
           type="number"
-          value={localInputs.woodLumber}
+          value={localInputs.woodLumber || ""}
           name="woodLumber"
           onChange={handleInputChange}
           placeholder="wood-lumber value"
@@ -303,7 +238,7 @@ const Wood = ({ option }) => {
         <label className="menu-text-large value-name">Wood - Custom:</label>
         <input
           type="number"
-          value={localInputs.woodCustom}
+          value={localInputs.woodCustom || ""}
           name="woodCustom"
           onChange={handleInputChange}
           placeholder="wood-custom value"
@@ -324,13 +259,6 @@ const Wood = ({ option }) => {
             </p>
           </>
         )}
-      </div>
-
-      <div>
-        <button className="btn operations" onClick={saveInputs}>
-          Save inputs
-        </button>
-        <Modal isOpen={isModalOpen} handleClose={handleCloseModal} />
       </div>
     </div>
   );

@@ -228,24 +228,6 @@ ul {
   z-index: 1;
 }
 
-.overlay {
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.593);
-  opacity: 0;
-  transition: opacity 0.3s;
-  border: 1px solid var(--color-yellow);
-}
-
-.overlay.active-bckg,
-.overlay:hover {
-  opacity: 1;
-}
-
 .material-image:hover {
   cursor: pointer;
   background: var(--color-background);
@@ -478,9 +460,7 @@ input[type="number"] {
   align-items: center;
   justify-content: space-between;
 }
-.optionResults-charts {
-  flex: 1;
-}
+
 .total-values {
   display: flex;
   flex-direction: column;
@@ -496,11 +476,7 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.chart-title:first-child {
-  margin-left: -150px;
-  padding-right: 80px;
+  margin-top: 20px;
 }
 
 /* --------------------SUMMARY-------------------- */
@@ -531,6 +507,7 @@ input[type="number"] {
 
 .chart-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

@@ -1,26 +1,9 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useContext } from "react";
-import { CalculationContext } from "../../utils/CalculationContext";
-import {
-  updateMaterialInputs,
-  markMaterialAsSaved,
-} from "../../features/materialInputsSlice";
-import Modal from "../../utils/Modal";
-import handleSaveInputs from "../../utils/handleSaveInputs";
-import { initialState } from "../../features/materialInputsSlice";
+import { useSelector } from "react-redux";
 
-const Steel = ({ option }) => {
-  const dispatch = useDispatch();
-  const materialInputs = useSelector((state) => state.materialInputs[option]);
-  const { markInputsChanged } = useContext(CalculationContext);
-  const steelInputs = materialInputs.steel.inputs;
+const Steel = ({ option, localInputs, setLocalInputs }) => {
   const steelCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.steel || {}
   );
-
-  const [localInputs, setLocalInputs] = useState({ ...steelInputs });
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,54 +11,6 @@ const Steel = ({ option }) => {
       ...localInputs,
       [name]: Number(value),
     });
-  };
-
-  // Update local state when Redux state changes
-  useEffect(() => {
-    setLocalInputs({ ...steelInputs });
-  }, [steelInputs]);
-
-  // Save inputs
-  const saveInputs = () => {
-    const steelData = { inputs: localInputs };
-    dispatch(
-      updateMaterialInputs({
-        option,
-        materialType: "steel",
-        inputs: steelData.inputs,
-      })
-    ); // Update Redux state with new inputs
-    handleSaveInputs(option, "steel", steelData); // Save to local storage
-    dispatch(markMaterialAsSaved({ option, materialType: "steel" })); // Mark as saved in Redux state
-
-    // Mark inputs as changed
-    markInputsChanged(option, true);
-  };
-
-  // Load from local storage
-
-  useEffect(() => {
-    if (materialInputs.steel.isSaved) {
-      const savedData = JSON.parse(localStorage.getItem(option));
-      if (savedData && savedData.steel) {
-        setLocalInputs(savedData.steel.inputs);
-        dispatch(
-          updateMaterialInputs({
-            option,
-            materialType: "steel",
-            inputs: savedData.steel.inputs,
-          })
-        );
-      }
-    } else {
-      // Reset local state if isSaved is false
-      setLocalInputs(initialState[option].steel.inputs);
-    }
-  }, [option, materialInputs.steel.isSaved, dispatch]);
-
-  // Close modal
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
   };
 
   // Function to check if all concrete inputs are zeros
@@ -103,7 +38,7 @@ const Steel = ({ option }) => {
         </label>
         <input
           type="number"
-          value={localInputs.steelHotRolled}
+          value={localInputs.steelHotRolled || ""}
           name="steelHotRolled"
           onChange={handleInputChange}
           placeholder="steel-hot rolled value"
@@ -126,7 +61,7 @@ const Steel = ({ option }) => {
         <label className="menu-text-large value-name">Steel - HSS:</label>
         <input
           type="number"
-          value={localInputs.steelHSS}
+          value={localInputs.steelHSS || ""}
           name="steelHSS"
           onChange={handleInputChange}
           placeholder="steel-HSS value"
@@ -149,7 +84,7 @@ const Steel = ({ option }) => {
         <label className="menu-text-large value-name">Steel - OWSJ:</label>
         <input
           type="number"
-          value={localInputs.steelOWSJ}
+          value={localInputs.steelOWSJ || ""}
           name="steelOWSJ"
           onChange={handleInputChange}
           placeholder="steel-OWSJ value"
@@ -172,7 +107,7 @@ const Steel = ({ option }) => {
         <label className="menu-text-large value-name">Steel - Plate:</label>
         <input
           type="number"
-          value={localInputs.steelPlate}
+          value={localInputs.steelPlate || ""}
           name="steelPlate"
           onChange={handleInputChange}
           placeholder="steel-plate value"
@@ -195,7 +130,7 @@ const Steel = ({ option }) => {
         <label className="menu-text-large value-name">Steel - Deck:</label>
         <input
           type="number"
-          value={localInputs.steelDeck}
+          value={localInputs.steelDeck || ""}
           name="steelDeck"
           onChange={handleInputChange}
           placeholder="steel-deck value"
@@ -218,7 +153,7 @@ const Steel = ({ option }) => {
         <label className="menu-text-large value-name">Steel - Custom:</label>
         <input
           type="number"
-          value={localInputs.steelCustom}
+          value={localInputs.steelCustom || ""}
           name="steelCustom"
           onChange={handleInputChange}
           placeholder="steel-custom value"
@@ -239,13 +174,6 @@ const Steel = ({ option }) => {
             </p>
           </>
         )}
-      </div>
-
-      <div>
-        <button className="btn operations" onClick={saveInputs}>
-          Save inputs
-        </button>
-        <Modal isOpen={isModalOpen} handleClose={handleCloseModal} />
       </div>
     </div>
   );

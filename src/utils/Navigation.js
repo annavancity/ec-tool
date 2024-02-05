@@ -15,14 +15,18 @@ const Navigation = () => {
   const isOptionThreeCalculated = useSelector(
     (state) => state.calculatedValues.OptionThree.isCalculated
   );
-  const allOptionsCalculated =
-    isOptionOneCalculated && isOptionTwoCalculated && isOptionThreeCalculated;
+  const atLeastTwoOptionsCalculated =
+    [
+      isOptionOneCalculated,
+      isOptionTwoCalculated,
+      isOptionThreeCalculated,
+    ].filter(Boolean).length >= 2;
 
   const location = useLocation();
   const currentPath = location.pathname;
 
   const handleLinkClick = (e) => {
-    if (!allOptionsCalculated) {
+    if (!atLeastTwoOptionsCalculated) {
       e.preventDefault(); // Prevent link navigation
     }
   };
@@ -70,14 +74,15 @@ const Navigation = () => {
             to="/summary_comparison"
             className={`btn ${
               currentPath === "/summary_comparison" ? "active" : ""
-            } ${!allOptionsCalculated ? "disabled" : ""}`}
+            } ${!atLeastTwoOptionsCalculated ? "disabled" : ""}`}
             onClick={handleLinkClick}
           >
             Summary Comparison
-            {!allOptionsCalculated && (
+            {!atLeastTwoOptionsCalculated && (
               <div className="tooltip">
                 <p className="error-message">
-                  All 3 schemes have to be <br></br>calculated to view this page
+                  At least 2 schemes have to be <br></br>calculated to view this
+                  page
                 </p>
               </div>
             )}

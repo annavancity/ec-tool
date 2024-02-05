@@ -21,13 +21,17 @@ import {
 import StackedBarChart from "../components/charts/StackedBarChart";
 import CustomPieChartPercentage from "../components/charts/CustomPieChartPercentage";
 import { initialState } from "../features/materialInputsSlice";
+import handleSaveInputs from "../utils/handleSaveInputs";
 
 const OptionGenericLogic = ({ option }) => {
+  //Define state for each material
+  const [localConcreteInputs, setLocalConcreteInputs] = useState({});
+  const [localSteelInputs, setLocalSteelInputs] = useState({});
+  const [localWoodInputs, setLocalWoodInputs] = useState({});
   const { inputsChanged, markInputsChanged } = useContext(CalculationContext);
   const [showRecalculateMessage, setShowRecalculateMessage] = useState(false);
   const [showResults, setShowResults] = useState(false); // state for showing totals and piechart after calculate button clicked
   const dispatch = useDispatch();
-  // const [selectedComponent, setSelectedComponent] = useState("concrete");
 
   const savedDescription = localStorage.getItem(`${option}Description`) || ""; // Initialize description state with value from local storage
   const [description, setDescription] = useState(savedDescription);
@@ -44,6 +48,64 @@ const OptionGenericLogic = ({ option }) => {
   const [buildingArea, setBuildingArea] = useState(
     savedBuildingArea ? Number(savedBuildingArea) : null
   );
+
+  // Save all inputs at once
+  const saveAllInputs = () => {
+    // Dispatch the updateMaterialInputs action for each material type
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "concrete",
+        inputs: localConcreteInputs,
+      })
+    );
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "steel",
+        inputs: localSteelInputs,
+      })
+    );
+    dispatch(
+      updateMaterialInputs({
+        option,
+        materialType: "wood",
+        inputs: localWoodInputs,
+      })
+    );
+
+    // Save to local storage
+    handleSaveInputs(option, "concrete", { inputs: localConcreteInputs });
+    handleSaveInputs(option, "steel", { inputs: localSteelInputs });
+    handleSaveInputs(option, "wood", { inputs: localWoodInputs });
+
+    // Mark as saved in Redux state for each material type
+    dispatch(markMaterialAsSaved({ option, materialType: "concrete" }));
+    dispatch(markMaterialAsSaved({ option, materialType: "steel" }));
+    dispatch(markMaterialAsSaved({ option, materialType: "wood" }));
+
+    markInputsChanged(option, true); //after saving inputs mark them as changed
+  };
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem(option));
+    if (savedData) {
+      if (savedData.concrete) {
+        setLocalConcreteInputs(savedData.concrete.inputs); //dispatch update for concrete
+      }
+      if (savedData.steel) {
+        setLocalSteelInputs(savedData.steel.inputs); //dispatch update for steel
+      }
+      if (savedData.wood) {
+        setLocalWoodInputs(savedData.wood.inputs); //dispatch update for wood
+      }
+    } else {
+      // Reset local state if not saved
+      setLocalConcreteInputs(initialState[option].concrete.inputs);
+      setLocalSteelInputs(initialState[option].steel.inputs);
+      setLocalWoodInputs(initialState[option].wood.inputs);
+    }
+  }, [option, dispatch]);
 
   // Function to handle building area change
   const handleBuildingAreaChange = (e) => {
@@ -298,101 +360,37 @@ const OptionGenericLogic = ({ option }) => {
       <div className="container">
         <div className="select-material">
           <div className="option-material">
-            <button
-              className="material-button"
-              // onClick={() => setSelectedComponent("concrete")}
-            >
-              <img
-                className="material-image"
-                // {`material-image ${
-                //   selectedComponent === "concrete" ? "active" : ""
-                // }`}
-                src={concrete}
-                alt="concrete"
-              />
-              <div
-              // className={`overlay ${
-              //   selectedComponent === "concrete" ? "active-bckg" : ""
-              // }`}
-              ></div>
-              <h4
-                className="icon-text"
-                // className={`icon-text ${
-                //   selectedComponent === "concrete" ? "active-text" : ""
-                // }`}
-              >
-                CONCRETE
-              </h4>
+            <button className="material-button">
+              <img className="material-image" src={concrete} alt="concrete" />
+              <h4 className="icon-text">CONCRETE</h4>
             </button>
-            <Concrete option={option} />
+            <Concrete
+              option={option}
+              localInputs={localConcreteInputs}
+              setLocalInputs={setLocalConcreteInputs}
+            />
           </div>
           <div>
-            <button
-              className="material-button"
-              // onClick={() => setSelectedComponent("wood")}
-            >
-              <img
-                className="material-image"
-                // className={`material-image ${
-                //   selectedComponent === "wood" ? "active" : ""
-                // }`}
-                src={wood}
-                alt="wood"
-              />
-              <div
-              // className={`overlay ${
-              //   selectedComponent === "wood" ? "active-bckg" : ""
-              // }`}
-              ></div>
-              <h4
-                className="icon-text"
-                // className={`icon-text ${
-                //   selectedComponent === "wood" ? "active-text" : ""
-                // }`}
-              >
-                WOOD
-              </h4>
+            <button className="material-button">
+              <img className="material-image" src={wood} alt="wood" />
+              <h4 className="icon-text">WOOD</h4>
             </button>
-            <Wood option={option} />
+            <Wood
+              option={option}
+              localInputs={localWoodInputs}
+              setLocalInputs={setLocalWoodInputs}
+            />
           </div>
           <div>
-            <button
-              className="material-button"
-              // onClick={() => setSelectedComponent("steel")}
-            >
-              <img
-                className="material-image"
-                // className={`material-image ${
-                //   selectedComponent === "steel" ? "active" : ""
-                // }`}
-                src={steel}
-                alt="steel"
-              />
-              <div
-              // className={`overlay ${
-              //   selectedComponent === "steel" ? "active-bckg" : ""
-              // }`}
-              ></div>
-              <h4
-                className="icon-text"
-                // className={`icon-text ${
-                //   selectedComponent === "steel" ? "active-text" : ""
-                // }`}
-              >
-                STEEL
-              </h4>
+            <button className="material-button">
+              <img className="material-image" src={steel} alt="steel" />
+              <h4 className="icon-text">STEEL</h4>
             </button>
-            <Steel option={option} />
-          </div>
-        </div>
-        <div className="optionResults">
-          <div className="option-materials-inputs">
-            {/* <Concrete option={option} />
-            <Wood option={option} />
-            <Steel option={option} /> */}
-            {/* {selectedComponent === "concrete" && <Concrete option={option} />}
-            {selectedComponent === "wood" && <Wood option={option} />}
-            {selectedComponent === "steel" && <Steel option={option} />} */}
+            <Steel
+              option={option}
+              localInputs={localSteelInputs}
+              setLocalInputs={setLocalSteelInputs}
+            />
           </div>
           {showResults && (
             <div className="optionResults-charts">
@@ -439,17 +437,21 @@ const OptionGenericLogic = ({ option }) => {
             </div>
           )}
         </div>
+        <div className="optionResults"></div>
+
+        <div>
+          <button className="btn operations" onClick={saveAllInputs}>
+            Save inputs
+          </button>
+          <button className="btn operations" onClick={calculateResults}>
+            Calculate
+          </button>
+        </div>
         {showRecalculateMessage && (
           <div className="error-message">
             Calculations and charts are out-of-date.
           </div>
         )}
-
-        <div>
-          <button className="btn operations" onClick={calculateResults}>
-            Calculate
-          </button>
-        </div>
       </div>
     </div>
   );

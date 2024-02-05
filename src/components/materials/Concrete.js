@@ -1,26 +1,10 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useContext } from "react";
-import { CalculationContext } from "../../utils/CalculationContext";
-import {
-  updateMaterialInputs,
-  markMaterialAsSaved,
-} from "../../features/materialInputsSlice";
-import Modal from "../../utils/Modal";
-import handleSaveInputs from "../../utils/handleSaveInputs";
-import { initialState } from "../../features/materialInputsSlice";
+// import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-const Concrete = ({ option }) => {
-  const dispatch = useDispatch();
-  const materialInputs = useSelector((state) => state.materialInputs[option]);
-  const { markInputsChanged } = useContext(CalculationContext);
-  const concreteInputs = materialInputs.concrete.inputs;
+const Concrete = ({ option, localInputs, setLocalInputs }) => {
   const concreteCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.concrete || {}
   );
-
-  const [localInputs, setLocalInputs] = useState({ ...concreteInputs });
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,54 +12,6 @@ const Concrete = ({ option }) => {
       ...localInputs,
       [name]: Number(value),
     });
-  };
-
-  // Update local state when Redux state changes
-  useEffect(() => {
-    setLocalInputs({ ...concreteInputs });
-  }, [concreteInputs]);
-
-  // Save inputs
-  const saveInputs = () => {
-    const concreteData = { inputs: localInputs };
-    dispatch(
-      updateMaterialInputs({
-        option,
-        materialType: "concrete",
-        inputs: concreteData.inputs,
-      })
-    );
-    handleSaveInputs(option, "concrete", concreteData);
-    dispatch(markMaterialAsSaved({ option, materialType: "concrete" }));
-
-    // Mark inputs as changed
-    markInputsChanged(option, true);
-  };
-
-  // Load from local storage
-
-  useEffect(() => {
-    if (materialInputs.concrete.isSaved) {
-      const savedData = JSON.parse(localStorage.getItem(option));
-      if (savedData && savedData.concrete) {
-        setLocalInputs(savedData.concrete.inputs);
-        dispatch(
-          updateMaterialInputs({
-            option,
-            materialType: "concrete",
-            inputs: savedData.concrete.inputs,
-          })
-        );
-      }
-    } else {
-      // Reset local state if isSaved is false
-      setLocalInputs(initialState[option].concrete.inputs);
-    }
-  }, [option, materialInputs.concrete.isSaved, dispatch]);
-
-  // Close modal
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
   };
 
   // Function to check if all concrete inputs are zeros
@@ -104,7 +40,7 @@ const Concrete = ({ option }) => {
         </label>
         <input
           type="number"
-          value={localInputs.concHoriz}
+          value={localInputs.concHoriz || ""}
           name="concHoriz"
           onChange={handleInputChange}
           placeholder="conc-horiz value"
@@ -130,7 +66,7 @@ const Concrete = ({ option }) => {
         </label>
         <input
           type="number"
-          value={localInputs.concVert}
+          value={localInputs.concVert || ""}
           name="concVert"
           onChange={handleInputChange}
           placeholder="conc-vert value"
@@ -156,7 +92,7 @@ const Concrete = ({ option }) => {
         </label>
         <input
           type="number"
-          value={localInputs.concFound}
+          value={localInputs.concFound || ""}
           name="concFound"
           onChange={handleInputChange}
           placeholder="conc-foundation value"
@@ -180,7 +116,7 @@ const Concrete = ({ option }) => {
         <label className="menu-text-large value-name">Concrete - Rebar:</label>
         <input
           type="number"
-          value={localInputs.concRebar}
+          value={localInputs.concRebar || ""}
           name="concRebar"
           onChange={handleInputChange}
           placeholder="conc-rebar value"
@@ -202,7 +138,7 @@ const Concrete = ({ option }) => {
         <label className="menu-text-large value-name">Concrete - Custom:</label>
         <input
           type="number"
-          value={localInputs.concCustom}
+          value={localInputs.concCustom || ""}
           name="concCustom"
           onChange={handleInputChange}
           placeholder="conc-custom value"
@@ -223,12 +159,6 @@ const Concrete = ({ option }) => {
             </p>
           </>
         )}
-      </div>
-      <div>
-        <button className="btn operations" onClick={saveInputs}>
-          Save inputs
-        </button>
-        <Modal isOpen={isModalOpen} handleClose={handleCloseModal} />
       </div>
     </div>
   );
