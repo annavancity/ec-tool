@@ -273,7 +273,7 @@ ul {
 }
 
 .menu-text-large {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-white);
   font-weight: 300;
   margin-right: 10px;
@@ -318,7 +318,7 @@ ul {
 }
 
 .value-name {
-  width: 200px;
+  width: 160px;
 }
 
 .value-value {
@@ -327,7 +327,7 @@ ul {
 }
 
 input {
-  width: 120px;
+  width: 80px;
   font-size: 18px;
   padding: 5px;
   background-color: var(--color-background);
@@ -358,8 +358,8 @@ input[type="number"] {
 }
 
 .value-row-GWP {
-  width: 80px;
-  margin-left: 20px;
+  width: 70px;
+  margin-left: 10px;
 }
 
 .value-row-description {
