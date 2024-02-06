@@ -204,12 +204,13 @@ ul {
   display: flex;
 } */
 .material-button {
+  flex: 1;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: calc(100% - 10px);
-  height: 280px;
+  height: 120px;
   cursor: pointer;
   border: none;
   background: none;
@@ -228,6 +229,12 @@ ul {
   z-index: 1;
 }
 
+.overlay {
+  background-color: var(--color-shadow);
+  position: absolute;
+  width: 100%;
+  z-index: 30;
+}
 .material-image:hover {
   cursor: pointer;
   background: var(--color-background);
@@ -252,6 +259,10 @@ ul {
 .value-row {
   display: flex;
   align-items: center;
+}
+
+.value-row-placeholder {
+  width: 436.83px;
 }
 
 .menu-text-large {
@@ -530,7 +541,7 @@ input[type="number"] {
 
 .chart-description {
   text-transform: uppercase;
-  font-size: 22px;
+  font-size: 20px;
   margin-top: -10px;
 }
 

@@ -41,7 +41,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.steelHotRolled || ""}
           name="steelHotRolled"
           onChange={handleInputChange}
-          placeholder="steel-hot rolled value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -64,7 +64,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.steelHSS || ""}
           name="steelHSS"
           onChange={handleInputChange}
-          placeholder="steel-HSS value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -87,7 +87,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.steelOWSJ || ""}
           name="steelOWSJ"
           onChange={handleInputChange}
-          placeholder="steel-OWSJ value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -110,7 +110,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.steelPlate || ""}
           name="steelPlate"
           onChange={handleInputChange}
-          placeholder="steel-plate value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -133,7 +133,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.steelDeck || ""}
           name="steelDeck"
           onChange={handleInputChange}
-          placeholder="steel-deck value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -156,7 +156,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.steelCustom || ""}
           name="steelCustom"
           onChange={handleInputChange}
-          placeholder="steel-custom value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">

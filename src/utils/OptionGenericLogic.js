@@ -5,6 +5,7 @@ import { CalculationContext } from "../utils/CalculationContext";
 import concrete from "../images/concrete.jpg";
 import steel from "../images/steel.jpg";
 import wood from "../images/wood.jpg";
+import GWPimage from "../images/GWPimage.png";
 import Concrete from "../components/materials/Concrete";
 import Wood from "../components/materials/Wood";
 import Steel from "../components/materials/Steel";
@@ -370,7 +371,7 @@ const OptionGenericLogic = ({ option }) => {
               setLocalInputs={setLocalConcreteInputs}
             />
           </div>
-          <div>
+          <div className="option-material">
             <button className="material-button">
               <img className="material-image" src={wood} alt="wood" />
               <h4 className="icon-text">WOOD</h4>
@@ -381,7 +382,7 @@ const OptionGenericLogic = ({ option }) => {
               setLocalInputs={setLocalWoodInputs}
             />
           </div>
-          <div>
+          <div className="option-material">
             <button className="material-button">
               <img className="material-image" src={steel} alt="steel" />
               <h4 className="icon-text">STEEL</h4>
@@ -392,50 +393,58 @@ const OptionGenericLogic = ({ option }) => {
               setLocalInputs={setLocalSteelInputs}
             />
           </div>
-          {showResults && (
-            <div className="optionResults-charts">
-              {!areAllInputsZeros() &&
-                showResults &&
-                calculatedValues.concrete &&
-                calculatedValues.steel &&
-                calculatedValues.wood && (
-                  <div className="chart-container">
-                    <div className="chart-title  pie-options">
-                      <CustomPieChartPercentage
-                        concretePercentage={
-                          calculatedValues.concrete?.concPercentageTotal || 0
-                        }
-                        steelPercentage={
-                          calculatedValues.steel?.steelPercentageTotal || 0
-                        }
-                        woodPercentage={
-                          calculatedValues.wood?.woodPercentageTotal || 0
-                        }
-                      />
+          <div className="option-material">
+            <button className="material-button">
+              <img className="material-image" src={GWPimage} alt="GWP" />
+              <p className="icon-text">GWP PER SCHEME</p>
+              <div className="overlay"></div>
+            </button>
+            <p className="value-row-placeholder"></p>
+            {showResults && (
+              <div className="optionResults-charts">
+                {!areAllInputsZeros() &&
+                  showResults &&
+                  calculatedValues.concrete &&
+                  calculatedValues.steel &&
+                  calculatedValues.wood && (
+                    <div className="chart-container">
+                      <div className="chart-title">
+                        <CustomPieChartPercentage
+                          concretePercentage={
+                            calculatedValues.concrete?.concPercentageTotal || 0
+                          }
+                          steelPercentage={
+                            calculatedValues.steel?.steelPercentageTotal || 0
+                          }
+                          woodPercentage={
+                            calculatedValues.wood?.woodPercentageTotal || 0
+                          }
+                        />
 
-                      <h2 className="chart-description">
-                        Percentage of total GWP
-                      </h2>
-                    </div>
+                        <h2 className="chart-description">
+                          Percentage of total GWP
+                        </h2>
+                      </div>
 
-                    <div className="chart-title">
-                      <StackedBarChart
-                        concretePercentage={
-                          calculatedValues.concrete?.concGWPTotal || 0
-                        }
-                        steelPercentage={
-                          calculatedValues.steel?.steelGWPTotal || 0
-                        }
-                        woodPercentage={
-                          calculatedValues.wood?.woodGWPTotal || 0
-                        }
-                      />
-                      <h2 className="chart-description">Total GWP</h2>
+                      <div className="chart-title">
+                        <StackedBarChart
+                          concretePercentage={
+                            calculatedValues.concrete?.concGWPTotal || 0
+                          }
+                          steelPercentage={
+                            calculatedValues.steel?.steelGWPTotal || 0
+                          }
+                          woodPercentage={
+                            calculatedValues.wood?.woodGWPTotal || 0
+                          }
+                        />
+                        <h2 className="chart-description">Total GWP</h2>
+                      </div>
                     </div>
-                  </div>
-                )}
-            </div>
-          )}
+                  )}
+              </div>
+            )}
+          </div>
         </div>
         <div className="optionResults"></div>
 

@@ -43,7 +43,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.concHoriz || ""}
           name="concHoriz"
           onChange={handleInputChange}
-          placeholder="conc-horiz value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -69,7 +69,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.concVert || ""}
           name="concVert"
           onChange={handleInputChange}
-          placeholder="conc-vert value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -95,7 +95,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.concFound || ""}
           name="concFound"
           onChange={handleInputChange}
-          placeholder="conc-foundation value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -119,7 +119,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.concRebar || ""}
           name="concRebar"
           onChange={handleInputChange}
-          placeholder="conc-rebar value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -141,7 +141,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.concCustom || ""}
           name="concCustom"
           onChange={handleInputChange}
-          placeholder="conc-custom value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">

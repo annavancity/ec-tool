@@ -16,7 +16,7 @@ const StackedBarChart = ({
   return (
     <BarChart
       width={300}
-      height={300}
+      height={200}
       // layout="vertical"
       data={data}
       barCategoryGap="35%"

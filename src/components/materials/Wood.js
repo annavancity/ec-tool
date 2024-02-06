@@ -39,7 +39,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodCLT || ""}
           name="woodCLT"
           onChange={handleInputChange}
-          placeholder="wood-CLT value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -64,7 +64,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodDltNlt || ""}
           name="woodDltNlt"
           onChange={handleInputChange}
-          placeholder="wood-DLT/NLT value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -89,7 +89,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodMPP || ""}
           name="woodMPP"
           onChange={handleInputChange}
-          placeholder="wood-MPP value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -114,7 +114,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodPlywood || ""}
           name="woodPlywood"
           onChange={handleInputChange}
-          placeholder="wood-plywood value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -139,7 +139,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodGlulam || ""}
           name="woodGlulam"
           onChange={handleInputChange}
-          placeholder="wood-glulam value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -166,7 +166,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodPslLslLvl || ""}
           name="woodPslLslLvl"
           onChange={handleInputChange}
-          placeholder="wood-PSL/LSL/LVL value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -191,7 +191,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodTJI || ""}
           name="woodTJI"
           onChange={handleInputChange}
-          placeholder="wood-TJI value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -216,7 +216,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodLumber || ""}
           name="woodLumber"
           onChange={handleInputChange}
-          placeholder="wood-lumber value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -241,7 +241,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           value={localInputs.woodCustom || ""}
           name="woodCustom"
           onChange={handleInputChange}
-          placeholder="wood-custom value"
+          placeholder="0"
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">

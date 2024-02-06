@@ -46,14 +46,14 @@ const CustomPieChartPercentage = ({
   };
 
   return (
-    <PieChart width={400} height={300}>
+    <PieChart width={400} height={250}>
       <Pie
         data={data}
         cx="50%"
         cy="50%"
         labelLine={false}
         label={renderCustomLabel}
-        outerRadius={80}
+        outerRadius={75}
         dataKey="value"
       >
         {data.map((entry, index) => (
