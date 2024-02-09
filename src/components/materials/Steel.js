@@ -17,6 +17,10 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
     onActiveChange("steel");
   };
 
+  const handleInputBlur = () => {
+    onActiveChange(""); // clear the active material state when input is not active
+  };
+
   // Function to check if all concrete inputs are zeros
   const areSteelInputsZeros = () => {
     return Object.values(localInputs).every((value) => value === 0);
@@ -47,6 +51,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -71,6 +76,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -95,6 +101,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -119,6 +126,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -143,6 +151,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -167,6 +176,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">

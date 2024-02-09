@@ -17,6 +17,10 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
     onActiveChange("wood");
   };
 
+  const handleInputBlur = () => {
+    onActiveChange(""); // clear the active material state when input is not active
+  };
+
   // Function to check if all concrete inputs are zeros
   const areWoodInputsZeros = () => {
     return Object.values(localInputs).every((value) => value === 0);
@@ -45,6 +49,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -71,6 +76,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -97,6 +103,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -123,6 +130,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -149,6 +157,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -177,6 +186,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -203,6 +213,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -229,6 +240,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -255,6 +267,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">

@@ -18,6 +18,10 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
     onActiveChange("concrete");
   };
 
+  const handleInputBlur = () => {
+    onActiveChange(""); // clear the active material state when input is not active
+  };
+
   // Function to check if all concrete inputs are zeros
   const areConcreteInputsZeros = () => {
     return Object.values(localInputs).every((value) => value === 0);
@@ -49,6 +53,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -76,6 +81,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -103,6 +109,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -128,6 +135,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -151,6 +159,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onChange={handleInputChange}
           placeholder="0"
           onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">
