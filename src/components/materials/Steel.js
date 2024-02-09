@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-const Steel = ({ option, localInputs, setLocalInputs }) => {
+const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
   const steelCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.steel || {}
   );
@@ -11,6 +11,10 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
       ...localInputs,
       [name]: Number(value),
     });
+  };
+
+  const handleInputFocus = () => {
+    onActiveChange("steel");
   };
 
   // Function to check if all concrete inputs are zeros
@@ -42,6 +46,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           name="steelHotRolled"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -65,6 +70,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           name="steelHSS"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -88,6 +94,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           name="steelOWSJ"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -111,6 +118,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           name="steelPlate"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -134,6 +142,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           name="steelDeck"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -157,6 +166,7 @@ const Steel = ({ option, localInputs, setLocalInputs }) => {
           name="steelCustom"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-const Wood = ({ option, localInputs, setLocalInputs }) => {
+const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
   const woodCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.wood || {}
   );
@@ -11,6 +11,10 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
       ...localInputs,
       [name]: Number(value),
     });
+  };
+
+  const handleInputFocus = () => {
+    onActiveChange("wood");
   };
 
   // Function to check if all concrete inputs are zeros
@@ -40,6 +44,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodCLT"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -65,6 +70,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodDltNlt"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -90,6 +96,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodMPP"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -115,6 +122,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodPlywood"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -140,6 +148,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodGlulam"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -167,6 +176,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodPslLslLvl"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -192,6 +202,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodTJI"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -217,6 +228,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodLumber"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -242,6 +254,7 @@ const Wood = ({ option, localInputs, setLocalInputs }) => {
           name="woodCustom"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">

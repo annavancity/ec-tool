@@ -29,6 +29,9 @@ const OptionGenericLogic = ({ option }) => {
   const [localConcreteInputs, setLocalConcreteInputs] = useState({});
   const [localSteelInputs, setLocalSteelInputs] = useState({});
   const [localWoodInputs, setLocalWoodInputs] = useState({});
+  const [isConcreteActive, setIsConcreteActive] = useState(false);
+  const [isSteelActive, setIsSteelActive] = useState(false);
+  const [isWoodActive, setIsWoodActive] = useState(false);
   const { inputsChanged, markInputsChanged } = useContext(CalculationContext);
   const [showRecalculateMessage, setShowRecalculateMessage] = useState(false);
   const [showResults, setShowResults] = useState(false); // state for showing totals and piechart after calculate button clicked
@@ -36,6 +39,13 @@ const OptionGenericLogic = ({ option }) => {
 
   const savedDescription = localStorage.getItem(`${option}Description`) || ""; // Initialize description state with value from local storage
   const [description, setDescription] = useState(savedDescription);
+
+  //defining state to track the active status for ea. material type
+  const handleMaterialActive = (material) => {
+    setIsConcreteActive(material === "concrete");
+    setIsSteelActive(material === "steel");
+    setIsWoodActive(material === "wood");
+  };
 
   const materialInputs = useSelector((state) => state.materialInputs[option]);
   const calculatedValues = useSelector(
@@ -361,36 +371,58 @@ const OptionGenericLogic = ({ option }) => {
       <div className="container">
         <div className="select-material">
           <div className="option-material">
-            <button className="material-button">
+            <div className="material-button">
               <img className="material-image" src={concrete} alt="concrete" />
-              <h4 className="icon-text">CONCRETE</h4>
-            </button>
+              <h4
+                className={`icon-text ${isConcreteActive ? "active-text" : ""}`}
+              >
+                CONCRETE
+              </h4>
+              <div
+                className={`overlay ${
+                  isConcreteActive ? "overlay-active" : ""
+                }`}
+              ></div>
+            </div>
             <Concrete
               option={option}
               localInputs={localConcreteInputs}
               setLocalInputs={setLocalConcreteInputs}
+              onActiveChange={handleMaterialActive}
             />
           </div>
           <div className="option-material">
-            <button className="material-button">
+            <div className="material-button">
               <img className="material-image" src={wood} alt="wood" />
-              <h4 className="icon-text">WOOD</h4>
-            </button>
+              <h4 className={`icon-text ${isWoodActive ? "active-text" : ""}`}>
+                WOOD
+              </h4>
+              <div
+                className={`overlay ${isWoodActive ? "overlay-active" : ""}`}
+              ></div>
+            </div>
             <Wood
               option={option}
               localInputs={localWoodInputs}
               setLocalInputs={setLocalWoodInputs}
+              onActiveChange={handleMaterialActive}
             />
           </div>
           <div className="option-material">
-            <button className="material-button">
+            <div className="material-button">
               <img className="material-image" src={steel} alt="steel" />
-              <h4 className="icon-text">STEEL</h4>
-            </button>
+              <h4 className={`icon-text ${isSteelActive ? "active-text" : ""}`}>
+                STEEL
+              </h4>
+              <div
+                className={`overlay ${isSteelActive ? "overlay-active" : ""}`}
+              ></div>
+            </div>
             <Steel
               option={option}
               localInputs={localSteelInputs}
               setLocalInputs={setLocalSteelInputs}
+              onActiveChange={handleMaterialActive}
             />
           </div>
           <div className="option-material">

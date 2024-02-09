@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const Concrete = ({ option, localInputs, setLocalInputs }) => {
+const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
   const concreteCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.concrete || {}
   );
@@ -12,6 +12,10 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
       ...localInputs,
       [name]: Number(value),
     });
+  };
+
+  const handleInputFocus = () => {
+    onActiveChange("concrete");
   };
 
   // Function to check if all concrete inputs are zeros
@@ -44,6 +48,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           name="concHoriz"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -70,6 +75,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           name="concVert"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -96,6 +102,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           name="concFound"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           m<sup>3</sup>
@@ -120,6 +127,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           name="concRebar"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
@@ -142,6 +150,7 @@ const Concrete = ({ option, localInputs, setLocalInputs }) => {
           name="concCustom"
           onChange={handleInputChange}
           placeholder="0"
+          onFocus={handleInputFocus}
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">
