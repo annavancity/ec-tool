@@ -230,10 +230,6 @@ ul {
   z-index: 1;
 }
 
-/* .image-container {
-  position: relative;
-} */
-
 .overlay-active {
   background-color: var(--color-overlay);
   position: absolute;
@@ -725,6 +721,26 @@ table td:first-child {
 
 .newsletter-link:hover {
   color: var(--color-red);
+}
+
+@media (max-width: 1788px) {
+  .menu-text-large {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  input {
+    width: 60px;
+    font-size: 14px;
+  }
+
+  .value-name {
+    width: 140px;
+  }
+
+  .value-row-placeholder {
+    width: 375.34px;
+  }
 }
 
 @media (max-width: 768px) {

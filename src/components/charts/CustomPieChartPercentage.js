@@ -46,7 +46,7 @@ const CustomPieChartPercentage = ({
   };
 
   return (
-    <PieChart width={400} height={250}>
+    <PieChart width={375} height={250}>
       <Pie
         data={data}
         cx="50%"
