@@ -27,6 +27,13 @@ const Comparison = () => {
     (state) => state.calculatedValues.OptionThree
   );
 
+  // Check for corresponding local storage data existence
+  const hasOptionData = (option) => {
+    const buildingArea = localStorage.getItem(`${option}BuildingArea`);
+    // Check for both description and building area to be present and not just empty
+    return buildingArea && buildingArea.trim() !== "";
+  };
+
   // Retrieve descriptions from local storage
   const descriptionOne =
     localStorage.getItem("OptionOneDescription") || "Scheme 1";
@@ -61,8 +68,8 @@ const Comparison = () => {
   };
 
   // Function to render option results
-  const renderOptionResults = (calculatedValues, description, area) => {
-    if (isAllZeros(calculatedValues)) {
+  const renderOptionResults = (option, calculatedValues, description, area) => {
+    if (isAllZeros(calculatedValues) || !hasOptionData(option)) {
       return null;
     }
 
@@ -74,6 +81,9 @@ const Comparison = () => {
           }
           steelPercentage={calculatedValues.steel?.steelPercentageTotal || 0}
           woodPercentage={calculatedValues.wood?.woodPercentageTotal || 0}
+          width={500}
+          outerRadius={80}
+          fontSize={16}
         />
 
         <p className="menu-text-large chart-area">
@@ -124,40 +134,52 @@ const Comparison = () => {
         Print PDF
       </button>
 
-      <div className="container-charts-all" ref={componentRef}>
-        <div className="container print logo">
-          <span>Fast</span>
-          <img src={logo} alt="Logo-plus" className="logo-image" />
-          <span>Epp</span>
+      <div ref={componentRef}>
+        <div className="print-only ">
+          <div className="app-about">
+            <p className="app-name">Embodied Carbon Calculator</p>
+          </div>
+          <div className="container print logo ">
+            <span>Fast</span>
+            <img src={logo} alt="Logo-plus" className="logo-image" />
+            <span>Epp</span>
+          </div>
         </div>
+        <div className="container-charts-all">
+          <div>
+            <h2 className="chart-description">Global Warming Potential</h2>
+          </div>
 
-        <div>
-          <h2 className="chart-description">Global Warming Potential</h2>
-        </div>
-
-        <div className="summary">
-          {renderOptionResults(
-            calculatedValuesOne,
-            descriptionOne,
-            OptionOneBuildingArea
-          )}
-          {renderOptionResults(
-            calculatedValuesTwo,
-            descriptionTwo,
-            OptionTwoBuildingArea
-          )}
-          {renderOptionResults(
-            calculatedValuesThree,
-            descriptionThree,
-            OptionThreeBuildingArea
-          )}
-        </div>
-        <div>
-          <BarChartComponent data={filteredBarChartData} />
-        </div>
-        <div className="tables">
-          <TableGWPEachScheme data={filteredBarChartData} />
-          <TableGWPSequester data={filteredBarChartData} />
+          <div className="summary">
+            {calculatedValuesOne &&
+              renderOptionResults(
+                "OptionOne",
+                calculatedValuesOne,
+                descriptionOne,
+                OptionOneBuildingArea
+              )}
+            {calculatedValuesTwo &&
+              renderOptionResults(
+                "OptionTwo",
+                calculatedValuesTwo,
+                descriptionTwo,
+                OptionTwoBuildingArea
+              )}
+            {calculatedValuesThree &&
+              renderOptionResults(
+                "OptionThree",
+                calculatedValuesThree,
+                descriptionThree,
+                OptionThreeBuildingArea
+              )}
+          </div>
+          <div>
+            <BarChartComponent data={filteredBarChartData} />
+          </div>
+          <div className="tables">
+            <TableGWPEachScheme data={filteredBarChartData} />
+            <TableGWPSequester data={filteredBarChartData} />
+          </div>
         </div>
       </div>
     </div>

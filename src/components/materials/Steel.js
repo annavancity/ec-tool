@@ -41,9 +41,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         <p className="menu-text-large value-row-percentage">%</p>
       </div>
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Steel - Hot Rolled:
-        </label>
+        <label className="menu-text-large value-name">Hot Rolled:</label>
         <input
           type="number"
           value={localInputs.steelHotRolled || ""}
@@ -68,7 +66,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Steel - HSS:</label>
+        <label className="menu-text-large value-name">HSS:</label>
         <input
           type="number"
           value={localInputs.steelHSS || ""}
@@ -93,7 +91,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Steel - OWSJ:</label>
+        <label className="menu-text-large value-name">OWSJ:</label>
         <input
           type="number"
           value={localInputs.steelOWSJ || ""}
@@ -118,7 +116,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Steel - Plate:</label>
+        <label className="menu-text-large value-name">Plate:</label>
         <input
           type="number"
           value={localInputs.steelPlate || ""}
@@ -143,7 +141,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Steel - Deck:</label>
+        <label className="menu-text-large value-name">Deck:</label>
         <input
           type="number"
           value={localInputs.steelDeck || ""}
@@ -168,7 +166,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Steel - Custom:</label>
+        <label className="menu-text-large value-name">Custom:</label>
         <input
           type="number"
           value={localInputs.steelCustom || ""}

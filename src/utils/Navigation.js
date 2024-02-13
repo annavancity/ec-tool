@@ -2,10 +2,27 @@ import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import ModalDescription from "./ModalDescription";
 import aboutapp from "../images/question-mark.png";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Navigation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const aboutRef = useRef(null); // Reference to the .about element
+
+  const handleMouseEnter = () => {
+    // Add a class to the .about element when the mouse enters the span
+    if (aboutRef.current) {
+      aboutRef.current.classList.add("hover-active");
+    }
+  };
+
+  const handleMouseLeave = () => {
+    // Remove the class when the mouse leaves the span
+    if (aboutRef.current) {
+      aboutRef.current.classList.remove("hover-active");
+    }
+  };
+
   const isOptionOneCalculated = useSelector(
     (state) => state.calculatedValues.OptionOne.isCalculated
   );
@@ -41,8 +58,58 @@ const Navigation = () => {
 
   return (
     <div className="container">
-      <div>
+      <div className="app-about">
         <p className="app-name">Embodied Carbon Calculator</p>
+        <img
+          className="about"
+          src={aboutapp}
+          width="35px"
+          alt="about"
+          onClick={handleOpenModalDescription}
+          ref={aboutRef}
+        />
+        <ModalDescription
+          isOpen={isModalOpen}
+          handleClose={handleCloseModalDescription}
+        />
+      </div>
+      <div className="container-space-between">
+        <div>
+          <p className="menu-text-medium lh-20 about-description-short">
+            The EC Carbon Tool is a web-based application designed for
+            environmental impact assessment in schematic design stages of
+            projects.
+          </p>
+          <p className="menu-text-medium lh-20 about-description-short">
+            Hit{" "}
+            <span
+              className="text-yellow"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              question mark{" "}
+            </span>
+            for step by step instructions and a general guide on how totals are
+            calculated.
+          </p>
+        </div>
+        <div>
+          <p className="menu-text-small lh-20 about-description-short">
+            Note: Provided embodied carbon and material quantity data are
+            informative only, and shall not be used for any other purposes,
+            including but not limited to costing exercises, tender bidding,
+            embodied carbon reporting, etc.
+          </p>
+          <p className="menu-text-small lh-20">
+            By using this application, you are agreeing to our{" "}
+            <a
+              href="https://www.fastepp.com/terms-conditions/"
+              class="header-link"
+            >
+              Terms and Conditions.
+            </a>
+          </p>
+        </div>
       </div>
       <nav className="btn-all">
         <div className="btn-options">
@@ -87,17 +154,6 @@ const Navigation = () => {
               </div>
             )}
           </Link>
-          <img
-            className="about"
-            src={aboutapp}
-            width="35px"
-            alt="about"
-            onClick={handleOpenModalDescription}
-          />
-          <ModalDescription
-            isOpen={isModalOpen}
-            handleClose={handleCloseModalDescription}
-          />
         </div>
       </nav>
     </div>

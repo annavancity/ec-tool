@@ -305,30 +305,6 @@ const OptionGenericLogic = ({ option }) => {
               Reset All Schemes
             </button>
           </div>
-          <div className="container-disclamer">
-            <div>
-              <p className="menu-text-medium">
-                The EC Carbon Tool is a web-based application designed for
-                environmental impact assessment in schematic design stages of
-                projects.
-              </p>
-              <p className="menu-text-small">
-                Note: Provided embodied carbon and material quantity data are
-                informative only, and shall not be used for any other purposes,
-                including but not limited to costing exercises, tender bidding,
-                embodied carbon reporting, etc.
-              </p>
-              <p className="menu-text-small">
-                By using this application, you are agreeing to our{" "}
-                <a
-                  href="https://www.fastepp.com/terms-conditions/"
-                  class="header-link"
-                >
-                  Terms and Conditions.
-                </a>
-              </p>
-            </div>
-          </div>
         </div>
 
         <div className="container-area">
@@ -451,6 +427,7 @@ const OptionGenericLogic = ({ option }) => {
                           woodPercentage={
                             calculatedValues.wood?.woodPercentageTotal || 0
                           }
+                          fontSize={12}
                         />
 
                         <h2 className="chart-description">

@@ -41,7 +41,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         <p className="menu-text-large value-row-percentage">%</p>
       </div>
       <div className="value-row">
-        <label className="menu-text-large value-name">Wood - CLT:</label>
+        <label className="menu-text-large value-name">CLT:</label>
         <input
           type="number"
           value={localInputs.woodCLT || ""}
@@ -68,7 +68,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Wood - DLT / NLT:</label>
+        <label className="menu-text-large value-name">DLT / NLT:</label>
         <input
           type="number"
           value={localInputs.woodDltNlt || ""}
@@ -95,7 +95,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Wood - MPP:</label>
+        <label className="menu-text-large value-name">MPP:</label>
         <input
           type="number"
           value={localInputs.woodMPP || ""}
@@ -122,7 +122,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Wood - Plywood:</label>
+        <label className="menu-text-large value-name">Plywood:</label>
         <input
           type="number"
           value={localInputs.woodPlywood || ""}
@@ -149,7 +149,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Wood - Glulam:</label>
+        <label className="menu-text-large value-name">Glulam:</label>
         <input
           type="number"
           value={localInputs.woodGlulam || ""}
@@ -176,9 +176,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Wood - PSL / LSL / LVL:
-        </label>
+        <label className="menu-text-large value-name">PSL / LSL / LVL:</label>
         <input
           type="number"
           value={localInputs.woodPslLslLvl || ""}
@@ -205,7 +203,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Wood - TJI:</label>
+        <label className="menu-text-large value-name">TJI:</label>
         <input
           type="number"
           value={localInputs.woodTJI || ""}
@@ -232,7 +230,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Wood - Lumber:</label>
+        <label className="menu-text-large value-name">Lumber:</label>
         <input
           type="number"
           value={localInputs.woodLumber || ""}
@@ -259,7 +257,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">Wood - Custom:</label>
+        <label className="menu-text-large value-name">Custom:</label>
         <input
           type="number"
           value={localInputs.woodCustom || ""}

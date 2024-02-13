@@ -43,9 +43,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
       </div>
 
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Concrete - Horizontal:
-        </label>
+        <label className="menu-text-large value-name">Horizontal:</label>
         <input
           type="number"
           value={localInputs.concHoriz || ""}
@@ -71,9 +69,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         )}
       </div>
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Concrete - Vertical:
-        </label>
+        <label className="menu-text-large value-name">Vertical:</label>
         <input
           type="number"
           value={localInputs.concVert || ""}
@@ -99,9 +95,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         )}
       </div>
       <div className="value-row">
-        <label className="menu-text-large value-name">
-          Concrete - Foundation:
-        </label>
+        <label className="menu-text-large value-name">Foundation:</label>
         <input
           type="number"
           value={localInputs.concFound || ""}
@@ -127,7 +121,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         )}
       </div>
       <div className="value-row">
-        <label className="menu-text-large value-name">Concrete - Rebar:</label>
+        <label className="menu-text-large value-name">Rebar:</label>
         <input
           type="number"
           value={localInputs.concRebar || ""}
@@ -151,7 +145,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         )}
       </div>
       <div className="value-row">
-        <label className="menu-text-large value-name">Concrete - Custom:</label>
+        <label className="menu-text-large value-name">Custom:</label>
         <input
           type="number"
           value={localInputs.concCustom || ""}

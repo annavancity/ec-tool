@@ -4,7 +4,16 @@ const CustomPieChartPercentage = ({
   concretePercentage,
   steelPercentage,
   woodPercentage,
+  width = 320, // Default width
+  height = 250, // Default height
+  outerRadius = 60, // Default outer radius
+  fontSize, // Allow dynamic font size
 }) => {
+  // Function to determine font size based on window width
+  // const getFontSize = () => {
+  //   return window.innerWidth < 1788 ? "12px" : "14px";
+  // };
+
   const data = [
     {
       name: "Concrete",
@@ -28,9 +37,10 @@ const CustomPieChartPercentage = ({
     }
 
     const RADIAN = Math.PI / 180;
-    const radius = outerRadius + 12; // You can adjust this for label positioning
+    const radius = outerRadius + 12; // Adjust for label positioning
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    // const fontSize = getFontSize(); // Get dynamic font size
 
     return (
       <text
@@ -39,29 +49,29 @@ const CustomPieChartPercentage = ({
         fill={data[index].color}
         textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
+        style={{ fontSize }} // Apply dynamic font size
       >
-        {data[index].name}: {value}%
+        {`${data[index].name}: ${value}%`}
       </text>
     );
   };
 
   return (
-    <PieChart width={375} height={250}>
+    <PieChart width={width} height={height}>
       <Pie
         data={data}
         cx="50%"
         cy="50%"
         labelLine={false}
         label={renderCustomLabel}
-        outerRadius={75}
+        outerRadius={outerRadius}
         dataKey="value"
+        stroke="none"
       >
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={entry.color} />
         ))}
       </Pie>
-
-      {/* <Legend /> */}
     </PieChart>
   );
 };

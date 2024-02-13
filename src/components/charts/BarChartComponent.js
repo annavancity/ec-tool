@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Cell } from "recharts";
 
 // Retrieve descriptions from local storage
@@ -9,6 +10,25 @@ const descriptionThree =
   localStorage.getItem("OptionThreeDescription") || "Scheme 3";
 
 const BarChartComponent = ({ data }) => {
+  // State to hold the dynamic font size
+  const [fontSize, setFontSize] = useState("14px");
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Update font size based on screen width
+      if (window.innerWidth < 1788) {
+        setFontSize("14px"); // Smaller font size for smaller screens
+      } else {
+        setFontSize("16px"); // Default font size
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial call to set the font size
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const optionColors = {
     [descriptionOne]: "rgb(138,154,91)",
     [descriptionTwo]: "rgb(95,133,117)",
@@ -41,8 +61,8 @@ const BarChartComponent = ({ data }) => {
           margin={{ top: 5, right: 90, left: 90, bottom: 20 }}
         >
           {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis type="number" />
-          <YAxis dataKey="name" type="category" />
+          <XAxis type="number" style={{ fontSize }} />
+          <YAxis dataKey="name" type="category" style={{ fontSize }} />
           <Bar dataKey="gwptotal" label={renderCustomLabel}>
             {data.map((entry, index) => (
               <Cell
@@ -64,8 +84,8 @@ const BarChartComponent = ({ data }) => {
           className="custom-bar-chart"
         >
           {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis type="number" />
-          <YAxis dataKey="name" type="category" />
+          <XAxis type="number" style={{ fontSize }} />
+          <YAxis dataKey="name" type="category" style={{ fontSize }} />
           <Bar dataKey="gwpPerArea" label={renderCustomLabel}>
             {data.map((entry, index) => (
               <Cell

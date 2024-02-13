@@ -33,9 +33,15 @@ const TableGWPEachScheme = ({ data }) => {
         <tr>
           <th></th>
           <th></th>
-          <th className="menu-text-medium ">{descriptionOne}</th>
-          <th className="menu-text-medium ">{descriptionTwo}</th>
-          <th className="menu-text-medium">{descriptionThree}</th>
+          {OptionOneGWPTotal > 0 && (
+            <th className="menu-text-medium ">{descriptionOne}</th>
+          )}
+          {OptionTwoGWPTotal > 0 && (
+            <th className="menu-text-medium ">{descriptionTwo}</th>
+          )}
+          {OptionThreeGWPTotal > 0 && (
+            <th className="menu-text-medium">{descriptionThree}</th>
+          )}
         </tr>
       </thead>
       <tbody>
@@ -46,15 +52,21 @@ const TableGWPEachScheme = ({ data }) => {
           <td className="menu-text-small th-description">
             Three Bedroom apartment energy usage for Entire Year
           </td>
-          <td className="menu-text-medium danger">
-            {calculateValue(OptionOneGWPTotal, 0.92 * 4000)}
-          </td>
-          <td className="menu-text-medium danger">
-            {calculateValue(OptionTwoGWPTotal, 0.92 * 4000)}
-          </td>
-          <td className="menu-text-medium danger">
-            {calculateValue(OptionThreeGWPTotal, 0.92 * 4000)}
-          </td>
+          {OptionOneGWPTotal > 0 && (
+            <td className="menu-text-medium danger">
+              {calculateValue(OptionOneGWPTotal, 0.92 * 4000)}
+            </td>
+          )}
+          {OptionTwoGWPTotal > 0 && (
+            <td className="menu-text-medium danger">
+              {calculateValue(OptionTwoGWPTotal, 0.92 * 4000)}
+            </td>
+          )}
+          {OptionThreeGWPTotal > 0 && (
+            <td className="menu-text-medium danger">
+              {calculateValue(OptionThreeGWPTotal, 0.92 * 4000)}
+            </td>
+          )}
         </tr>
         <tr>
           <td className="menu-text-small">
@@ -63,15 +75,21 @@ const TableGWPEachScheme = ({ data }) => {
           <td className="menu-text-small th-description">
             Flights between NY and London
           </td>
-          <td className="menu-text-medium danger">
-            {calculateValue(OptionOneGWPTotal, 605)}
-          </td>
-          <td className="menu-text-medium danger">
-            {calculateValue(OptionTwoGWPTotal, 605)}
-          </td>
-          <td className="menu-text-medium danger">
-            {calculateValue(OptionThreeGWPTotal, 605)}
-          </td>
+          {OptionOneGWPTotal > 0 && (
+            <td className="menu-text-medium danger">
+              {calculateValue(OptionOneGWPTotal, 605)}
+            </td>
+          )}
+          {OptionTwoGWPTotal > 0 && (
+            <td className="menu-text-medium danger">
+              {calculateValue(OptionTwoGWPTotal, 605)}
+            </td>
+          )}
+          {OptionThreeGWPTotal > 0 && (
+            <td className="menu-text-medium danger">
+              {calculateValue(OptionThreeGWPTotal, 605)}
+            </td>
+          )}
         </tr>
       </tbody>
     </table>
