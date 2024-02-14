@@ -61,11 +61,11 @@ const Comparison = () => {
   };
 
   // Mapping between option descriptions and their calculated values
-  const calculatedValuesMapping = {
-    "Scheme 1": calculatedValuesOne,
-    "Scheme 2": calculatedValuesTwo,
-    "Scheme 3": calculatedValuesThree,
-  };
+  // const calculatedValuesMapping = {
+  //   "Scheme 1": calculatedValuesOne,
+  //   "Scheme 2": calculatedValuesTwo,
+  //   "Scheme 3": calculatedValuesThree,
+  // };
 
   // Function to render option results
   const renderOptionResults = (option, calculatedValues, description, area) => {
