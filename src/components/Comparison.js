@@ -103,6 +103,7 @@ const Comparison = () => {
         (calculatedValuesOne.totals?.GWPTotal || 0) /
           (OptionOneBuildingArea || 1)
       ),
+      hasData: hasOptionData("OptionOne") && !isAllZeros(calculatedValuesOne),
     },
     {
       name: descriptionTwo,
@@ -111,6 +112,7 @@ const Comparison = () => {
         (calculatedValuesTwo.totals?.GWPTotal || 0) /
           (OptionTwoBuildingArea || 1)
       ),
+      hasData: hasOptionData("OptionTwo") && !isAllZeros(calculatedValuesTwo),
     },
     {
       name: descriptionThree,
@@ -119,14 +121,13 @@ const Comparison = () => {
         (calculatedValuesThree.totals?.GWPTotal || 0) /
           (OptionThreeBuildingArea || 1)
       ),
+      hasData:
+        hasOptionData("OptionThree") && !isAllZeros(calculatedValuesThree),
     },
   ];
 
-  // Filter the options for the bar chart
-  const filteredBarChartData = barChartData.filter((data) => {
-    const optionCalculatedValues = calculatedValuesMapping[data.name];
-    return !isAllZeros(optionCalculatedValues);
-  });
+  // Filter the options for the bar chart to only include those with data
+  const filteredBarChartData = barChartData.filter((data) => data.hasData);
 
   return (
     <div className="container-summary">
@@ -179,6 +180,13 @@ const Comparison = () => {
           <div className="tables">
             <TableGWPEachScheme data={filteredBarChartData} />
             <TableGWPSequester data={filteredBarChartData} />
+          </div>
+        </div>
+        <div className="print-only">
+          <div className="container">
+            <p className="copyright">
+              &copy; 2024 Fast + Epp. All Rights Reserved.
+            </p>
           </div>
         </div>
       </div>

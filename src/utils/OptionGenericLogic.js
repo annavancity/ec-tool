@@ -23,6 +23,7 @@ import StackedBarChart from "../components/charts/StackedBarChart";
 import CustomPieChartPercentage from "../components/charts/CustomPieChartPercentage";
 import { initialState } from "../features/materialInputsSlice";
 import handleSaveInputs from "../utils/handleSaveInputs";
+import { formatNumber } from "../utils/formatNumber";
 
 const OptionGenericLogic = ({ option }) => {
   //Define state for each material
@@ -327,7 +328,7 @@ const OptionGenericLogic = ({ option }) => {
         <div className="container-area">
           <div className="value-row">
             <label className="menu-text-large label-area-fixed">
-              Building area:
+              Building Floor Area:
             </label>
             <input
               className="input-area-fixed"

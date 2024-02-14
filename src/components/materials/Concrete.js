@@ -1,5 +1,5 @@
-// import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { formatNumber } from "../../utils/formatNumber";
 
 const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
   const concreteCalculatedValues = useSelector(
@@ -36,7 +36,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         <p className="menu-text-large value-row-GWP ">
           GWP{" "}
           <span className="menu-text-small">
-            (kgCO<sub>2</sub>e)
+            (kgCO<sub>2</sub>eq)
           </span>
         </p>
         <p className="menu-text-large value-row-percentage">%</p>
@@ -60,7 +60,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areConcreteInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {concreteCalculatedValues.concHorizGWPCalculated}
+              {formatNumber(concreteCalculatedValues.concHorizGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {concreteCalculatedValues.concHorizPercentageCalculated}
@@ -86,7 +86,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areConcreteInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {concreteCalculatedValues.concVertGWPCalculated}
+              {formatNumber(concreteCalculatedValues.concVertGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {concreteCalculatedValues.concVertPercentageCalculated}
@@ -112,7 +112,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areConcreteInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {concreteCalculatedValues.concFoundGWPCalculated}
+              {formatNumber(concreteCalculatedValues.concFoundGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {concreteCalculatedValues.concFoundPercentageCalculated}
@@ -136,7 +136,7 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areConcreteInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {concreteCalculatedValues.concRebarGWPCalculated}
+              {formatNumber(concreteCalculatedValues.concRebarGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {concreteCalculatedValues.concRebarPercentageCalculated}
@@ -157,14 +157,14 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">
-            (kgCO<sub>2</sub>e)
+            (kgCO<sub>2</sub>eq)
           </span>
         </p>
         <span className="error-message"></span>
         {!areConcreteInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {concreteCalculatedValues.concCustomGWPCalculated}
+              {formatNumber(concreteCalculatedValues.concCustomGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {concreteCalculatedValues.concCustomPercentageCalculated}

@@ -1,9 +1,8 @@
 // GWP (kg/CO2e/kg)
 
-
 // Steel (Steel density assumed between 7800 kg/m^3 & 7850 kg/m^3)
 export const steelHotRolledGwp = 1.22;
-export const steelHSSGwp = 2.39;
+export const steelHSSGwp = 1.99;
 export const steelPlateGwp = 1.73;
 export const steelRebarGwp = 0.979;
 export const steelOWSJGwp = 1.38;

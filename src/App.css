@@ -101,7 +101,7 @@ ul {
 
 .options-reset {
   display: flex;
-  flex-direction: column;
+  margin-top: 10px;
 }
 .container-space-between {
   display: flex;
@@ -700,18 +700,29 @@ table td:first-child {
 }
 
 @media print {
-  .print-only {
-    display: flex;
-  }
   @page {
     size: 17in 11in;
     margin: 5%;
   }
-  body {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+
+  body,
+  .container-summary {
+    width: 100%;
+    margin: 0 auto;
     transform: scale(0.9);
-    transform-origin: top left;
+    transform-origin: center center;
+  }
+
+  .print-only {
+    display: flex;
+  }
+
+  .container-charts-all {
+    display: flex;
+    margin: 0 auto;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 }
 

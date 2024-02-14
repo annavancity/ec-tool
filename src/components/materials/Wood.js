@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { formatNumber } from "../../utils/formatNumber";
 
 const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
   const woodCalculatedValues = useSelector(
@@ -35,7 +36,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         <p className="menu-text-large value-row-GWP ">
           GWP{" "}
           <span className="menu-text-small">
-            (kgCO<sub>2</sub>e)
+            (kgCO<sub>2</sub>eq)
           </span>
         </p>
         <p className="menu-text-large value-row-percentage">%</p>
@@ -58,7 +59,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodCLTGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodCLTGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodCLTPercentageCalculated}
@@ -85,7 +86,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodDltNltGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodDltNltGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodDltNltPercentageCalculated}
@@ -112,7 +113,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodMPPGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodMPPGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodMPPPercentageCalculated}
@@ -139,7 +140,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodPlywoodGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodPlywoodGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodPlywoodPercentageCalculated}
@@ -166,7 +167,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodGlulamGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodGlulamGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodGlulamPercentageCalculated}
@@ -193,7 +194,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodPslLslLvlGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodPslLslLvlGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodPslLslLvlPercentageCalculated}
@@ -220,7 +221,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodTJIGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodTJIGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodTJIPercentageCalculated}
@@ -247,7 +248,7 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodLumberGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodLumberGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodLumberPercentageCalculated}
@@ -269,14 +270,14 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">
-            (kgCO<sub>2</sub>e)
+            (kgCO<sub>2</sub>eq)
           </span>
         </p>
         <span className="error-message"></span>
         {!areWoodInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {woodCalculatedValues.woodCustomGWPCalculated}
+              {formatNumber(woodCalculatedValues.woodCustomGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {woodCalculatedValues.woodCustomPercentageCalculated}

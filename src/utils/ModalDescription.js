@@ -51,8 +51,11 @@ const ModalDescription = ({ isOpen, handleClose }) => {
             <div className="modal-par">
               <img src={logo} alt="Logo-plus" className="plus-text" />
               <p className="menu-text-medium">
-                <span className="text-semibold">Enter Building Footprint:</span>{" "}
-                Input the building footprint size in the designated field.
+                <span className="text-semibold">
+                  Enter Building Floor Area:
+                </span>{" "}
+                Input the building total floor area size in the designated
+                field.
               </p>
             </div>
 
@@ -98,9 +101,9 @@ const ModalDescription = ({ isOpen, handleClose }) => {
             <div className="modal-par">
               <img src={logo} alt="Logo-plus" className="plus-text" />
               <p className="menu-text-medium">
-                <span className="text-semibold">Summary Comparison:</span>{" "}
-                Select the "Summary Comparison" button to view the to totals for
-                all schemes and how to compare to one another.
+                <span className="text-semibold">Result Comparison:</span> Select
+                the "Result Comparison" button to view the to totals for all
+                schemes and how to compare to one another.
               </p>
             </div>
 
@@ -114,6 +117,15 @@ const ModalDescription = ({ isOpen, handleClose }) => {
               </p>
             </div>
             <p className="menu-text-emph">Notes:</p>
+
+            <div className="modal-par">
+              <img src={logo} alt="Logo-plus" className="plus-text" />
+              <p className="menu-text-medium">
+                <span className="text-semibold">Custom Field Option:</span>{" "}
+                Custom field option is provided for custom GWP volume input by
+                user for categories not covered in this tool.
+              </p>
+            </div>
 
             <div className="modal-par">
               <img src={logo} alt="Logo-plus" className="plus-text" />

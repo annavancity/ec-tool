@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { formatNumber } from "../../utils/formatNumber";
 
 const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
   const steelCalculatedValues = useSelector(
@@ -35,7 +36,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         <p className="menu-text-large value-row-GWP ">
           GWP{" "}
           <span className="menu-text-small">
-            (kgCO<sub>2</sub>e)
+            (kgCO<sub>2</sub>eq)
           </span>
         </p>
         <p className="menu-text-large value-row-percentage">%</p>
@@ -56,7 +57,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areSteelInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {steelCalculatedValues.steelHotRolledGWPCalculated}
+              {formatNumber(steelCalculatedValues.steelHotRolledGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {steelCalculatedValues.steelHotRolledPercentageCalculated}
@@ -81,7 +82,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areSteelInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {steelCalculatedValues.steelHSSGWPCalculated}
+              {formatNumber(steelCalculatedValues.steelHSSGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {steelCalculatedValues.steelHSSPercentageCalculated}
@@ -106,7 +107,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areSteelInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {steelCalculatedValues.steelOWSJGWPCalculated}
+              {formatNumber(steelCalculatedValues.steelOWSJGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {steelCalculatedValues.steelOWSJPercentageCalculated}
@@ -131,7 +132,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areSteelInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {steelCalculatedValues.steelPlateGWPCalculated}
+              {formatNumber(steelCalculatedValues.steelPlateGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {steelCalculatedValues.steelPlatePercentageCalculated}
@@ -156,7 +157,7 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         {!areSteelInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {steelCalculatedValues.steelDeckGWPCalculated}
+              {formatNumber(steelCalculatedValues.steelDeckGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {steelCalculatedValues.steelDeckPercentageCalculated}
@@ -178,14 +179,14 @@ const Steel = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
         />
         <p className="menu-text-large conv">
           <span className="menu-text-small">
-            (kgCO<sub>2</sub>e)
+            (kgCO<sub>2</sub>eq)
           </span>
         </p>
         <span className="error-message"></span>
         {!areSteelInputsZeros() && (
           <>
             <p className="menu-text-large value-row-GWP">
-              {steelCalculatedValues.steelCustomGWPCalculated}
+              {formatNumber(steelCalculatedValues.steelCustomGWPCalculated)}
             </p>
             <p className="menu-text-large value-row-percentage">
               {steelCalculatedValues.steelCustomPercentageCalculated}

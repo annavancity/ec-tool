@@ -33,6 +33,40 @@ const StackedBarChart = ({
     },
   ];
 
+  // Custom formatter function to format the tick values
+  const formatTick = (tickItem) => {
+    return tickItem.toLocaleString();
+  };
+
+  // Custom tooltip formatter function
+  const customTooltipFormatter = (value) => {
+    return value.toLocaleString();
+  };
+
+  // Custom tooltip component
+  const renderCustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div
+          className="custom-tooltip"
+          style={{
+            backgroundColor: "#010101",
+            padding: "5px",
+            border: "1px solid #f9f82c",
+          }}
+        >
+          {payload.map((entry, index) => (
+            <p key={`item-${index}`} style={{ color: entry.color }}>
+              {`${entry.name}: ${customTooltipFormatter(entry.value)}`}
+            </p>
+          ))}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <BarChart
       width={300}
@@ -42,9 +76,8 @@ const StackedBarChart = ({
       margin={{ top: 2, right: 60, left: 0, bottom: 20 }}
     >
       <XAxis type="category" dataKey="material" hide style={{ fontSize }} />
-      <YAxis type="number" style={{ fontSize }} />
-      <Tooltip contentStyle={{ fontSize }} />{" "}
-      {/* Assuming you want to change the tooltip text font size */}
+      <YAxis type="number" style={{ fontSize }} tickFormatter={formatTick} />
+      <Tooltip content={renderCustomTooltip} />
       <Bar dataKey="Concrete" stackId="a" fill="rgb(169, 169, 169)" />
       <Bar dataKey="Steel" stackId="a" fill="rgb(52, 104, 192)" />
       <Bar dataKey="Wood" stackId="a" fill="rgb(255, 187, 100)" />

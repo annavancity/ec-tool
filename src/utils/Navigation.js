@@ -76,21 +76,21 @@ const Navigation = () => {
       <div className="container-space-between">
         <div>
           <p className="menu-text-medium lh-20 about-description-short">
-            The EC Carbon Tool is a web-based application designed for
-            environmental impact assessment in schematic design stages of
-            projects.
+            The EC Tool is a web-based application designed for embodied carbon
+            calculation of structural elements in early design stages.
+            Calculations account for product life cycle stage (A1-A3) only.
           </p>
           <p className="menu-text-medium lh-20 about-description-short">
-            Hit{" "}
+            Hit the{" "}
             <span
               className="text-yellow"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              question mark{" "}
+              "?"{" "}
             </span>
-            for step by step instructions and a general guide on how totals are
-            calculated.
+            icon for step by step instructions and a general guide on how totals
+            are calculated.
           </p>
         </div>
         <div>
@@ -144,7 +144,7 @@ const Navigation = () => {
             } ${!atLeastTwoOptionsCalculated ? "disabled" : ""}`}
             onClick={handleLinkClick}
           >
-            Summary Comparison
+            Result Comparison
             {!atLeastTwoOptionsCalculated && (
               <div className="tooltip">
                 <p className="error-message">

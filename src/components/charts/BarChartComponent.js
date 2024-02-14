@@ -37,6 +37,10 @@ const BarChartComponent = ({ data }) => {
 
   const renderCustomLabel = (props) => {
     const { x, y, width, height, value } = props;
+
+    // Format the value using toLocaleString for proper number formatting
+    const formattedValue = Number(value).toLocaleString();
+
     return (
       <text
         x={x + width / 2}
@@ -45,9 +49,14 @@ const BarChartComponent = ({ data }) => {
         textAnchor="middle"
         dominantBaseline="middle"
       >
-        {value}
+        {formattedValue}
       </text>
     );
+  };
+
+  // Custom formatter function to format the tick values
+  const formatTick = (tickItem) => {
+    return tickItem.toLocaleString();
   };
 
   return (
@@ -61,9 +70,13 @@ const BarChartComponent = ({ data }) => {
           margin={{ top: 5, right: 90, left: 90, bottom: 20 }}
         >
           {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis type="number" style={{ fontSize }} />
+          <XAxis
+            type="number"
+            style={{ fontSize }}
+            tickFormatter={formatTick}
+          />
           <YAxis dataKey="name" type="category" style={{ fontSize }} />
-          <Bar dataKey="gwptotal" label={renderCustomLabel}>
+          <Bar dataKey="gwptotal" label={renderCustomLabel} barSize={50}>
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
@@ -84,9 +97,13 @@ const BarChartComponent = ({ data }) => {
           className="custom-bar-chart"
         >
           {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis type="number" style={{ fontSize }} />
+          <XAxis
+            type="number"
+            style={{ fontSize }}
+            tickFormatter={formatTick}
+          />
           <YAxis dataKey="name" type="category" style={{ fontSize }} />
-          <Bar dataKey="gwpPerArea" label={renderCustomLabel}>
+          <Bar dataKey="gwpPerArea" label={renderCustomLabel} barSize={50}>
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
