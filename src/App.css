@@ -212,6 +212,12 @@ ul {
   display: block;
 }
 
+.btn.operations:disabled {
+  color: var(--color-grey);
+  cursor: not-allowed;
+  border: 1px solid var(--color-grey);
+}
+
 .select-material {
   display: flex;
   flex-wrap: wrap;
@@ -351,6 +357,14 @@ ul {
   font-size: 13px;
   color: var(--color-red);
 }
+
+.error-message-input {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 80px;
+  font-size: 11px;
+  color: var(--color-red);
+}
 .conv {
   margin-left: 5px;
   width: 50px;
@@ -477,12 +491,13 @@ input[type="number"] {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  width: 900px;
+  width: 950px;
+  max-height: 80vh;
+  overflow-y: auto;
   background-color: var(--color-background);
   padding: 20px 30px;
   border: 1px solid var(--color-yellow);
   box-shadow: 4px 4px 8px var(--color-shadow);
-  font-size: 14px;
   color: var(--color-white);
   font-weight: 300;
 }
@@ -578,6 +593,13 @@ input[type="number"] {
   margin-top: 20px;
 }
 
+.chart-scheme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
 /* --------------------SUMMARY-------------------- */
 
 .container-summary {
@@ -628,7 +650,6 @@ input[type="number"] {
 }
 
 .chart-description {
-  text-transform: uppercase;
   font-size: 20px;
   margin-top: -10px;
 }
@@ -719,7 +740,6 @@ table td:first-child {
 @media print {
   @page {
     size: 17in 11in;
-    margin: 5%;
   }
 
   body,
@@ -826,6 +846,10 @@ table td:first-child {
     margin-right: 5px;
   }
 
+  .menu-text-medium {
+    font-size: 12px;
+  }
+
   input {
     width: 60px;
     font-size: 14px;
@@ -846,6 +870,15 @@ table td:first-child {
   .value-row-placeholder {
     width: 335.34px;
   }
+
+  .modal-description {
+    width: 750px;
+  }
+
+  .plus-text {
+    margin-top: 10.5px;
+    width: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -860,5 +893,9 @@ table td:first-child {
 
   .social-logo {
     margin: 3px;
+  }
+
+  .modal-description {
+    width: 500px;
   }
 }

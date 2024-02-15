@@ -1,17 +1,46 @@
 import { useSelector } from "react-redux";
 import { formatNumber } from "../../utils/formatNumber";
+import { useState } from "react";
 
-const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
+const Wood = ({
+  option,
+  localInputs,
+  setLocalInputs,
+  onActiveChange,
+  onInputChange,
+}) => {
   const woodCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.wood || {}
   );
 
+  //state to track error messages for input fields
+  const [errorMessages, setErrorMessages] = useState({});
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setLocalInputs({
-      ...localInputs,
-      [name]: Number(value),
-    });
+    const isValidNumber = /^-?\d*\.?\d*$/.test(value); // Validates float numbers and negative values
+    const isNegativeOrInvalid = Number(value) < 0 || !isValidNumber;
+
+    if (isNegativeOrInvalid) {
+      // Set error message for this specific input field
+      setErrorMessages((prev) => ({
+        ...prev,
+        [name]: "Enter a valid positive number.",
+      }));
+    } else {
+      // If valid, clear any error message for this field
+      const newErrorMessages = { ...errorMessages };
+      delete newErrorMessages[name];
+      setErrorMessages(newErrorMessages);
+    }
+
+    // Always update input values to allow user to see what they type
+    setLocalInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+
+    onInputChange(); // This sets inputsHaveChanged to true in the parent
   };
 
   const handleInputFocus = () => {
@@ -52,6 +81,9 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodCLT && (
+          <span className="error-message-input">{errorMessages.woodCLT}</span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -79,6 +111,11 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodDltNlt && (
+          <span className="error-message-input">
+            {errorMessages.woodDltNlt}
+          </span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -106,6 +143,9 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodMPP && (
+          <span className="error-message-input">{errorMessages.woodMPP}</span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -133,6 +173,11 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodPlywood && (
+          <span className="error-message-input">
+            {errorMessages.woodPlywood}
+          </span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -160,6 +205,11 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodGlulam && (
+          <span className="error-message-input">
+            {errorMessages.woodGlulam}
+          </span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -187,6 +237,11 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodPslLslLvl && (
+          <span className="error-message-input">
+            {errorMessages.woodPslLslLvl}
+          </span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -214,6 +269,9 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodTJI && (
+          <span className="error-message-input">{errorMessages.woodTJI}</span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -241,6 +299,11 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodLumber && (
+          <span className="error-message-input">
+            {errorMessages.woodLumber}
+          </span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -268,6 +331,11 @@ const Wood = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.woodCustom && (
+          <span className="error-message-input">
+            {errorMessages.woodCustom}
+          </span>
+        )}
         <p className="menu-text-large conv">
           <span className="menu-text-small">
             (kgCO<sub>2</sub>eq)

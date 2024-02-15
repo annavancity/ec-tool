@@ -1,17 +1,44 @@
 import { useSelector } from "react-redux";
 import { formatNumber } from "../../utils/formatNumber";
+import { useState } from "react";
 
-const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
+const Concrete = ({
+  option,
+  localInputs,
+  setLocalInputs,
+  onActiveChange,
+  onInputChange,
+}) => {
   const concreteCalculatedValues = useSelector(
     (state) => state.calculatedValues[option]?.concrete || {}
   );
 
+  //state to track error messages for input fields
+  const [errorMessages, setErrorMessages] = useState({});
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setLocalInputs({
-      ...localInputs,
-      [name]: Number(value),
-    });
+    const isValidNumber = /^-?\d*\.?\d*$/.test(value); // Validates float numbers and negative values
+    const isNegativeOrInvalid = Number(value) < 0 || !isValidNumber;
+
+    if (isNegativeOrInvalid) {
+      // Set error message for this specific input field
+      setErrorMessages((prev) => ({
+        ...prev,
+        [name]: "Enter a valid positive number.",
+      }));
+    } else {
+      // If valid, clear any error message for this field
+      const newErrorMessages = { ...errorMessages };
+      delete newErrorMessages[name];
+      setErrorMessages(newErrorMessages);
+    }
+    // update input values to allow user to see what they type
+    setLocalInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+    onInputChange(); // This sets inputsHaveChanged to true in the parent
   };
 
   const handleInputFocus = () => {
@@ -53,6 +80,9 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.concHoriz && (
+          <span className="error-message-input">{errorMessages.concHoriz}</span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -79,6 +109,9 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.concVert && (
+          <span className="error-message-input">{errorMessages.concVert}</span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -105,6 +138,9 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.concFound && (
+          <span className="error-message-input">{errorMessages.concFound}</span>
+        )}
         <p className="menu-text-large conv">
           m<sup>3</sup>
         </p>
@@ -131,6 +167,9 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.concRebar && (
+          <span className="error-message-input">{errorMessages.concRebar}</span>
+        )}
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
         {!areConcreteInputsZeros() && (
@@ -155,6 +194,11 @@ const Concrete = ({ option, localInputs, setLocalInputs, onActiveChange }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {errorMessages.concCustom && (
+          <span className="error-message-input">
+            {errorMessages.concCustom}
+          </span>
+        )}
         <p className="menu-text-large conv">
           <span className="menu-text-small">
             (kgCO<sub>2</sub>eq)

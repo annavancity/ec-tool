@@ -23,6 +23,7 @@ import StackedBarChart from "../components/charts/StackedBarChart";
 import CustomPieChartPercentage from "../components/charts/CustomPieChartPercentage";
 import { initialState } from "../features/materialInputsSlice";
 import handleSaveInputs from "../utils/handleSaveInputs";
+import GWPSchemeDisplayData from "../components/charts/GWPSchemeDisplayData";
 
 const OptionGenericLogic = ({ option }) => {
   //Define state for each material
@@ -39,6 +40,7 @@ const OptionGenericLogic = ({ option }) => {
 
   const savedDescription = localStorage.getItem(`${option}Description`) || ""; // Initialize description state with value from local storage
   const [description, setDescription] = useState(savedDescription);
+  const [inputsHaveChanged, setInputsHaveChanged] = useState(false);
 
   //defining state to track the active status for ea. material type
   const handleMaterialActive = (material) => {
@@ -96,6 +98,7 @@ const OptionGenericLogic = ({ option }) => {
     dispatch(markMaterialAsSaved({ option, materialType: "wood" }));
 
     markInputsChanged(option, true); //after saving inputs mark them as changed
+    setInputsHaveChanged(false); // Reset the flag as inputs are now saved
   };
 
   useEffect(() => {
@@ -365,6 +368,7 @@ const OptionGenericLogic = ({ option }) => {
               localInputs={localConcreteInputs}
               setLocalInputs={setLocalConcreteInputs}
               onActiveChange={handleMaterialActive}
+              onInputChange={() => setInputsHaveChanged(true)}
             />
           </div>
           <div className="option-material">
@@ -382,6 +386,7 @@ const OptionGenericLogic = ({ option }) => {
               localInputs={localWoodInputs}
               setLocalInputs={setLocalWoodInputs}
               onActiveChange={handleMaterialActive}
+              onInputChange={() => setInputsHaveChanged(true)}
             />
           </div>
           <div className="option-material">
@@ -399,6 +404,7 @@ const OptionGenericLogic = ({ option }) => {
               localInputs={localSteelInputs}
               setLocalInputs={setLocalSteelInputs}
               onActiveChange={handleMaterialActive}
+              onInputChange={() => setInputsHaveChanged(true)}
             />
           </div>
           <div className="option-material">
@@ -431,23 +437,39 @@ const OptionGenericLogic = ({ option }) => {
                         />
 
                         <h2 className="chart-description">
-                          Percentage of total GWP
+                          PERCENTAGE OF TOTAL GWP
                         </h2>
                       </div>
 
-                      <div className="chart-title">
-                        <StackedBarChart
-                          concretePercentage={
-                            calculatedValues.concrete?.concGWPTotal || 0
-                          }
-                          steelPercentage={
-                            calculatedValues.steel?.steelGWPTotal || 0
-                          }
-                          woodPercentage={
-                            calculatedValues.wood?.woodGWPTotal || 0
-                          }
-                        />
-                        <h2 className="chart-description">Total GWP</h2>
+                      <div className="chart-scheme">
+                        <div className="chart-title">
+                          <StackedBarChart
+                            concretePercentage={
+                              calculatedValues.concrete?.concGWPTotal || 0
+                            }
+                            steelPercentage={
+                              calculatedValues.steel?.steelGWPTotal || 0
+                            }
+                            woodPercentage={
+                              calculatedValues.wood?.woodGWPTotal || 0
+                            }
+                          />
+                          <h2 className="chart-description">TOTAL GWP</h2>
+                        </div>
+
+                        <div>
+                          <GWPSchemeDisplayData
+                            concretePercentage={
+                              calculatedValues.concrete?.concGWPTotal || 0
+                            }
+                            steelPercentage={
+                              calculatedValues.steel?.steelGWPTotal || 0
+                            }
+                            woodPercentage={
+                              calculatedValues.wood?.woodGWPTotal || 0
+                            }
+                          />
+                        </div>
                       </div>
                     </div>
                   )}
@@ -461,7 +483,11 @@ const OptionGenericLogic = ({ option }) => {
           <button className="btn operations" onClick={saveAllInputs}>
             Save inputs
           </button>
-          <button className="btn operations" onClick={calculateResults}>
+          <button
+            className="btn operations"
+            onClick={calculateResults}
+            disabled={inputsHaveChanged}
+          >
             Calculate
           </button>
         </div>

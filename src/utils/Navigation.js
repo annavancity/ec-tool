@@ -152,7 +152,7 @@ const Navigation = () => {
               <div className="tooltip">
                 <p className="error-message">
                   At least 2 schemes have to be <br></br>calculated to view this
-                  page
+                  page.
                 </p>
               </div>
             )}

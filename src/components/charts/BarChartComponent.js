@@ -85,7 +85,9 @@ const BarChartComponent = ({ data }) => {
             ))}
           </Bar>
         </BarChart>
-        <h2 className="chart-description left-offset">Total GWP</h2>
+        <h2 className="chart-description left-offset">
+          TOTAL GWP (kgCO<sub>2</sub>eq)
+        </h2>
       </div>
       <div className="chart">
         <BarChart
@@ -112,7 +114,9 @@ const BarChartComponent = ({ data }) => {
             ))}
           </Bar>
         </BarChart>
-        <h2 className="chart-description left-offset">GWP per Building Area</h2>
+        <h2 className="chart-description left-offset">
+          GWP PER FLOOR AREA (kgCO<sub>2</sub>eq)
+        </h2>
       </div>
     </div>
   );

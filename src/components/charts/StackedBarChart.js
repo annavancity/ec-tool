@@ -53,6 +53,7 @@ const StackedBarChart = ({
             backgroundColor: "#010101",
             padding: "5px",
             border: "1px solid #f9f82c",
+            fontSize: "12px",
           }}
         >
           {payload.map((entry, index) => (
@@ -69,16 +70,21 @@ const StackedBarChart = ({
 
   return (
     <BarChart
-      width={300}
+      width={200}
       height={200}
       data={data}
       barCategoryGap="35%"
-      margin={{ top: 2, right: 60, left: 0, bottom: 20 }}
+      margin={{ top: 0, right: 40, left: 0, bottom: 30 }}
     >
       <XAxis type="category" dataKey="material" hide style={{ fontSize }} />
       <YAxis type="number" style={{ fontSize }} tickFormatter={formatTick} />
       <Tooltip content={renderCustomTooltip} />
-      <Bar dataKey="Concrete" stackId="a" fill="rgb(169, 169, 169)" />
+      <Bar
+        dataKey="Concrete"
+        stackId="a"
+        fill="rgb(169, 169, 169)"
+        barSize={40}
+      />
       <Bar dataKey="Steel" stackId="a" fill="rgb(52, 104, 192)" />
       <Bar dataKey="Wood" stackId="a" fill="rgb(255, 187, 100)" />
     </BarChart>
