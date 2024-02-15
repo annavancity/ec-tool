@@ -113,33 +113,36 @@ const Navigation = () => {
       </div>
       <nav className="btn-all">
         <div className="btn-options">
-          <Link
-            className={`btn option-one ${
-              currentPath === "/option_one" ? "active" : ""
-            }`}
-            to="/option_one"
-          >
-            Scheme 1
-          </Link>
-          <Link
-            className={`btn option-two ${
-              currentPath === "/option_two" ? "active" : ""
-            }`}
-            to="/option_two"
-          >
-            Scheme 2
-          </Link>
-          <Link
-            className={`btn option-three ${
-              currentPath === "/option_three" ? "active" : ""
-            }`}
-            to="/option_three"
-          >
-            Scheme 3
-          </Link>
+          <div className="btn-width">
+            <Link
+              className={`btn option-one ${
+                currentPath === "/option_one" ? "active" : ""
+              }`}
+              to="/option_one"
+            >
+              Scheme 1
+            </Link>
+            <Link
+              className={`btn option-two ${
+                currentPath === "/option_two" ? "active" : ""
+              }`}
+              to="/option_two"
+            >
+              Scheme 2
+            </Link>
+            <Link
+              className={`btn option-three ${
+                currentPath === "/option_three" ? "active" : ""
+              }`}
+              to="/option_three"
+            >
+              Scheme 3
+            </Link>
+          </div>
+
           <Link
             to="/summary_comparison"
-            className={`btn ${
+            className={` btn-comparison btn ${
               currentPath === "/summary_comparison" ? "active" : ""
             } ${!atLeastTwoOptionsCalculated ? "disabled" : ""}`}
             onClick={handleLinkClick}

@@ -100,8 +100,12 @@ ul {
 }
 
 .options-reset {
-  display: flex;
   margin-top: 10px;
+}
+.btn-width {
+  display: flex;
+  justify-content: space-between;
+  width: 340px;
 }
 .container-space-between {
   display: flex;
@@ -124,6 +128,10 @@ ul {
   width: 400px;
 }
 
+.btn-comparison {
+  margin-left: 35px;
+}
+
 .btn.operations {
   width: 120px;
 }
@@ -139,6 +147,10 @@ ul {
   background-color: var(--color-background);
   color: var(--color-white);
   margin-right: 20px;
+}
+
+.btn-reset {
+  margin-right: 0px;
 }
 
 .btn:last-child {
@@ -157,17 +169,21 @@ ul {
 
 /* --------------------------------OPTIONS----------------------------*/
 
+.container-scheme-description {
+  margin-top: 35px;
+}
+
 .container-area {
   margin-top: 15px;
 }
 
 .input-area-fixed {
-  width: 200px;
+  width: 175px;
   text-align: left;
 }
 
 .label-area-fixed {
-  width: 120px;
+  width: 145px;
 }
 
 .btn.active {
@@ -201,7 +217,7 @@ ul {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 80px 0px;
+  margin: 40px 0px;
 }
 
 .material-button {
@@ -493,7 +509,8 @@ input[type="number"] {
 }
 
 .about-description-short {
-  width: 580px;
+  width: 540px;
+  text-align: justify;
 }
 
 .modal-description-content {
@@ -812,6 +829,14 @@ table td:first-child {
   input {
     width: 60px;
     font-size: 14px;
+  }
+
+  .label-area-fixed {
+    width: 130px;
+  }
+
+  .input-area-fixed {
+    width: 195px;
   }
 
   .value-name {

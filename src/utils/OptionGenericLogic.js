@@ -292,7 +292,7 @@ const OptionGenericLogic = ({ option }) => {
     <div className="wrapper">
       <div className="container">
         <div className="options-page-top">
-          <div className="options-reset">
+          <div className="options-reset btn-width">
             <button className="btn-reset" onClick={resetCurrentOptionInputs}>
               Reset{" "}
               {option
@@ -307,10 +307,10 @@ const OptionGenericLogic = ({ option }) => {
           </div>
         </div>
 
-        <div className="container-area">
+        <div className="container-scheme-description">
           <div className="value-row">
             <label className="menu-text-large label-area-fixed">
-              Description:
+              Scheme Description:
             </label>
             <input
               className="input-area-fixed"
