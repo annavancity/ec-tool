@@ -542,7 +542,9 @@ const OptionGenericLogic = ({ option }) => {
                             </div>
                           </div>
 
-                          <h2 className="chart-description">Total GWP</h2>
+                          <h2 className="chart-description">
+                            Total GWP (kgCO<sub>2</sub>eq)
+                          </h2>
                         </div>
                       </div>
                     </div>
