@@ -147,7 +147,7 @@ const Navigation = () => {
             } ${!atLeastTwoOptionsCalculated ? "disabled" : ""}`}
             onClick={handleLinkClick}
           >
-            Result Comparison
+            Scheme Comparison
             {!atLeastTwoOptionsCalculated && (
               <div className="tooltip">
                 <p className="error-message">

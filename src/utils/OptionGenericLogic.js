@@ -427,7 +427,7 @@ const OptionGenericLogic = ({ option }) => {
           <div className="option-material">
             <button className="material-button">
               <img className="material-image" src={GWPimage} alt="GWP" />
-              <p className="icon-text">GWP PER SCHEME</p>
+              <p className="icon-text">GWP RESULTS</p>
               <div className="overlay"></div>
             </button>
             <p className="value-row-placeholder"></p>
@@ -454,38 +454,57 @@ const OptionGenericLogic = ({ option }) => {
                         />
 
                         <h2 className="chart-description">
-                          PERCENTAGE OF TOTAL GWP
+                          Percentage of Total GWP
                         </h2>
                       </div>
 
                       <div className="chart-scheme">
                         <div className="chart-title">
-                          <StackedBarChart
-                            concretePercentage={
-                              calculatedValues.concrete?.concGWPTotal || 0
-                            }
-                            steelPercentage={
-                              calculatedValues.steel?.steelGWPTotal || 0
-                            }
-                            woodPercentage={
-                              calculatedValues.wood?.woodGWPTotal || 0
-                            }
-                          />
-                          <h2 className="chart-description">TOTAL GWP</h2>
-                        </div>
+                          <div className="chart-title-stacked">
+                            <StackedBarChart
+                              concretePercentage={
+                                calculatedValues.concrete?.concGWPTotal || 0
+                              }
+                              steelPercentage={
+                                calculatedValues.steel?.steelGWPTotal || 0
+                              }
+                              woodPercentage={
+                                calculatedValues.wood?.woodGWPTotal || 0
+                              }
+                            />
 
-                        <div>
-                          <GWPSchemeDisplayData
-                            concretePercentage={
-                              calculatedValues.concrete?.concGWPTotal || 0
-                            }
-                            steelPercentage={
-                              calculatedValues.steel?.steelGWPTotal || 0
-                            }
-                            woodPercentage={
-                              calculatedValues.wood?.woodGWPTotal || 0
-                            }
-                          />
+                            <div>
+                              <GWPSchemeDisplayData
+                                concretePercentage={
+                                  calculatedValues.concrete?.concGWPTotal || 0
+                                }
+                                steelPercentage={
+                                  calculatedValues.steel?.steelGWPTotal || 0
+                                }
+                                woodPercentage={
+                                  calculatedValues.wood?.woodGWPTotal || 0
+                                }
+                                GWPTotal={
+                                  calculatedValues.totals?.GWPTotal || 0
+                                }
+                                buildingArea={buildingArea}
+                              />
+                              {/* <p className="menu-text-small">
+                            Total GWP: {calculatedValues.totals?.GWPTotal}
+                          </p>
+                          <p className="menu-text-small">
+                            GWP per Floor Area:
+                            {calculatedValues.totals?.GWPTotal && buildingArea
+                              ? (
+                                  Number(calculatedValues.totals?.GWPTotal) /
+                                  Number(buildingArea)
+                                ).toFixed(0)
+                              : "N/A"}
+                          </p> */}
+                            </div>
+                          </div>
+
+                          <h2 className="chart-description">Total GWP</h2>
                         </div>
                       </div>
                     </div>

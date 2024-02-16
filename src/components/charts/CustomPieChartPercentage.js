@@ -5,7 +5,7 @@ const CustomPieChartPercentage = ({
   steelPercentage,
   woodPercentage,
   width = 320, // Default width
-  height = 250, // Default height
+  height = 200, // Default height
   outerRadius = 60, // Default outer radius
   fontSize, // Allow dynamic font size
 }) => {

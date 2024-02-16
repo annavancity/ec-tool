@@ -9,6 +9,9 @@
   --color-shadow: #777764be;
   --color-footer-font: #b7b7b7;
   --color-overlay: rgba(0, 0, 0, 0.5);
+  --color-concrete: rgb(169, 169, 169);
+  --color-steel: rgb(52, 104, 192);
+  --color-wood: rgb(255, 187, 100);
 }
 
 html,
@@ -336,6 +339,18 @@ ul {
   color: var(--color-yellow);
 }
 
+.concrete {
+  color: var(--color-concrete);
+}
+
+.steel {
+  color: var(--color-steel);
+}
+
+.wood {
+  color: var(--color-wood);
+}
+
 .question-mark-text {
   position: absolute;
   margin-top: 3px;
@@ -523,7 +538,7 @@ input[type="number"] {
 }
 
 .about-description-short {
-  width: 500px;
+  width: 515px;
   text-align: justify;
 }
 
@@ -587,6 +602,12 @@ input[type="number"] {
 .chart-title {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-title-stacked {
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
@@ -654,7 +675,8 @@ input[type="number"] {
 }
 
 .chart-area {
-  margin-top: -20px;
+  margin-top: 15px;
+  margin-left: 10px;
 }
 
 .left-offset {
@@ -745,12 +767,21 @@ table td:first-child {
   .container-summary {
     width: 100%;
     margin: 0 auto;
-    transform: scale(0.9);
+    transform: scale(1);
     transform-origin: center center;
   }
 
   .print-only {
     display: flex;
+  }
+
+  .footer {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
   }
 
   .container-charts-all {

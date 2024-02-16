@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import BarChartComponent from "./charts/BarChartComponent";
 import logo from "../../src/images/logo-min.svg";
 import CustomPieChartPercentage from "./charts/CustomPieChartPercentage";
-import TableGWPEachScheme from "./charts/TableGWPEachScheme";
+// import TableGWPEachScheme from "./charts/TableGWPEachScheme";
 import TableGWPSequester from "./charts/TableGWPSequester";
 
 const Comparison = () => {
@@ -12,7 +12,6 @@ const Comparison = () => {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-    scale: 0.9,
     pageStyle: "@page { size: 17in 11in; margin: 0; }",
   });
 
@@ -178,11 +177,11 @@ const Comparison = () => {
             <BarChartComponent data={filteredBarChartData} />
           </div>
           <div className="tables">
-            <TableGWPEachScheme data={filteredBarChartData} />
+            {/* <TableGWPEachScheme data={filteredBarChartData} /> */}
             <TableGWPSequester data={filteredBarChartData} />
           </div>
         </div>
-        <div className="print-only">
+        <div className="print-only footer">
           <div className="container">
             <p className="copyright">
               &copy; 2024 Fast + Epp. All Rights Reserved.
