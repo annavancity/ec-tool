@@ -41,6 +41,7 @@ const OptionGenericLogic = ({ option }) => {
   const savedDescription = localStorage.getItem(`${option}Description`) || ""; // Initialize description state with value from local storage
   const [description, setDescription] = useState(savedDescription);
   const [inputsHaveChanged, setInputsHaveChanged] = useState(false);
+  const [savedDataExists, setSavedDataExists] = useState(false);
 
   //defining state to track the active status for ea. material type
   const handleMaterialActive = (material) => {
@@ -99,11 +100,13 @@ const OptionGenericLogic = ({ option }) => {
 
     markInputsChanged(option, true); //after saving inputs mark them as changed
     setInputsHaveChanged(false); // Reset the flag as inputs are now saved
+    setSavedDataExists(true); // reflect that saved data exists
   };
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem(option));
     if (savedData) {
+      setSavedDataExists(true);
       if (savedData.concrete) {
         setLocalConcreteInputs(savedData.concrete.inputs); //dispatch update for concrete
       }
@@ -114,6 +117,7 @@ const OptionGenericLogic = ({ option }) => {
         setLocalWoodInputs(savedData.wood.inputs); //dispatch update for wood
       }
     } else {
+      setSavedDataExists(false);
       // Reset local state if not saved
       setLocalConcreteInputs(initialState[option].concrete.inputs);
       setLocalSteelInputs(initialState[option].steel.inputs);
@@ -206,7 +210,6 @@ const OptionGenericLogic = ({ option }) => {
     localStorage.removeItem(`${option}BuildingArea`);
     localStorage.removeItem(`${option}Description`);
     localStorage.removeItem(option);
-
     dispatch(resetCalculatedValues({ option })); // Dispatch reset action for current option
     dispatch(
       updateMaterialInputs({
@@ -229,12 +232,10 @@ const OptionGenericLogic = ({ option }) => {
         inputs: initialState[option].wood.inputs,
       })
     );
-
     setBuildingArea(null);
     setDescription("");
     setShowResults(false);
-
-    // window.location.reload();
+    window.location.reload();
   };
 
   //Function to reset all inputs at once
@@ -322,7 +323,7 @@ const OptionGenericLogic = ({ option }) => {
               onChange={handleDescriptionChange}
               name="description"
               placeholder="Enter description"
-              maxLength="30"
+              maxLength="18"
             />
           </div>
         </div>
@@ -486,7 +487,7 @@ const OptionGenericLogic = ({ option }) => {
           <button
             className="btn operations"
             onClick={calculateResults}
-            disabled={inputsHaveChanged}
+            disabled={!savedDataExists || inputsHaveChanged}
           >
             Calculate
           </button>
