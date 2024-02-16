@@ -56,6 +56,11 @@ const Steel = ({
     return Object.values(localInputs).every((value) => value === 0);
   };
 
+  // Function to check if all concrete inputs are valid
+  const isValidValue = (value) => {
+    return value !== undefined && !isNaN(value);
+  };
+
   return (
     <div className="steel-section">
       <div className="value-row">
@@ -88,16 +93,19 @@ const Steel = ({
         )}
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
-        {!areSteelInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(steelCalculatedValues.steelHotRolledGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {steelCalculatedValues.steelHotRolledPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areSteelInputsZeros() &&
+          isValidValue(steelCalculatedValues.steelHotRolledGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(
+                  steelCalculatedValues.steelHotRolledGWPCalculated
+                )}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {steelCalculatedValues.steelHotRolledPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -116,16 +124,17 @@ const Steel = ({
         )}
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
-        {!areSteelInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(steelCalculatedValues.steelHSSGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {steelCalculatedValues.steelHSSPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areSteelInputsZeros() &&
+          isValidValue(steelCalculatedValues.steelHSSGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(steelCalculatedValues.steelHSSGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {steelCalculatedValues.steelHSSPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -144,16 +153,17 @@ const Steel = ({
         )}
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
-        {!areSteelInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(steelCalculatedValues.steelOWSJGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {steelCalculatedValues.steelOWSJPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areSteelInputsZeros() &&
+          isValidValue(steelCalculatedValues.steelOWSJGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(steelCalculatedValues.steelOWSJGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {steelCalculatedValues.steelOWSJPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -174,16 +184,17 @@ const Steel = ({
         )}
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
-        {!areSteelInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(steelCalculatedValues.steelPlateGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {steelCalculatedValues.steelPlatePercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areSteelInputsZeros() &&
+          isValidValue(steelCalculatedValues.steelPlateGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(steelCalculatedValues.steelPlateGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {steelCalculatedValues.steelPlatePercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -202,16 +213,17 @@ const Steel = ({
         )}
         <p className="menu-text-large conv">kg</p>
         <span className="error-message"></span>
-        {!areSteelInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(steelCalculatedValues.steelDeckGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {steelCalculatedValues.steelDeckPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areSteelInputsZeros() &&
+          isValidValue(steelCalculatedValues.steelDeckGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(steelCalculatedValues.steelDeckGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {steelCalculatedValues.steelDeckPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -236,16 +248,17 @@ const Steel = ({
           </span>
         </p>
         <span className="error-message"></span>
-        {!areSteelInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(steelCalculatedValues.steelCustomGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {steelCalculatedValues.steelCustomPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areSteelInputsZeros() &&
+          isValidValue(steelCalculatedValues.steelCustomGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(steelCalculatedValues.steelCustomGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {steelCalculatedValues.steelCustomPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
     </div>
   );

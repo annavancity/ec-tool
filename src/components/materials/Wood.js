@@ -56,6 +56,11 @@ const Wood = ({
     return Object.values(localInputs).every((value) => value === 0);
   };
 
+  // Function to check if all concrete inputs are valid
+  const isValidValue = (value) => {
+    return value !== undefined && !isNaN(value);
+  };
+
   return (
     <div className="wood-section">
       <div className="value-row">
@@ -88,16 +93,17 @@ const Wood = ({
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodCLTGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodCLTPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodCLTGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodCLTGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodCLTPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -120,16 +126,17 @@ const Wood = ({
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodDltNltGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodDltNltPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodDltNltGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodDltNltGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodDltNltPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -150,16 +157,17 @@ const Wood = ({
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodMPPGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodMPPPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodMPPGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodMPPGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodMPPPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -182,16 +190,17 @@ const Wood = ({
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodPlywoodGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodPlywoodPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodPlywoodGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodPlywoodGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodPlywoodPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -214,16 +223,17 @@ const Wood = ({
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodGlulamGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodGlulamPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodGlulamGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodGlulamGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodGlulamPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -246,16 +256,17 @@ const Wood = ({
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodPslLslLvlGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodPslLslLvlPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodPslLslLvlGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodPslLslLvlGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodPslLslLvlPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -276,16 +287,17 @@ const Wood = ({
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodTJIGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodTJIPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodTJIGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodTJIGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodTJIPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -308,16 +320,17 @@ const Wood = ({
           m<sup>3</sup>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodLumberGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodLumberPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodLumberGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodLumberGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodLumberPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
 
       <div className="value-row">
@@ -342,16 +355,17 @@ const Wood = ({
           </span>
         </p>
         <span className="error-message"></span>
-        {!areWoodInputsZeros() && (
-          <>
-            <p className="menu-text-large value-row-GWP">
-              {formatNumber(woodCalculatedValues.woodCustomGWPCalculated)}
-            </p>
-            <p className="menu-text-large value-row-percentage">
-              {woodCalculatedValues.woodCustomPercentageCalculated}
-            </p>
-          </>
-        )}
+        {!areWoodInputsZeros() &&
+          isValidValue(woodCalculatedValues.woodCustomGWPCalculated) && (
+            <>
+              <p className="menu-text-large value-row-GWP">
+                {formatNumber(woodCalculatedValues.woodCustomGWPCalculated)}
+              </p>
+              <p className="menu-text-large value-row-percentage">
+                {woodCalculatedValues.woodCustomPercentageCalculated}
+              </p>
+            </>
+          )}
       </div>
     </div>
   );

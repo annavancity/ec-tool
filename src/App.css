@@ -105,7 +105,7 @@ ul {
 .btn-width {
   display: flex;
   justify-content: space-between;
-  width: 340px;
+  width: 315px;
 }
 .container-space-between {
   display: flex;
@@ -125,11 +125,10 @@ ul {
 .btn-options {
   display: flex;
   flex: 1;
-  width: 400px;
 }
 
 .btn-comparison {
-  margin-left: 35px;
+  margin-left: 21px;
 }
 
 .btn.operations {
@@ -524,7 +523,7 @@ input[type="number"] {
 }
 
 .about-description-short {
-  width: 540px;
+  width: 500px;
   text-align: justify;
 }
 
@@ -860,7 +859,7 @@ table td:first-child {
   }
 
   .input-area-fixed {
-    width: 195px;
+    width: 169px;
   }
 
   .value-name {

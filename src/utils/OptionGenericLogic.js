@@ -292,6 +292,22 @@ const OptionGenericLogic = ({ option }) => {
     );
   };
 
+  // Function to check if all saved values are non zeros, empty string ot undefined and to disable calculate button in this case
+  const areInputsOnlyZeros = () => {
+    // Combine all input values into a single array
+    const allInputs = [
+      ...Object.values(localConcreteInputs),
+      ...Object.values(localSteelInputs),
+      ...Object.values(localWoodInputs),
+    ];
+
+    // Check if every input is either zero, an empty string, or undefined
+    return allInputs.every((input) => {
+      const num = parseFloat(input);
+      return isNaN(num) || num === 0;
+    });
+  };
+
   return (
     <div className="wrapper">
       <div className="container">
@@ -487,7 +503,9 @@ const OptionGenericLogic = ({ option }) => {
           <button
             className="btn operations"
             onClick={calculateResults}
-            disabled={!savedDataExists || inputsHaveChanged}
+            disabled={
+              !savedDataExists || inputsHaveChanged || areInputsOnlyZeros()
+            }
           >
             Calculate
           </button>
