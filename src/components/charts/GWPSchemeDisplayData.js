@@ -21,31 +21,35 @@ const GWPSchemeDisplayData = ({
   return (
     <div className="data-display">
       {data.map((entry, index) => (
-        <div key={index} className="data-row">
-          <p className="menu-text-small concrete">
-            Concrete: {formatNumber(entry.Concrete)}
-          </p>
-          <p className="menu-text-small steel">
-            Steel: {formatNumber(entry.Steel)}
-          </p>
-          <p className="menu-text-small wood">
-            Wood: {formatNumber(entry.Wood)}
-          </p>
-          <p className="menu-text-small">
-            Total GWP: {formatNumber(entry.GWPTotal)}
-          </p>
-          <p className="menu-text-small">
-            GWP per Floor Area:{" "}
-            {entry.GWPTotal && entry.buildingArea
-              ? formatNumber(
-                  Number(
-                    (
-                      Number(entry.GWPTotal) / Number(entry.buildingArea)
-                    ).toFixed(0)
+        <div key={index} className="data-col">
+          <div className="data-row">
+            <p className="menu-text-small concrete">
+              Concrete: {formatNumber(entry.Concrete)}
+            </p>
+            <p className="menu-text-small wood">
+              Wood: {formatNumber(entry.Wood)}
+            </p>
+            <p className="menu-text-small steel">
+              Steel: {formatNumber(entry.Steel)}
+            </p>
+          </div>
+          <div className="data-row">
+            <p className="menu-text-small">
+              Total GWP: {formatNumber(entry.GWPTotal)}
+            </p>
+            <p className="menu-text-small">
+              GWP per m<sup>2</sup>:{" "}
+              {entry.GWPTotal && entry.buildingArea
+                ? formatNumber(
+                    Number(
+                      (
+                        Number(entry.GWPTotal) / Number(entry.buildingArea)
+                      ).toFixed(0)
+                    )
                   )
-                )
-              : "N/A"}
-          </p>
+                : "N/A"}
+            </p>
+          </div>
         </div>
       ))}
     </div>

@@ -613,11 +613,23 @@ input[type="number"] {
   margin-top: 20px;
 }
 
+.mt-20 {
+  margin-top: 20px;
+}
+
 .chart-scheme {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+}
+
+.data-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  margin-bottom: 30px;
+  margin-left: -40px;
 }
 
 /* --------------------SUMMARY-------------------- */
@@ -651,6 +663,7 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 575px;
 }
 
 .summary {
@@ -714,7 +727,7 @@ table td:first-child {
 }
 
 .th-description {
-  width: 160px;
+  width: 170px;
 }
 
 .img-table {
@@ -908,6 +921,10 @@ table td:first-child {
   .plus-text {
     margin-top: 10.5px;
     width: 20px;
+  }
+
+  .chart-container {
+    height: 440px;
   }
 }
 

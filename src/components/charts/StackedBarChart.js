@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
+import { BarChart, Bar, XAxis, YAxis } from "recharts";
 
 const StackedBarChart = ({
   concretePercentage,
@@ -28,8 +28,8 @@ const StackedBarChart = ({
   const data = [
     {
       Concrete: concretePercentage,
-      Steel: steelPercentage,
       Wood: woodPercentage,
+      Steel: steelPercentage,
     },
   ];
 
@@ -39,34 +39,34 @@ const StackedBarChart = ({
   };
 
   // Custom tooltip formatter function
-  const customTooltipFormatter = (value) => {
-    return value.toLocaleString();
-  };
+  // const customTooltipFormatter = (value) => {
+  //   return value.toLocaleString();
+  // };
 
   // Custom tooltip component
-  const renderCustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div
-          className="custom-tooltip"
-          style={{
-            backgroundColor: "#010101",
-            padding: "5px",
-            border: "1px solid #f9f82c",
-            fontSize: "12px",
-          }}
-        >
-          {payload.map((entry, index) => (
-            <p key={`item-${index}`} style={{ color: entry.color }}>
-              {`${entry.name}: ${customTooltipFormatter(entry.value)}`}
-            </p>
-          ))}
-        </div>
-      );
-    }
+  // const renderCustomTooltip = ({ active, payload, label }) => {
+  //   if (active && payload && payload.length) {
+  //     return (
+  //       <div
+  //         className="custom-tooltip"
+  //         style={{
+  //           backgroundColor: "#010101",
+  //           padding: "5px",
+  //           border: "1px solid #f9f82c",
+  //           fontSize: "12px",
+  //         }}
+  //       >
+  //         {payload.map((entry, index) => (
+  //           <p key={`item-${index}`} style={{ color: entry.color }}>
+  //             {`${entry.name}: ${customTooltipFormatter(entry.value)}`}
+  //           </p>
+  //         ))}
+  //       </div>
+  //     );
+  //   }
 
-    return null;
-  };
+  //   return null;
+  // };
 
   return (
     <BarChart
@@ -78,15 +78,16 @@ const StackedBarChart = ({
     >
       <XAxis type="category" dataKey="material" hide style={{ fontSize }} />
       <YAxis type="number" style={{ fontSize }} tickFormatter={formatTick} />
-      <Tooltip content={renderCustomTooltip} />
+      {/* <Tooltip content={renderCustomTooltip} /> */}
+
+      <Bar dataKey="Steel" stackId="a" fill="rgb(52, 104, 192)" />
+      <Bar dataKey="Wood" stackId="a" fill="rgb(255, 187, 100)" />
       <Bar
         dataKey="Concrete"
         stackId="a"
         fill="rgb(169, 169, 169)"
         barSize={40}
       />
-      <Bar dataKey="Steel" stackId="a" fill="rgb(52, 104, 192)" />
-      <Bar dataKey="Wood" stackId="a" fill="rgb(255, 187, 100)" />
     </BarChart>
   );
 };

@@ -207,10 +207,22 @@ const OptionGenericLogic = ({ option }) => {
 
   //Function to reset only current option
   const resetCurrentOptionInputs = () => {
+    // Remove items from local storage
     localStorage.removeItem(`${option}BuildingArea`);
     localStorage.removeItem(`${option}Description`);
     localStorage.removeItem(option);
-    dispatch(resetCalculatedValues({ option })); // Dispatch reset action for current option
+
+    // Reset local component state
+    setLocalConcreteInputs(initialState[option].concrete.inputs);
+    setLocalSteelInputs(initialState[option].steel.inputs);
+    setLocalWoodInputs(initialState[option].wood.inputs);
+    setBuildingArea(null);
+    setDescription("");
+    setShowResults(false);
+    setInputsHaveChanged(false);
+
+    // Reset Redux store state
+    dispatch(resetCalculatedValues({ option }));
     dispatch(
       updateMaterialInputs({
         option,
@@ -232,10 +244,36 @@ const OptionGenericLogic = ({ option }) => {
         inputs: initialState[option].wood.inputs,
       })
     );
-    setBuildingArea(null);
-    setDescription("");
-    setShowResults(false);
-    window.location.reload();
+    markInputsChanged(option, false);
+    // localStorage.removeItem(`${option}BuildingArea`);
+    // localStorage.removeItem(`${option}Description`);
+    // localStorage.removeItem(option);
+    // dispatch(resetCalculatedValues({ option })); // Dispatch reset action for current option
+    // dispatch(
+    //   updateMaterialInputs({
+    //     option,
+    //     materialType: "concrete",
+    //     inputs: initialState[option].concrete.inputs,
+    //   })
+    // );
+    // dispatch(
+    //   updateMaterialInputs({
+    //     option,
+    //     materialType: "steel",
+    //     inputs: initialState[option].steel.inputs,
+    //   })
+    // );
+    // dispatch(
+    //   updateMaterialInputs({
+    //     option,
+    //     materialType: "wood",
+    //     inputs: initialState[option].wood.inputs,
+    //   })
+    // );
+    // setBuildingArea(null);
+    // setDescription("");
+    // setShowResults(false);
+    // window.location.reload();
   };
 
   //Function to reset all inputs at once
@@ -439,7 +477,7 @@ const OptionGenericLogic = ({ option }) => {
                   calculatedValues.steel &&
                   calculatedValues.wood && (
                     <div className="chart-container">
-                      <div className="chart-title">
+                      <div className="chart-title mt-20">
                         <CustomPieChartPercentage
                           concretePercentage={
                             calculatedValues.concrete?.concPercentageTotal || 0

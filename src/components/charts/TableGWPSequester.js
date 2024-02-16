@@ -31,8 +31,7 @@ const TableGWPSequester = ({ data }) => {
           </th>
         </tr>
         <tr>
-          <th></th>
-          <th></th>
+          <th colspan="2"></th>
           {OptionOneGWPTotal > 0 && (
             <th className="menu-text-medium ">{descriptionOne}</th>
           )}
@@ -46,10 +45,10 @@ const TableGWPSequester = ({ data }) => {
       </thead>
       <tbody>
         <tr>
-          <td className="menu-text-small">
+          <td className="menu-text-medium">
             <img src={planting} className="img-table" alt="plants" />
           </td>
-          <td className="menu-text-small th-description">
+          <td className="menu-text-medium th-description">
             Tree seedlings grown for a decade
           </td>
 
@@ -73,7 +72,7 @@ const TableGWPSequester = ({ data }) => {
           <td className="menu-text-small">
             <img src={forest} className="img-table" alt="forest" />
           </td>
-          <td className="menu-text-small th-description">
+          <td className="menu-text-medium th-description">
             Acres of Canadian forest grown for a year
           </td>
           {OptionOneGWPTotal > 0 && (
