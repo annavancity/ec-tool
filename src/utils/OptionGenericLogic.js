@@ -555,7 +555,7 @@ const OptionGenericLogic = ({ option }) => {
         </div>
         <div className="optionResults"></div>
 
-        <div>
+        <div className="btns-save-calc">
           <button className="btn operations" onClick={saveAllInputs}>
             Save inputs
           </button>
