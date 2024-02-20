@@ -101,8 +101,8 @@ const ModalDescription = ({ isOpen, handleClose }) => {
             <div className="modal-par">
               <img src={logo} alt="Logo-plus" className="plus-text" />
               <p className="menu-text-medium">
-                <span className="text-semibold">Result Comparison:</span> Select
-                the "Result Comparison" button to view the to totals for all
+                <span className="text-semibold">Scheme Comparison:</span> Select
+                the "Scheme Comparison" button to view the to totals for all
                 schemes and how to compare to one another.
               </p>
             </div>
