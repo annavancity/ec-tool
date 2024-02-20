@@ -33,22 +33,17 @@ a {
 ul {
   list-style: none;
 }
+
 .navbar {
   background-color: var(--color-yellow);
-}
-
-/* This is used to seperate the logo and the other items. */
-.navbar .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.links-to-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.main-menu {
+  margin-left: auto;
 }
+
 /* Applies to the menu items. */
 .navbar .main-menu ul {
   display: flex;
@@ -64,6 +59,13 @@ ul {
   transition: 0.3s;
 }
 
+.links-to-main {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* adds space around the final item, i.e., the button. */
 .navbar ul li:last-child a {
   margin-left: 10px;
@@ -72,6 +74,38 @@ ul {
 /* adds space betweent the icon and the icon text. */
 .navbar ul li i {
   margin-right: 10px;
+}
+
+/* burger menu */
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.menu-icon div {
+  width: 30px;
+  height: 3px;
+  background-color: var(--color-header-font-light);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.menu-icon:hover div {
+  background-color: var(--color-grey);
+}
+
+.menu-icon.open div:nth-child(1) {
+  transform: rotate(-45deg) translate(-6.5px, 6px);
+}
+
+.menu-icon.open div:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open div:nth-child(3) {
+  transform: rotate(45deg) translate(-6.5px, -6px);
 }
 
 /* --------------------------------ALL - OPTIONS----------------------------*/
@@ -965,6 +999,55 @@ table td:first-child {
   }
   .chart {
     margin: 20px 0px;
+  }
+}
+
+/* burger menu at this point */
+@media (max-width: 959px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .links-to-main {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+    z-index: 100;
+  }
+
+  .links-to-main.open {
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 40px;
+  }
+
+  .main-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-menu ul li {
+    margin-bottom: 30px;
+  }
+
+  .main-menu {
+    margin-left: 0px;
+  }
+
+  .menu-icon {
+    display: block;
   }
 }
 
