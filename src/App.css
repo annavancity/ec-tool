@@ -934,8 +934,20 @@ table td:first-child {
     display: flex;
     flex-direction: column;
   }
+  .btn,
+  .btn-reset {
+    font-size: 14px;
+  }
+  .btn-comparison {
+    margin-left: 45px;
+  }
+
   .btn.print {
     margin-bottom: 20px;
+  }
+
+  .about-description-short {
+    width: 502px;
   }
 
   .container-charts-all {
@@ -985,8 +997,7 @@ table td:first-child {
   }
 
   .about-description-short {
-    width: 600px;
-    text-align: justify;
+    width: 500px;
   }
 
   .app-about {
@@ -1015,7 +1026,6 @@ table td:first-child {
 
   .about-description-short {
     width: 450px;
-    text-align: justify;
   }
 
   .btn.print {
@@ -1028,7 +1038,6 @@ table td:first-child {
 
   .btn,
   .btn-reset {
-    font-size: 14px;
     margin-right: 20px;
   }
   .btn-comparison {
