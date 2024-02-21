@@ -63,7 +63,7 @@ const BarChartComponent = ({ data }) => {
     <div className="summary">
       <div className="chart">
         <BarChart
-          width={600}
+          width={537}
           height={250}
           layout="vertical"
           data={data}
@@ -96,7 +96,7 @@ const BarChartComponent = ({ data }) => {
       </div>
       <div className="chart">
         <BarChart
-          width={600}
+          width={537}
           height={250}
           layout="vertical"
           data={data}

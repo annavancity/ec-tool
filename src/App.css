@@ -1132,3 +1132,56 @@ table td:first-child {
     justify-content: center;
   }
 }
+
+@media (max-width: 540px) {
+  .about-description-short {
+    width: 400px;
+  }
+
+  .btn-width {
+    width: 250px;
+  }
+
+  .btn-comparison {
+    width: 95px;
+  }
+
+  .btn-options {
+    flex: 0;
+  }
+
+  .btn.print {
+    margin-left: 60px;
+  }
+
+  .btn,
+  .btn-reset {
+    font-size: 10px;
+    padding: 3px;
+  }
+
+  .btn-reset {
+    width: 150px;
+  }
+
+  .chart {
+    width: 300px;
+  }
+
+  /* .btn-width {
+    width: 285px;
+  }
+
+  .btn,
+  .btn-reset {
+    margin-right: 20px;
+  }
+  .btn-comparison {
+    margin-left: 30px;
+  }
+
+  .btns-save-calc {
+    display: flex;
+    justify-content: center;
+  } */
+}
