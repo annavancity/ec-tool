@@ -82,7 +82,7 @@ const Comparison = () => {
           woodPercentage={calculatedValues.wood?.woodPercentageTotal || 0}
           width={400}
           outerRadius={80}
-          fontSize={16}
+          fontSize={12}
         />
 
         <p className="menu-text-large chart-area">
