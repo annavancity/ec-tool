@@ -9,11 +9,6 @@ const CustomPieChartPercentage = ({
   outerRadius = 60, // Default outer radius
   fontSize, // Allow dynamic font size
 }) => {
-  // Function to determine font size based on window width
-  // const getFontSize = () => {
-  //   return window.innerWidth < 1788 ? "12px" : "14px";
-  // };
-
   const data = [
     {
       name: "Concrete",

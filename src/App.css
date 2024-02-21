@@ -1150,3 +1150,77 @@ table td:first-child {
     width: 300px;
   }
 }
+
+@media (max-width: 500px) {
+  .app-name {
+    font-size: 20px;
+  }
+
+  .about-description-short {
+    width: 380px;
+  }
+
+  .btn-width {
+    width: 230px;
+  }
+  .btn-comparison {
+    width: 95px;
+  }
+
+  .chart-description {
+    font-size: 14px;
+  }
+
+  .btn,
+  .btn-reset {
+    font-size: 10px;
+  }
+
+  .btn-reset {
+    width: 130px;
+  }
+
+  .th-description {
+    width: 80px;
+    padding: 0px 3px;
+  }
+
+  .menu-text-medium {
+    font-size: 10px;
+  }
+  .img-table {
+    width: 15px;
+  }
+}
+
+/* @media (max-width: 440px) {
+  .about-description-short {
+    width: 502px;
+  }
+
+  .btn-width {
+    width: 270px;
+  }
+
+  .btn-comparison {
+    width: 113px;
+  }
+
+  .btn-options {
+    flex: 0;
+  }
+
+  .btn,
+  .btn-reset {
+    font-size: 12px;
+    padding: 3px;
+  }
+
+  .btn-reset {
+    width: 150px;
+  }
+
+  .chart {
+    width: 300px;
+  }
+} */

@@ -12,19 +12,27 @@ const descriptionThree =
 const BarChartComponent = ({ data }) => {
   // State to hold the dynamic font size
   const [fontSize, setFontSize] = useState("14px");
+  const [chartWidth, setChartWidth] = useState(600);
 
   useEffect(() => {
     const handleResize = () => {
-      // Update font size based on screen width
-      if (window.innerWidth < 1788) {
-        setFontSize("14px"); // Smaller font size for smaller screens
+      if (window.innerWidth < 540) {
+        setFontSize("12px");
+        setChartWidth(window.innerWidth - 150);
+      } else if (window.innerWidth < 768) {
+        setFontSize("12px");
+        setChartWidth(window.innerWidth - 100);
+      } else if (window.innerWidth < 1788) {
+        setFontSize("14px");
+        setChartWidth(600);
       } else {
-        setFontSize("16px"); // Default font size
+        setFontSize("16px");
+        setChartWidth(600);
       }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Initial call to set the font size
+    handleResize(); // call at component mount
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -48,6 +56,7 @@ const BarChartComponent = ({ data }) => {
         fill="#fff"
         textAnchor="middle"
         dominantBaseline="middle"
+        style={{ fontSize }}
       >
         {formattedValue}
       </text>
@@ -63,7 +72,7 @@ const BarChartComponent = ({ data }) => {
     <div className="summary">
       <div className="chart">
         <BarChart
-          width={537}
+          width={chartWidth}
           height={250}
           layout="vertical"
           data={data}
@@ -96,7 +105,7 @@ const BarChartComponent = ({ data }) => {
       </div>
       <div className="chart">
         <BarChart
-          width={537}
+          width={chartWidth}
           height={250}
           layout="vertical"
           data={data}

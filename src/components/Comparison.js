@@ -80,7 +80,7 @@ const Comparison = () => {
           }
           steelPercentage={calculatedValues.steel?.steelPercentageTotal || 0}
           woodPercentage={calculatedValues.wood?.woodPercentageTotal || 0}
-          width={500}
+          width={400}
           outerRadius={80}
           fontSize={16}
         />
