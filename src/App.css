@@ -671,7 +671,6 @@ input[type="number"] {
 .container-summary {
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
 }
 
 .btn.print {
@@ -689,7 +688,6 @@ input[type="number"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* height: 100vh; */
 }
 
 .chart-container {
@@ -817,6 +815,14 @@ table td:first-child {
     margin: 0 auto;
     transform: scale(1);
     transform-origin: center center;
+  }
+
+  .summary {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   .print-only {
@@ -993,7 +999,6 @@ table td:first-child {
   .summary {
     display: flex;
     flex-direction: column;
-
     align-items: center;
     flex-wrap: wrap;
   }
@@ -1071,12 +1076,8 @@ table td:first-child {
 }
 
 @media (max-width: 720px) {
-  .container {
-    padding: 0px 60px;
-  }
-
   .btn.print {
-    margin-left: 60px;
+    margin-left: 20px;
   }
 
   .about-description-short {
@@ -1097,22 +1098,10 @@ table td:first-child {
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding: 0px 60px;
-  }
-
   .container-summary {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  .about-description-short {
-    width: 450px;
-  }
-
-  .btn.print {
-    margin-left: 60px;
   }
 
   .btn-width {
@@ -1123,8 +1112,9 @@ table td:first-child {
   .btn-reset {
     margin-right: 20px;
   }
+
   .btn-comparison {
-    margin-left: 30px;
+    margin-left: 32px;
   }
 
   .btns-save-calc {
@@ -1134,29 +1124,21 @@ table td:first-child {
 }
 
 @media (max-width: 540px) {
-  .about-description-short {
-    width: 400px;
-  }
-
   .btn-width {
-    width: 250px;
+    width: 270px;
   }
 
   .btn-comparison {
-    width: 95px;
+    width: 113px;
   }
 
   .btn-options {
     flex: 0;
   }
 
-  .btn.print {
-    margin-left: 60px;
-  }
-
   .btn,
   .btn-reset {
-    font-size: 10px;
+    font-size: 12px;
     padding: 3px;
   }
 
@@ -1167,21 +1149,4 @@ table td:first-child {
   .chart {
     width: 300px;
   }
-
-  /* .btn-width {
-    width: 285px;
-  }
-
-  .btn,
-  .btn-reset {
-    margin-right: 20px;
-  }
-  .btn-comparison {
-    margin-left: 30px;
-  }
-
-  .btns-save-calc {
-    display: flex;
-    justify-content: center;
-  } */
 }
