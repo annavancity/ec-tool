@@ -245,35 +245,6 @@ const OptionGenericLogic = ({ option }) => {
       })
     );
     markInputsChanged(option, false);
-    // localStorage.removeItem(`${option}BuildingArea`);
-    // localStorage.removeItem(`${option}Description`);
-    // localStorage.removeItem(option);
-    // dispatch(resetCalculatedValues({ option })); // Dispatch reset action for current option
-    // dispatch(
-    //   updateMaterialInputs({
-    //     option,
-    //     materialType: "concrete",
-    //     inputs: initialState[option].concrete.inputs,
-    //   })
-    // );
-    // dispatch(
-    //   updateMaterialInputs({
-    //     option,
-    //     materialType: "steel",
-    //     inputs: initialState[option].steel.inputs,
-    //   })
-    // );
-    // dispatch(
-    //   updateMaterialInputs({
-    //     option,
-    //     materialType: "wood",
-    //     inputs: initialState[option].wood.inputs,
-    //   })
-    // );
-    // setBuildingArea(null);
-    // setDescription("");
-    // setShowResults(false);
-    // window.location.reload();
   };
 
   //Function to reset all inputs at once

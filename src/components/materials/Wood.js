@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { formatNumber } from "../../utils/formatNumber";
 import { useState } from "react";
+import { selectCalculatedValues } from "../../features/selectors";
 
 const Wood = ({
   option,
@@ -10,7 +11,7 @@ const Wood = ({
   onInputChange,
 }) => {
   const woodCalculatedValues = useSelector(
-    (state) => state.calculatedValues[option]?.wood || {}
+    (state) => selectCalculatedValues(state, option).wood || {}
   );
 
   //state to track error messages for input fields

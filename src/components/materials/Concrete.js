@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import { formatNumber } from "../../utils/formatNumber";
 import { useState } from "react";
+import { selectCalculatedValues } from "../../features/selectors";
+import { useMaterialInput } from "../materials/materialsLogic/useMaterialInput";
 
 const Concrete = ({
   option,
@@ -9,11 +11,12 @@ const Concrete = ({
   onActiveChange,
   onInputChange,
 }) => {
+  // Use the selector to get the concrete calculated values
   const concreteCalculatedValues = useSelector(
-    (state) => state.calculatedValues[option]?.concrete || {}
+    (state) => selectCalculatedValues(state, option).concrete || {}
   );
 
-  //state to track error messages for input fields
+  // state to track error messages for input fields
   const [errorMessages, setErrorMessages] = useState({});
 
   const handleInputChange = (event) => {
