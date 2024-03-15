@@ -1162,7 +1162,7 @@ table td:first-child {
     width: 300px;
   }
   .modal-description {
-    width: 400px;
+    width: 350px;
     max-height: 90vh;
     padding: 15px 25px;
   }
@@ -1177,7 +1177,17 @@ table td:first-child {
     width: 380px;
   }
 
+  .btn-width .btn,
+  .btn-comparison {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
   .btn-width {
+    display: flex;
+    flex-direction: column;
     width: 230px;
   }
   .btn-comparison {
@@ -1190,11 +1200,13 @@ table td:first-child {
 
   .btn,
   .btn-reset {
+    width: 60%;
+    height: 100%;
     font-size: 10px;
   }
 
   .btn-reset {
-    width: 130px;
+    width: 44%;
   }
 
   .th-description {
@@ -1207,5 +1219,13 @@ table td:first-child {
   }
   .img-table {
     width: 15px;
+  }
+
+  .about-description-short {
+    width: 350px;
+  }
+
+  .modal-description {
+    width: 300px;
   }
 }
