@@ -1130,6 +1130,9 @@ table td:first-child {
     display: flex;
     justify-content: center;
   }
+  .modal-description {
+    width: 470px;
+  }
 }
 
 @media (max-width: 540px) {
@@ -1157,6 +1160,11 @@ table td:first-child {
 
   .chart {
     width: 300px;
+  }
+  .modal-description {
+    width: 400px;
+    max-height: 90vh;
+    padding: 15px 25px;
   }
 }
 
