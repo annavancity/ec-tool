@@ -1173,6 +1173,15 @@ table td:first-child {
     font-size: 20px;
   }
 
+  .select-material {
+    margin: 10px 0px;
+    width: 300px;
+  }
+
+  .material-button {
+    height: 180px;
+  }
+
   .about-description-short {
     width: 380px;
   }
@@ -1227,5 +1236,9 @@ table td:first-child {
 
   .modal-description {
     width: 300px;
+  }
+
+  .main-container {
+    width: 80%;
   }
 }
