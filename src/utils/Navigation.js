@@ -100,7 +100,7 @@ const Navigation = () => {
             including but not limited to costing exercises, tender bidding,
             embodied carbon reporting, etc.
           </p>
-          <p className="menu-text-small lh-20">
+          <p className="menu-text-small lh-20 about-description-short">
             By using this application, you are agreeing to our{" "}
             <a
               href="https://www.fastepp.com/terms-conditions/"
