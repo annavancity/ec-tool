@@ -17,6 +17,7 @@
 html,
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
 }
 body {
@@ -1166,6 +1167,10 @@ table td:first-child {
     max-height: 90vh;
     padding: 15px 25px;
   }
+
+  .about-description-short {
+    width: 450px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -1230,15 +1235,14 @@ table td:first-child {
     width: 15px;
   }
 
-  .about-description-short {
-    width: 350px;
-  }
-
   .modal-description {
     width: 300px;
   }
 
-  .main-container {
+  /* .main-container {
     width: 80%;
+  } */
+  .about-description-short {
+    width: 350px;
   }
 }
